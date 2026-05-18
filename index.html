@@ -96,6 +96,13 @@
       background-image: none;
     }
 
+    .hero {
+      position: relative;
+      padding-bottom: clamp(112px, 8vw, 136px);
+    }
+
+    #introScreen { position: relative; }
+
     .brand-row {
       display: flex;
       align-items: center;
@@ -138,10 +145,12 @@
       position: relative;
       margin: 22px 0 0;
       font-family: "KG Perfect Penmanship", "Comic Sans MS", "Segoe Print", cursive;
-      font-size: clamp(1.85rem, 4.8vw, 4rem);
+      font-size: clamp(1.85rem, 4.4vw, 3.9rem);
       line-height: 1.05;
       letter-spacing: 0.005em;
-      max-width: 820px;
+      font-weight: normal;
+      max-width: none;
+      white-space: nowrap;
       isolation: isolate;
     }
 
@@ -167,10 +176,7 @@
     }
 
     .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 32px;
-      align-items: end;
+      display: block;
     }
 
     .preview-board {
@@ -197,10 +203,8 @@
       box-shadow: 0 8px 20px rgba(86,101,130,0.12);
     }
 
-    .preview-tile:nth-child(4n+1) { background: #c9f7d8; }
-    .preview-tile:nth-child(4n+2) { background: #cfe8ff; }
-    .preview-tile:nth-child(4n+3) { background: #fff3a8; }
-    .preview-tile:nth-child(4n+4) { background: #ffd6e9; }
+    .preview-tile:nth-child(-n+4) { background: #c9f7d8; }
+    .preview-tile:nth-child(n+5) { background: #cfe8ff; }
 
     .actions {
       display: flex;
@@ -270,6 +274,211 @@
       font-size: 0.95rem;
     }
 
+    .difficulty-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 30px;
+      max-width: 100%;
+      align-items: stretch;
+    }
+
+    .difficulty-card {
+      border: 1px solid #dae1ee;
+      cursor: pointer;
+      border-radius: 22px;
+      padding: 18px 16px;
+      color: var(--ink);
+      background: #ffffff;
+      box-shadow: 0 8px 18px rgba(86, 101, 130, 0.10);
+      text-align: left;
+      transition: transform 160ms ease, filter 160ms ease, opacity 160ms ease;
+    }
+
+    .difficulty-card:hover { transform: translateY(-2px); filter: brightness(1.04); }
+    .difficulty-card strong { display: block; font-size: 1.18rem; margin-bottom: 6px; }
+    .difficulty-card span { display: block; color: var(--muted); font-size: 0.92rem; line-height: 1.35; }
+    .difficulty-card.warm-up { background: var(--accent); border-color: #8de0ad; }
+    .difficulty-card.brain-bender { background: var(--accent-3); border-color: #ead970; }
+    .difficulty-card.expert { background: var(--accent-4); border-color: #f2a8cb; }
+
+
+    .version-widget {
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+      z-index: 2;
+      width: min(230px, calc(100vw - 44px));
+    }
+
+    .version-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #dae1ee;
+      border-radius: 999px;
+      background: #ffffff;
+      color: var(--ink);
+      font-weight: 950;
+      box-shadow: 0 8px 18px rgba(86, 101, 130, 0.10);
+      padding: 8px 12px;
+      font-size: 0.82rem;
+      line-height: 1;
+    }
+
+    .news-badge, .mini-action {
+      border: 1px solid #dae1ee;
+      cursor: pointer;
+      border-radius: 999px;
+      background: #ffffff;
+      color: var(--ink);
+      font-weight: 950;
+      box-shadow: 0 8px 18px rgba(86, 101, 130, 0.10);
+      padding: 9px 13px;
+      font-size: 0.9rem;
+      line-height: 1;
+    }
+
+    .news-badge:hover, .mini-action:hover { transform: translateY(-2px); filter: brightness(1.04); }
+
+    .stats-card {
+      width: 100%;
+      padding: 14px;
+      border-radius: 18px;
+      background: #ffffff;
+      border: 1px solid #dae1ee;
+      box-shadow: 0 8px 18px rgba(86, 101, 130, 0.10);
+      text-align: left;
+    }
+
+    .stats-card strong { display: block; font-size: 1rem; margin-bottom: 8px; }
+    .stats-mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+    .stats-mini-item { border-radius: 14px; background: #fbfcff; border: 1px solid #e7edf6; padding: 8px; }
+    .stats-mini-item span { display: block; color: var(--muted); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; }
+    .stats-mini-item b { display: block; font-size: 1rem; margin-top: 2px; }
+    .mini-action { width: 100%; box-shadow: none; background: var(--accent-3); }
+    .hero-stats-card {
+      align-self: stretch;
+      justify-self: stretch;
+      width: 100%;
+      padding: 14px;
+      border-radius: 22px;
+      transform: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .hero-stats-card strong { font-size: 1.08rem; }
+    .hero-stats-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .hero-stats-card .stats-mini-item {
+      min-height: 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: #c9f7d8;
+      border-color: #8de0ad;
+    }
+    .hero-stats-card .stats-mini-item:nth-child(even) { background: #cfe8ff; border-color: #97cafa; }
+    .compact-version-widget { max-width: 150px; }
+
+
+    .news-overlay {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(38, 48, 66, 0.22);
+      z-index: 10;
+    }
+
+    .news-modal {
+      position: relative;
+      width: min(780px, calc(100vw - 40px));
+      max-height: min(82vh, 720px);
+      overflow: auto;
+      padding: clamp(24px, 4vw, 42px);
+      border-radius: 28px;
+      background: #ffffff;
+      border: 1px solid #dae1ee;
+      box-shadow: var(--shadow);
+    }
+
+    .news-modal h2 {
+      margin: 0;
+      font-family: "Chomage", "KG Perfect Penmanship", "Comic Sans MS", "Segoe Print", cursive;
+      font-size: clamp(2.8rem, 7vw, 5.2rem);
+      line-height: 0.86;
+      letter-spacing: -0.045em;
+    }
+
+    .news-modal h3 {
+      margin: 24px 0 10px;
+      font-family: "Chomage", "KG Perfect Penmanship", "Comic Sans MS", "Segoe Print", cursive;
+      font-size: clamp(2.1rem, 4vw, 3.1rem);
+      line-height: 0.9;
+      letter-spacing: -0.035em;
+      font-weight: normal;
+    }
+    .news-kicker {
+      display: block;
+      margin-top: 8px;
+      font-family: "KG Perfect Penmanship", "Comic Sans MS", "Segoe Print", cursive;
+      font-size: 1rem;
+      line-height: 1.25;
+      letter-spacing: 0.02em;
+      color: var(--muted);
+      font-weight: 800;
+    }
+    .news-modal p { color: var(--muted); line-height: 1.55; font-size: 1.05rem; }
+    .news-modal ul { color: var(--muted); line-height: 1.5; font-size: 1.05rem; padding-left: 24px; }
+    .news-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid #dae1ee;
+      background: #ffffff;
+      color: var(--ink);
+      cursor: pointer;
+      font-weight: 950;
+      box-shadow: 0 8px 18px rgba(86, 101, 130, 0.10);
+    }
+
+
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .stats-box {
+      padding: 14px;
+      border-radius: 18px;
+      background: #fbfcff;
+      border: 1px solid #dae1ee;
+    }
+
+    .stats-box span { display: block; color: var(--muted); font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.08em; }
+    .stats-box strong { display: block; font-size: 1.35rem; margin-top: 5px; color: var(--text); }
+    .stats-disclaimer { font-size: 0.95rem; color: var(--muted); line-height: 1.5; padding: 14px; border-radius: 18px; background: #ffffff; border: 1px solid #dae1ee; }
+
+    @media (max-width: 700px) {
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .version-widget { position: static; align-items: stretch; width: 100%; margin-bottom: 18px; }
+      .hero-grid { gap: 24px; }
+      .hero-stats-card { justify-self: stretch; width: 100%; }
+    }
+
     .hidden { display: none !important; }
 
     .game-header {
@@ -282,12 +491,31 @@
 
     .game-title h2 {
       margin: 0;
-      font-size: clamp(2.1rem, 5vw, 4.5rem);
-      line-height: 0.95;
-      letter-spacing: -0.065em;
+      font-family: "Chomage", "KG Perfect Penmanship", "Comic Sans MS", "Segoe Print", cursive;
+      font-size: clamp(3.2rem, 8vw, 6.4rem);
+      line-height: 0.84;
+      letter-spacing: -0.045em;
+      font-weight: normal;
     }
 
     .game-title p { margin: 12px 0 0; color: var(--muted); line-height: 1.5; }
+
+    .puzzle-name {
+      display: inline-block;
+      margin-top: 14px !important;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: var(--accent-3);
+      color: var(--ink) !important;
+      font-weight: 900;
+    }
+
+    .hud-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-end;
+    }
 
     .hud {
       display: flex;
@@ -462,9 +690,11 @@
 
     .results-card h2 {
       margin: 0;
-      font-size: clamp(2.2rem, 7vw, 5.4rem);
-      line-height: 0.9;
-      letter-spacing: -0.07em;
+      font-family: "Chomage", "KG Perfect Penmanship", "Comic Sans MS", "Segoe Print", cursive;
+      font-size: clamp(3.1rem, 8vw, 6.6rem);
+      line-height: 0.84;
+      letter-spacing: -0.045em;
+      font-weight: normal;
     }
 
     .rank {
@@ -518,6 +748,12 @@
     .answer-group p { margin: 0; color: var(--muted); font-size: 0.92rem; line-height: 1.45; }
     .answer-group .terms-line { color: var(--text); font-weight: 800; margin-bottom: 6px; }
 
+    .solved-card.complete:nth-child(4n+1), .answer-group:nth-child(4n+1) { background: #c9f7d8; border-color: #8de0ad; }
+    .solved-card.complete:nth-child(4n+2), .answer-group:nth-child(4n+2) { background: #cfe8ff; border-color: #97cafa; }
+    .solved-card.complete:nth-child(4n+3), .answer-group:nth-child(4n+3) { background: #fff3a8; border-color: #ead970; }
+    .solved-card.complete:nth-child(4n+4), .answer-group:nth-child(4n+4) { background: #ffd6e9; border-color: #f2a8cb; }
+
+
     .toast {
       position: fixed;
       left: 50%;
@@ -537,11 +773,12 @@
     .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
     @media (max-width: 860px) {
-      .hero-grid, .game-header { grid-template-columns: 1fr; }
-      .preview-board { transform: none; }
-      .hud { justify-content: stretch; }
+      .game-header { grid-template-columns: 1fr; }
+      .subtitle { white-space: normal; }
+      .preview-board, .hero-stats-card { transform: none; }
+      .hud, .hud-wrap { justify-content: stretch; align-items: stretch; }
       .hud-item { flex: 1; }
-      .solved-groups, .board { grid-template-columns: repeat(2, 1fr); }
+      .solved-groups, .board, .difficulty-grid { grid-template-columns: repeat(2, 1fr); }
       .score-grid, .answers { grid-template-columns: 1fr; }
     }
 
@@ -550,10 +787,12 @@
       .hero, .screen { padding: 22px; }
       .brand-row { align-items: flex-start; }
       .preview-board { gap: 8px; padding: 12px; }
+      .hero-stats-card { padding: 14px; }
       .preview-tile { min-height: 56px; font-size: 0.82rem; border-radius: 12px; }
       .board { gap: 9px; }
       .card { min-height: 84px; border-radius: 16px; padding: 12px 8px; }
       .controls .btn { width: 100%; }
+      .difficulty-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -562,10 +801,11 @@
   <div class="wrap">
     <main class="shell" aria-live="polite">
       <section id="introScreen" class="hero">
-        <div class="brand-row">
-          <div class="pill">AI in Action Logic Puzzle</div>
-        </div>
 
+        <div class="version-widget compact-version-widget">
+          <div class="version-badge" aria-label="ConnectionZ version">v1.0</div>
+          <button id="newsBtn" class="news-badge" type="button" aria-label="ConnectionZ news">📰 What’s New</button>
+        </div>
         <div class="hero-grid">
           <div>
             <h1>Connection<span class="z-pop">Z</span></h1>
@@ -576,20 +816,28 @@
             <p class="deck">
               Fewer mistakes plus faster time equals a better rank.
             </p>
-            <div class="actions">
-              <button id="startBtn" class="btn">Start the Puzzle</button>
+            <div class="difficulty-grid" aria-label="Puzzle difficulty choices">
+              <button class="difficulty-card warm-up" type="button" data-difficulty="warm-up">
+                <strong>✨ Warm-Up</strong>
+                <span>Friendly AI terms to get the board moving.</span>
+              </button>
+              <button class="difficulty-card brain-bender" type="button" data-difficulty="brain-bender">
+                <strong>🧠 Brain-Bender</strong>
+                <span>Medium AI concepts with a little more misdirection.</span>
+              </button>
+              <button class="difficulty-card expert" type="button" data-difficulty="expert">
+                <strong>🔥 Expert</strong>
+                <span>Advanced AI concepts with sharper category traps.</span>
+              </button>
+              <div class="stats-card hero-stats-card" aria-label="Your stats preview">
+                <strong>Your Stats</strong>
+                <div class="stats-mini-grid hero-stats-grid">
+                  <div class="stats-mini-item"><span>Puzzles Completed</span><b id="miniCompleted">0</b></div>
+                  <div class="stats-mini-item"><span>Best Score</span><b id="miniBestScore">—</b></div>
+                </div>
+                <button id="statsBtn" class="mini-action" type="button">View Your Stats</button>
+              </div>
             </div>
-          </div>
-
-          <div class="preview-board" aria-hidden="true">
-            <div class="preview-tile">Prompt</div>
-            <div class="preview-tile">RAG</div>
-            <div class="preview-tile">Token</div>
-            <div class="preview-tile">Bias</div>
-            <div class="preview-tile">Few-Shot</div>
-            <div class="preview-tile">Embedding</div>
-            <div class="preview-tile">Temperature</div>
-            <div class="preview-tile">Hallucination</div>
           </div>
         </div>
       </section>
@@ -597,13 +845,22 @@
       <section id="gameScreen" class="screen hidden">
         <div class="game-header">
           <div class="game-title">
-            <h2>Crack the Categories.</h2>
-            <p>Select four cards that belong together. Card clicks also reveal a quick clue below the board.</p>
+            <h2>Connection<span class="z-pop">Z</span></h2>
+            <p>Select the four cards that belong together. Card clicks also reveal a quick clue below the board.</p>
+            <p id="puzzleName" class="puzzle-name">Puzzle loading...</p>
           </div>
-          <div class="hud" aria-label="Game status">
-            <div class="hud-item"><span class="hud-label">Time</span><span id="timer" class="hud-value">0:00</span></div>
-            <div class="hud-item"><span class="hud-label">Misses</span><span id="mistakes" class="hud-value">0</span></div>
-            <div class="hud-item"><span class="hud-label">Solved</span><span id="solvedCount" class="hud-value">0/4</span></div>
+          <div class="hud-wrap">
+            <div class="hud" aria-label="Game status">
+              <div class="hud-item"><span class="hud-label">Time</span><span id="timer" class="hud-value">0:00</span></div>
+              <div class="hud-item"><span class="hud-label">Misses</span><span id="mistakes" class="hud-value">0</span></div>
+              <div class="hud-item"><span class="hud-label">Solved</span><span id="solvedCount" class="hud-value">0/4</span></div>
+            </div>
+            <div class="audio-controls" aria-label="Music controls">
+              <button id="musicToggleBtn" class="btn" type="button">Music On</button>
+              <label for="volumeSlider">Volume
+                <input id="volumeSlider" type="range" min="0" max="100" value="35" />
+              </label>
+            </div>
           </div>
         </div>
 
@@ -624,12 +881,10 @@
           <button id="clearBtn" class="btn secondary">Clear Selection</button>
           <button id="shuffleBtn" class="btn secondary">Shuffle Board</button>
           <button id="hintBtn" class="btn secondary">Use Hint</button>
-          <div class="audio-controls" aria-label="Music controls">
-            <button id="musicToggleBtn" class="btn" type="button">Music On</button>
-            <label for="volumeSlider">Volume
-              <input id="volumeSlider" type="range" min="0" max="100" value="35" />
-            </label>
-          </div>
+          <button id="giveUpBtn" class="btn secondary">Give Up</button>
+          <button id="seeResultsBtn" class="btn hidden">See Results</button>
+          <button id="nextPuzzleBtn" class="btn secondary">Next Puzzle</button>
+          <button id="returnTitleBtn" class="btn secondary">Return to Title Screen</button>
         </div>
         <p class="footer-note">Your score is calculated at the end. Speed helps. Misses hurt. Hints are allowed, but they cost points.</p>
       </section>
@@ -651,73 +906,2129 @@
           <div class="actions" style="justify-content:center;">
             <button id="copyBtn" class="btn">Copy My Score</button>
             <button id="playAgainBtn" class="btn secondary">Play Again</button>
+            <button id="returnTitleBtnResult" class="btn secondary">Return to Title Screen</button>
           </div>
         </div>
       </section>
     </main>
   </div>
 
+  <div id="newsOverlay" class="news-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="newsTitle">
+    <div class="news-modal">
+      <button id="newsCloseBtn" class="news-close" type="button" aria-label="Close news">×</button>
+      <h2 id="newsTitle">ConnectionZ News</h2>
+      <p>ConnectionZ is officially live! This version brings a more flexible, replayable puzzle experience with new ways to play, practice, and improve.</p>
+      <h3>What’s New in v1.0<span class="news-kicker">Updated May 2026</span></h3>
+      <p>ConnectionZ v1.0 is here! This release includes:</p>
+      <ul>
+        <li>Three difficulty levels: Warm-Up, Brain-Bender, and Expert</li>
+        <li>Over 400,000 possible puzzle combinations through randomized boards</li>
+        <li>A Next Puzzle button to generate a fresh board</li>
+        <li>A Shuffle option to rearrange the cards</li>
+        <li>A Give Up button for when a puzzle gets too spicy</li>
+        <li>Updated scoring to make ranks feel more fair and achievable</li>
+      </ul>
+      <h3>Coming Next</h3>
+      <p>We’ll keep adding new puzzles and categories, improving hints so they’re more useful, and reviewing player results to fine-tune the scoring system over time.</p>
+      <div class="actions">
+        <button id="newsReturnBtn" class="btn" type="button">Return to Title Screen</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="statsOverlay" class="news-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="statsTitle">
+    <div class="news-modal">
+      <button id="statsCloseBtn" class="news-close" type="button" aria-label="Close stats">×</button>
+      <h2 id="statsTitle">Your Stats</h2>
+      <p class="stats-disclaimer">Stats are saved only in this browser on this device. If you switch browsers/devices, use private browsing, or clear site data, your stats may reset.</p>
+      <div class="stats-grid" id="statsGrid"></div>
+      <div class="actions">
+        <button id="copyStatsBtn" class="btn" type="button">Copy Top Stats</button>
+        <button id="statsReturnBtn" class="btn secondary" type="button">Return to Title Screen</button>
+      </div>
+    </div>
+  </div>
+
+
   <audio id="bgMusic" src="./hitslab-cute-cheerful-whistle-music-394093.mp3" preload="auto" loop></audio>
 
   <div id="toast" class="toast" role="status" aria-live="polite">Copied score.</div>
 
   <script>
-    const groups = [
-      {
-        id: "prompting",
-        name: "Prompting Moves",
-        explanation: "Ways to guide, structure, or steer an AI response.",
-        terms: ["Prompt", "Few-Shot", "System Message", "Chain of Thought"]
-      },
-      {
-        id: "retrieval",
-        name: "How AI Finds Information",
-        explanation: "These help AI search, retrieve, or compare information based on meaning.",
-        terms: ["RAG", "Embedding", "Vector Database", "Semantic Search"]
-      },
-      {
-        id: "answer",
-        name: "What Shapes the Answer",
-        explanation: "These affect what the AI can take in, how it uses context, and how predictable the response may be.",
-        terms: ["Context Window", "Token", "Grounding", "Temperature"]
-      },
-      {
-        id: "risk",
-        name: "Risks & Failure Modes",
-        explanation: "Common ways AI can produce unreliable, unsafe, or misleading results.",
-        terms: ["Hallucination", "Bias", "Data Leakage", "Overfitting"]
-      }
-    ];
 
-    const definitions = {
-      "Prompt": "The instruction or question you give an AI tool to guide its response.",
-      "Few-Shot": "Giving the AI a few examples so it can copy the pattern, format, or style.",
-      "System Message": "A higher-level instruction that shapes how the AI should behave.",
-      "Chain of Thought": "A reasoning-style approach that asks the AI to work through a problem step by step.",
-      "RAG": "Retrieval-Augmented Generation: when AI pulls in outside information before answering.",
-      "Embedding": "A way of turning meaning into numbers so similar ideas can be compared.",
-      "Vector Database": "A database designed to store and search embeddings.",
-      "Semantic Search": "Search that looks for meaning, not just exact keyword matches.",
-      "Context Window": "The amount of text or information the AI can consider at one time.",
-      "Token": "A chunk of text the AI reads or generates, often part of a word.",
-      "Grounding": "Connecting the AI's answer to trusted source information.",
-      "Temperature": "A setting that affects how predictable or creative the AI's response is.",
-      "Hallucination": "When AI gives an answer that sounds confident but is wrong or made up.",
-      "Bias": "When AI output reflects unfair patterns or assumptions in data or design.",
-      "Data Leakage": "When sensitive or unintended information is exposed or used improperly.",
-      "Overfitting": "When a model learns patterns too narrowly and performs poorly on new examples."
+    const groupPool = [
+      {
+            "id": "warmup-001",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "AI Input Ingredients",
+            "explanation": "Basic pieces that shape what an AI tool receives before it answers.",
+            "terms": [
+                  "Prompt",
+                  "Context",
+                  "Example",
+                  "Constraint"
+            ],
+            "definitions": {
+                  "Prompt": "The instruction or request you give",
+                  "Context": "Background information it should consider",
+                  "Example": "A pattern you want it to follow",
+                  "Constraint": "A rule or limit for the answer"
+            }
+      },
+      {
+            "id": "warmup-002",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "Common AI Tasks",
+            "explanation": "Everyday ways people ask AI to help with work.",
+            "terms": [
+                  "Summarize",
+                  "Draft",
+                  "Rewrite",
+                  "Brainstorm"
+            ],
+            "definitions": {
+                  "Summarize": "Reduce text to key points",
+                  "Draft": "Create a first version",
+                  "Rewrite": "Improve existing wording",
+                  "Brainstorm": "Generate possible ideas"
+            }
+      },
+      {
+            "id": "warmup-003",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "Output Controls",
+            "explanation": "Choices that influence how an AI response looks, sounds, or feels.",
+            "terms": [
+                  "Tone",
+                  "Format",
+                  "Length",
+                  "Audience"
+            ],
+            "definitions": {
+                  "Tone": "How the answer should sound",
+                  "Format": "How the answer is structured",
+                  "Length": "How much it should write",
+                  "Audience": "Who the answer is for"
+            }
+      },
+      {
+            "id": "warmup-004",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "Trust Signals",
+            "explanation": "Helpful signs that an AI answer can be checked or relied on.",
+            "terms": [
+                  "Source",
+                  "Citation",
+                  "Quote",
+                  "Date"
+            ],
+            "definitions": {
+                  "Source": "Where information came from",
+                  "Citation": "A link or reference to evidence",
+                  "Quote": "Exact wording from a source",
+                  "Date": "When the information applies"
+            }
+      },
+      {
+            "id": "warmup-005",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "Things AI Can Create",
+            "explanation": "Common content types AI tools can help produce.",
+            "terms": [
+                  "Email",
+                  "Checklist",
+                  "Table",
+                  "Script"
+            ],
+            "definitions": {
+                  "Email": "A workplace message",
+                  "Checklist": "A list of steps or items",
+                  "Table": "Information in rows and columns",
+                  "Script": "Words prepared to say aloud"
+            }
+      },
+      {
+            "id": "warmup-006",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "AI Conversation Moves",
+            "explanation": "Ways to steer an AI chat after the first response.",
+            "terms": [
+                  "Clarify",
+                  "Refine",
+                  "Compare",
+                  "Expand"
+            ],
+            "definitions": {
+                  "Clarify": "Make the request more specific",
+                  "Refine": "Improve the answer in stages",
+                  "Compare": "Put options side by side",
+                  "Expand": "Add more detail"
+            }
+      },
+      {
+            "id": "warmup-007",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "Basic AI Cautions",
+            "explanation": "Simple risks to watch for when using AI outputs.",
+            "terms": [
+                  "Bias",
+                  "Error",
+                  "Missing Context",
+                  "Overconfidence"
+            ],
+            "definitions": {
+                  "Bias": "Unfair pattern in an answer",
+                  "Error": "Something incorrect",
+                  "Missing Context": "Important info left out",
+                  "Overconfidence": "Sounds sure but may be wrong"
+            }
+      },
+      {
+            "id": "warmup-008",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "Ways to Give Examples",
+            "explanation": "Simple example-based prompting patterns.",
+            "terms": [
+                  "Sample",
+                  "Template",
+                  "Before",
+                  "After"
+            ],
+            "definitions": {
+                  "Sample": "A model answer to copy",
+                  "Template": "A reusable structure",
+                  "Before": "The original version",
+                  "After": "The improved version"
+            }
+      },
+      {
+            "id": "warmup-009",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "AI Reading Jobs",
+            "explanation": "Things AI can do with information you provide.",
+            "terms": [
+                  "Extract",
+                  "Classify",
+                  "Highlight",
+                  "Condense"
+            ],
+            "definitions": {
+                  "Extract": "Pull out specific details",
+                  "Classify": "Sort into categories",
+                  "Highlight": "Call attention to key parts",
+                  "Condense": "Make shorter without losing meaning"
+            }
+      },
+      {
+            "id": "warmup-010",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "Workplace AI Uses",
+            "explanation": "Practical ways AI can support office work.",
+            "terms": [
+                  "Meeting Notes",
+                  "FAQ",
+                  "Training Aid",
+                  "Job Aid"
+            ],
+            "definitions": {
+                  "Meeting Notes": "Clean up discussion points",
+                  "FAQ": "Answer repeated questions",
+                  "Training Aid": "Help explain a topic",
+                  "Job Aid": "Create a quick reference"
+            }
+      },
+      {
+            "id": "warmup-011",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "Document Improvement Requests",
+            "explanation": "Common instructions for polishing workplace content.",
+            "terms": [
+                  "Simplify",
+                  "Organize",
+                  "Proofread",
+                  "Shorten"
+            ],
+            "definitions": {
+                  "Simplify": "Make easier to understand",
+                  "Organize": "Improve structure",
+                  "Proofread": "Catch grammar or typos",
+                  "Shorten": "Cut unnecessary wording"
+            }
+      },
+      {
+            "id": "warmup-012",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "AI Output Formats",
+            "explanation": "Common shapes an AI answer can take.",
+            "terms": [
+                  "Bullets",
+                  "Paragraph",
+                  "Matrix",
+                  "Steps"
+            ],
+            "definitions": {
+                  "Bullets": "Short list items",
+                  "Paragraph": "Written explanation",
+                  "Matrix": "Side-by-side grid",
+                  "Steps": "Ordered instructions"
+            }
+      },
+      {
+            "id": "warmup-013",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "Prompt Quality Checks",
+            "explanation": "Basic checks that make a request easier for AI to follow.",
+            "terms": [
+                  "Goal",
+                  "Inputs",
+                  "Limits",
+                  "Success Criteria"
+            ],
+            "definitions": {
+                  "Goal": "What you want done",
+                  "Inputs": "What information it should use",
+                  "Limits": "What to avoid or follow",
+                  "Success Criteria": "What good looks like"
+            }
+      },
+      {
+            "id": "warmup-014",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "AI Help Verbs",
+            "explanation": "Action words that tell AI what kind of help you need.",
+            "terms": [
+                  "Analyze",
+                  "Explain",
+                  "Suggest",
+                  "Prioritize"
+            ],
+            "definitions": {
+                  "Analyze": "Break something down",
+                  "Explain": "Make something understandable",
+                  "Suggest": "Offer possible choices",
+                  "Prioritize": "Rank by importance"
+            }
+      },
+      {
+            "id": "warmup-015",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "Human Feedback Types",
+            "explanation": "Simple ways people respond to an AI draft.",
+            "terms": [
+                  "Approve",
+                  "Edit",
+                  "Reject",
+                  "Rate"
+            ],
+            "definitions": {
+                  "Approve": "Accept as useful",
+                  "Edit": "Change part of it",
+                  "Reject": "Do not use it",
+                  "Rate": "Score its quality"
+            }
+      },
+      {
+            "id": "warmup-016",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "Information Sensitivity",
+            "explanation": "Basic types of information that deserve extra caution.",
+            "terms": [
+                  "Personal Data",
+                  "Confidential",
+                  "Financial",
+                  "Credentials"
+            ],
+            "definitions": {
+                  "Personal Data": "Info about a person",
+                  "Confidential": "Not meant for broad sharing",
+                  "Financial": "Money-related details",
+                  "Credentials": "Passwords or access info"
+            }
+      },
+      {
+            "id": "warmup-017",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "AI Collaboration Roles",
+            "explanation": "Friendly ways to think about AI as a helper, not the owner of the work.",
+            "terms": [
+                  "Assistant",
+                  "Reviewer",
+                  "Tutor",
+                  "Coach"
+            ],
+            "definitions": {
+                  "Assistant": "Helps with tasks",
+                  "Reviewer": "Checks a draft",
+                  "Tutor": "Explains concepts",
+                  "Coach": "Suggests improvements"
+            }
+      },
+      {
+            "id": "warmup-018",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "Answer Quality Traits",
+            "explanation": "Everyday qualities people want in a useful AI response.",
+            "terms": [
+                  "Clear",
+                  "Relevant",
+                  "Complete",
+                  "Actionable"
+            ],
+            "definitions": {
+                  "Clear": "Easy to understand",
+                  "Relevant": "Matches the request",
+                  "Complete": "Covers the needed parts",
+                  "Actionable": "Can be used next"
+            }
+      },
+      {
+            "id": "warmup-019",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "Search vs. AI Differences",
+            "explanation": "Basic distinctions between looking things up and generating an answer.",
+            "terms": [
+                  "Keyword",
+                  "Result",
+                  "Generated Answer",
+                  "Source List"
+            ],
+            "definitions": {
+                  "Keyword": "Exact search term",
+                  "Result": "A page or item found",
+                  "Generated Answer": "Newly written response",
+                  "Source List": "Places to verify"
+            }
+      },
+      {
+            "id": "warmup-020",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "Safe Sharing Habits",
+            "explanation": "Simple habits that reduce risk when using AI tools.",
+            "terms": [
+                  "Remove Names",
+                  "Use Examples",
+                  "Check Policy",
+                  "Review Output"
+            ],
+            "definitions": {
+                  "Remove Names": "Avoid unnecessary identifiers",
+                  "Use Examples": "Share fake samples when possible",
+                  "Check Policy": "Follow company rules",
+                  "Review Output": "Read before sending"
+            }
+      },
+      {
+            "id": "brainbender-021",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Ways to Check AI Accuracy",
+            "explanation": "Methods that help validate whether an AI output is reliable.",
+            "terms": [
+                  "Human Review",
+                  "Grounding",
+                  "Benchmarking",
+                  "Red Teaming"
+            ],
+            "definitions": {
+                  "Human Review": "Person checks the output",
+                  "Grounding": "Ties answers to sources",
+                  "Benchmarking": "Tests against standards",
+                  "Red Teaming": "Tries to break it safely"
+            }
+      },
+      {
+            "id": "brainbender-022",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "AI System Design Choices",
+            "explanation": "Techniques used to shape how an AI system retrieves, reasons, or acts.",
+            "terms": [
+                  "Fine-Tuning",
+                  "RAG",
+                  "Embeddings",
+                  "Agents"
+            ],
+            "definitions": {
+                  "Fine-Tuning": "Trains on specific examples",
+                  "RAG": "Retrieves info before answering",
+                  "Embeddings": "Turns meaning into numbers",
+                  "Agents": "AI that can take steps"
+            }
+      },
+      {
+            "id": "brainbender-023",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Responsible AI Concerns",
+            "explanation": "Common governance concerns for safer AI use.",
+            "terms": [
+                  "Bias",
+                  "Privacy",
+                  "Explainability",
+                  "Transparency"
+            ],
+            "definitions": {
+                  "Bias": "Unfair pattern in outputs",
+                  "Privacy": "Protecting sensitive data",
+                  "Explainability": "Why it gave that answer",
+                  "Transparency": "Clear about AI use"
+            }
+      },
+      {
+            "id": "brainbender-024",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Dimensions of AI Use",
+            "explanation": "A practical lens for deciding how and when AI should be used.",
+            "terms": [
+                  "Accuracy",
+                  "Risk",
+                  "Effort",
+                  "Judgment"
+            ],
+            "definitions": {
+                  "Accuracy": "Is it correct?",
+                  "Risk": "What could go wrong?",
+                  "Effort": "How much work it saves",
+                  "Judgment": "Where humans decide"
+            }
+      },
+      {
+            "id": "brainbender-025",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Model Evaluation Metrics",
+            "explanation": "Measures often used to judge AI model performance.",
+            "terms": [
+                  "Precision",
+                  "Recall",
+                  "F1 Score",
+                  "Accuracy"
+            ],
+            "definitions": {
+                  "Precision": "How many selected were right",
+                  "Recall": "How many right items were found",
+                  "F1 Score": "Balance of precision and recall",
+                  "Accuracy": "Overall correct rate"
+            }
+      },
+      {
+            "id": "brainbender-026",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Retrieval Pipeline Steps",
+            "explanation": "Common steps in a retrieval-augmented AI workflow.",
+            "terms": [
+                  "Chunking",
+                  "Indexing",
+                  "Retrieval",
+                  "Generation"
+            ],
+            "definitions": {
+                  "Chunking": "Splitting content into pieces",
+                  "Indexing": "Organizing content for search",
+                  "Retrieval": "Finding relevant pieces",
+                  "Generation": "Writing the final answer"
+            }
+      },
+      {
+            "id": "brainbender-027",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Model Behavior Settings",
+            "explanation": "Configuration choices that influence generated output.",
+            "terms": [
+                  "Temperature",
+                  "Top-P",
+                  "Max Tokens",
+                  "System Prompt"
+            ],
+            "definitions": {
+                  "Temperature": "Controls randomness",
+                  "Top-P": "Limits token sampling pool",
+                  "Max Tokens": "Caps response length",
+                  "System Prompt": "Sets behavior rules"
+            }
+      },
+      {
+            "id": "brainbender-028",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Human-in-the-Loop Patterns",
+            "explanation": "Ways humans stay involved in AI-assisted workflows.",
+            "terms": [
+                  "Approval Gate",
+                  "Escalation",
+                  "Correction Loop",
+                  "Audit Review"
+            ],
+            "definitions": {
+                  "Approval Gate": "Human signs off before action",
+                  "Escalation": "Hand off risky cases",
+                  "Correction Loop": "Human fixes model mistakes",
+                  "Audit Review": "Check outputs after the fact"
+            }
+      },
+      {
+            "id": "brainbender-029",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Common Failure Modes",
+            "explanation": "Ways AI systems can produce weak or misleading results.",
+            "terms": [
+                  "Hallucination",
+                  "Drift",
+                  "Overfitting",
+                  "Prompt Injection"
+            ],
+            "definitions": {
+                  "Hallucination": "Confident but false output",
+                  "Drift": "Performance changes over time",
+                  "Overfitting": "Learns too narrowly",
+                  "Prompt Injection": "Input tries to override rules"
+            }
+      },
+      {
+            "id": "brainbender-030",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Data Preparation Steps",
+            "explanation": "Work often needed before data can support an AI system.",
+            "terms": [
+                  "Labeling",
+                  "Cleaning",
+                  "Deduping",
+                  "Normalization"
+            ],
+            "definitions": {
+                  "Labeling": "Tagging examples",
+                  "Cleaning": "Fixing messy data",
+                  "Deduping": "Removing repeated records",
+                  "Normalization": "Making formats consistent"
+            }
+      },
+      {
+            "id": "brainbender-031",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "AI Governance Artifacts",
+            "explanation": "Documents and records that support responsible AI oversight.",
+            "terms": [
+                  "Model Card",
+                  "Risk Register",
+                  "Use Case Inventory",
+                  "Audit Log"
+            ],
+            "definitions": {
+                  "Model Card": "Summary of model details",
+                  "Risk Register": "List of known concerns",
+                  "Use Case Inventory": "Catalog of AI uses",
+                  "Audit Log": "Record of actions taken"
+            }
+      },
+      {
+            "id": "brainbender-032",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Trustworthy Output Traits",
+            "explanation": "Qualities that make an AI answer more usable in real work.",
+            "terms": [
+                  "Traceable",
+                  "Current",
+                  "Consistent",
+                  "Calibrated"
+            ],
+            "definitions": {
+                  "Traceable": "Can follow the evidence",
+                  "Current": "Reflects the right time period",
+                  "Consistent": "Does not contradict itself",
+                  "Calibrated": "Matches confidence to evidence"
+            }
+      },
+      {
+            "id": "brainbender-033",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Data Types for AI",
+            "explanation": "Common forms of input data AI systems can process.",
+            "terms": [
+                  "Text",
+                  "Image",
+                  "Audio",
+                  "Tabular"
+            ],
+            "definitions": {
+                  "Text": "Written language",
+                  "Image": "Visual information",
+                  "Audio": "Sound or speech",
+                  "Tabular": "Rows and columns"
+            }
+      },
+      {
+            "id": "brainbender-034",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Learning Approaches",
+            "explanation": "Broad ways machine learning systems learn from data or feedback.",
+            "terms": [
+                  "Supervised",
+                  "Unsupervised",
+                  "Reinforcement",
+                  "Self-Supervised"
+            ],
+            "definitions": {
+                  "Supervised": "Learns from labeled examples",
+                  "Unsupervised": "Finds patterns without labels",
+                  "Reinforcement": "Learns from rewards",
+                  "Self-Supervised": "Creates its own training signal"
+            }
+      },
+      {
+            "id": "brainbender-035",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "AI Lifecycle Stages",
+            "explanation": "Major phases of building and maintaining an AI-enabled system.",
+            "terms": [
+                  "Discovery",
+                  "Development",
+                  "Deployment",
+                  "Monitoring"
+            ],
+            "definitions": {
+                  "Discovery": "Define the problem",
+                  "Development": "Build and test",
+                  "Deployment": "Release for use",
+                  "Monitoring": "Watch performance over time"
+            }
+      },
+      {
+            "id": "brainbender-036",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Ways to Reduce AI Risk",
+            "explanation": "Controls that can lower the chance or impact of AI mistakes.",
+            "terms": [
+                  "Access Control",
+                  "Content Filter",
+                  "Rate Limit",
+                  "Fallback"
+            ],
+            "definitions": {
+                  "Access Control": "Limit who can use it",
+                  "Content Filter": "Block unsafe outputs",
+                  "Rate Limit": "Control usage volume",
+                  "Fallback": "Use another path if it fails"
+            }
+      },
+      {
+            "id": "brainbender-037",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Prompt Attack Concepts",
+            "explanation": "Terms related to attempts to manipulate AI behavior through inputs.",
+            "terms": [
+                  "Jailbreak",
+                  "Injection",
+                  "Exfiltration",
+                  "Obfuscation"
+            ],
+            "definitions": {
+                  "Jailbreak": "Tries to bypass rules",
+                  "Injection": "Hides malicious instructions",
+                  "Exfiltration": "Attempts to reveal secrets",
+                  "Obfuscation": "Disguises intent"
+            }
+      },
+      {
+            "id": "brainbender-038",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Knowledge Management Concepts",
+            "explanation": "Ideas that matter when AI relies on company information.",
+            "terms": [
+                  "Source of Truth",
+                  "Metadata",
+                  "Versioning",
+                  "Permissions"
+            ],
+            "definitions": {
+                  "Source of Truth": "Trusted reference place",
+                  "Metadata": "Data about the content",
+                  "Versioning": "Tracking changes over time",
+                  "Permissions": "Who can access what"
+            }
+      },
+      {
+            "id": "brainbender-039",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "AI Decision Support Boundaries",
+            "explanation": "Roles AI can play without fully replacing human accountability.",
+            "terms": [
+                  "Recommend",
+                  "Flag",
+                  "Rank",
+                  "Explain"
+            ],
+            "definitions": {
+                  "Recommend": "Suggest an option",
+                  "Flag": "Call attention to something",
+                  "Rank": "Order by priority",
+                  "Explain": "Provide rationale"
+            }
+      },
+      {
+            "id": "brainbender-040",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Evaluation Dataset Splits",
+            "explanation": "Common data splits used when testing model performance.",
+            "terms": [
+                  "Training Set",
+                  "Validation Set",
+                  "Test Set",
+                  "Holdout Set"
+            ],
+            "definitions": {
+                  "Training Set": "Data used to learn",
+                  "Validation Set": "Data used to tune",
+                  "Test Set": "Data used to evaluate",
+                  "Holdout Set": "Reserved final check"
+            }
+      },
+      {
+            "id": "expert-041",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "LLM Architecture Concepts",
+            "explanation": "Technical ideas commonly associated with modern language models.",
+            "terms": [
+                  "Transformer",
+                  "Attention",
+                  "Parameters",
+                  "Tokenizer"
+            ],
+            "definitions": {
+                  "Transformer": "Architecture behind many LLMs",
+                  "Attention": "Weights relevant context",
+                  "Parameters": "Learned model values",
+                  "Tokenizer": "Splits text into tokens"
+            }
+      },
+      {
+            "id": "expert-042",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Alignment Techniques",
+            "explanation": "Methods used to make model behavior better match human preferences or rules.",
+            "terms": [
+                  "RLHF",
+                  "RLAIF",
+                  "Constitutional AI",
+                  "Preference Model"
+            ],
+            "definitions": {
+                  "RLHF": "Learns from human preference feedback",
+                  "RLAIF": "Uses AI-generated preference feedback",
+                  "Constitutional AI": "Applies written principles",
+                  "Preference Model": "Predicts preferred responses"
+            }
+      },
+      {
+            "id": "expert-043",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Advanced Retrieval Evaluation",
+            "explanation": "Metrics that evaluate whether retrieval found useful evidence.",
+            "terms": [
+                  "MRR",
+                  "nDCG",
+                  "Hit Rate",
+                  "Recall@K"
+            ],
+            "definitions": {
+                  "MRR": "Rewards first relevant result",
+                  "nDCG": "Ranks relevance quality",
+                  "Hit Rate": "Checks if any relevant item appears",
+                  "Recall@K": "Relevant items found in top K"
+            }
+      },
+      {
+            "id": "expert-044",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Vector Search Concepts",
+            "explanation": "Technical concepts behind similarity search with embeddings.",
+            "terms": [
+                  "Cosine Similarity",
+                  "Nearest Neighbor",
+                  "ANN",
+                  "Dimensionality"
+            ],
+            "definitions": {
+                  "Cosine Similarity": "Compares vector direction",
+                  "Nearest Neighbor": "Closest matching vector",
+                  "ANN": "Approximate fast search",
+                  "Dimensionality": "Number of vector features"
+            }
+      },
+      {
+            "id": "expert-045",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Model Compression Methods",
+            "explanation": "Techniques that make models smaller or cheaper to run.",
+            "terms": [
+                  "Distillation",
+                  "Quantization",
+                  "Pruning",
+                  "Sparsity"
+            ],
+            "definitions": {
+                  "Distillation": "Smaller model learns from larger one",
+                  "Quantization": "Uses lower-precision numbers",
+                  "Pruning": "Removes less useful parts",
+                  "Sparsity": "Keeps many values at zero"
+            }
+      },
+      {
+            "id": "expert-046",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Robustness Testing Methods",
+            "explanation": "Ways to test how a model behaves under pressure or variation.",
+            "terms": [
+                  "Adversarial Testing",
+                  "Stress Testing",
+                  "Regression Testing",
+                  "Canary Testing"
+            ],
+            "definitions": {
+                  "Adversarial Testing": "Uses challenging inputs",
+                  "Stress Testing": "Pushes system limits",
+                  "Regression Testing": "Checks old behavior still works",
+                  "Canary Testing": "Releases to a small group first"
+            }
+      },
+      {
+            "id": "expert-047",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Privacy-Preserving AI Methods",
+            "explanation": "Techniques that can reduce exposure of sensitive training or user data.",
+            "terms": [
+                  "Differential Privacy",
+                  "Federated Learning",
+                  "Data Minimization",
+                  "Anonymization"
+            ],
+            "definitions": {
+                  "Differential Privacy": "Adds statistical noise",
+                  "Federated Learning": "Trains without centralizing data",
+                  "Data Minimization": "Uses only necessary data",
+                  "Anonymization": "Removes identifying details"
+            }
+      },
+      {
+            "id": "expert-048",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Agent Architecture Pieces",
+            "explanation": "Building blocks often used in tool-using AI agents.",
+            "terms": [
+                  "Planner",
+                  "Tool Use",
+                  "Memory",
+                  "Executor"
+            ],
+            "definitions": {
+                  "Planner": "Breaks goal into steps",
+                  "Tool Use": "Calls external functions",
+                  "Memory": "Stores useful context",
+                  "Executor": "Carries out actions"
+            }
+      },
+      {
+            "id": "expert-049",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "MLOps Monitoring Signals",
+            "explanation": "Signals teams watch after an AI model is deployed.",
+            "terms": [
+                  "Data Drift",
+                  "Concept Drift",
+                  "Latency",
+                  "Throughput"
+            ],
+            "definitions": {
+                  "Data Drift": "Inputs change over time",
+                  "Concept Drift": "Relationships change over time",
+                  "Latency": "Response time",
+                  "Throughput": "Requests handled per period"
+            }
+      },
+      {
+            "id": "expert-050",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Security Threats for AI Systems",
+            "explanation": "Threat categories specific to or amplified by AI systems.",
+            "terms": [
+                  "Model Theft",
+                  "Data Poisoning",
+                  "Membership Inference",
+                  "Prompt Injection"
+            ],
+            "definitions": {
+                  "Model Theft": "Stealing model behavior",
+                  "Data Poisoning": "Corrupting training data",
+                  "Membership Inference": "Guessing if data was used",
+                  "Prompt Injection": "Manipulating instructions"
+            }
+      },
+      {
+            "id": "expert-051",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Calibration Concepts",
+            "explanation": "Ideas related to whether confidence matches actual correctness.",
+            "terms": [
+                  "Confidence Score",
+                  "Reliability Curve",
+                  "Brier Score",
+                  "Thresholding"
+            ],
+            "definitions": {
+                  "Confidence Score": "Model's certainty estimate",
+                  "Reliability Curve": "Plots confidence vs. accuracy",
+                  "Brier Score": "Measures probabilistic accuracy",
+                  "Thresholding": "Sets cutoff for action"
+            }
+      },
+      {
+            "id": "expert-052",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Evaluation Pitfalls",
+            "explanation": "Ways AI evaluation can look better than it really is.",
+            "terms": [
+                  "Data Leakage",
+                  "Selection Bias",
+                  "Label Noise",
+                  "Benchmark Saturation"
+            ],
+            "definitions": {
+                  "Data Leakage": "Test info appears in training",
+                  "Selection Bias": "Examples are not representative",
+                  "Label Noise": "Ground truth contains errors",
+                  "Benchmark Saturation": "Test no longer separates quality"
+            }
+      },
+      {
+            "id": "expert-053",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Generation Decoding Methods",
+            "explanation": "Techniques that influence how models choose the next token.",
+            "terms": [
+                  "Greedy Decoding",
+                  "Beam Search",
+                  "Top-K Sampling",
+                  "Nucleus Sampling"
+            ],
+            "definitions": {
+                  "Greedy Decoding": "Always picks top token",
+                  "Beam Search": "Keeps several candidate paths",
+                  "Top-K Sampling": "Samples from top choices",
+                  "Nucleus Sampling": "Samples from probability mass"
+            }
+      },
+      {
+            "id": "expert-054",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "RAG Failure Points",
+            "explanation": "Ways a retrieval-augmented system can fail even when the model works.",
+            "terms": [
+                  "Bad Chunking",
+                  "Stale Index",
+                  "Low Recall",
+                  "Context Stuffing"
+            ],
+            "definitions": {
+                  "Bad Chunking": "Pieces split poorly",
+                  "Stale Index": "Search misses new content",
+                  "Low Recall": "Relevant evidence not retrieved",
+                  "Context Stuffing": "Too much evidence included"
+            }
+      },
+      {
+            "id": "expert-055",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Responsible AI Governance Roles",
+            "explanation": "Functions that may participate in AI oversight for higher-risk uses.",
+            "terms": [
+                  "Model Owner",
+                  "Risk Reviewer",
+                  "Legal Partner",
+                  "Domain Expert"
+            ],
+            "definitions": {
+                  "Model Owner": "Accountable for system",
+                  "Risk Reviewer": "Assesses exposure",
+                  "Legal Partner": "Checks obligations",
+                  "Domain Expert": "Validates subject matter"
+            }
+      },
+      {
+            "id": "expert-056",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Explainability Methods",
+            "explanation": "Techniques used to interpret or explain model behavior.",
+            "terms": [
+                  "SHAP",
+                  "LIME",
+                  "Feature Importance",
+                  "Counterfactual"
+            ],
+            "definitions": {
+                  "SHAP": "Attributes feature impact",
+                  "LIME": "Explains local predictions",
+                  "Feature Importance": "Ranks influential inputs",
+                  "Counterfactual": "Shows what would change outcome"
+            }
+      },
+      {
+            "id": "expert-057",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Training Data Risks",
+            "explanation": "Risks tied to the information used to build or tune a model.",
+            "terms": [
+                  "Copyright Risk",
+                  "PII Exposure",
+                  "Skewed Sample",
+                  "Toxic Content"
+            ],
+            "definitions": {
+                  "Copyright Risk": "Protected content concerns",
+                  "PII Exposure": "Personal info included",
+                  "Skewed Sample": "Unbalanced examples",
+                  "Toxic Content": "Harmful text in data"
+            }
+      },
+      {
+            "id": "expert-058",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "LLM Memory Types",
+            "explanation": "Different ways an AI system may retain or use information over time.",
+            "terms": [
+                  "Session Memory",
+                  "Long-Term Memory",
+                  "Episodic Memory",
+                  "Semantic Memory"
+            ],
+            "definitions": {
+                  "Session Memory": "Context within one chat",
+                  "Long-Term Memory": "Saved information across chats",
+                  "Episodic Memory": "Past interaction records",
+                  "Semantic Memory": "Facts or knowledge stored"
+            }
+      },
+      {
+            "id": "expert-059",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Optimization Objectives",
+            "explanation": "Things AI systems may be optimized to improve or reduce.",
+            "terms": [
+                  "Loss",
+                  "Reward",
+                  "Utility",
+                  "Cost Function"
+            ],
+            "definitions": {
+                  "Loss": "Error signal to minimize",
+                  "Reward": "Signal to maximize",
+                  "Utility": "Overall value target",
+                  "Cost Function": "Penalty being optimized"
+            }
+      },
+      {
+            "id": "expert-060",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Multimodal AI Concepts",
+            "explanation": "Ideas that matter when AI works across more than text.",
+            "terms": [
+                  "Vision Encoder",
+                  "Speech-to-Text",
+                  "Image Captioning",
+                  "Cross-Modal Retrieval"
+            ],
+            "definitions": {
+                  "Vision Encoder": "Processes images",
+                  "Speech-to-Text": "Turns audio into words",
+                  "Image Captioning": "Describes visual content",
+                  "Cross-Modal Retrieval": "Searches across media types"
+            }
+      },
+      {
+            "id": "filler-001",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Meeting Types",
+            "explanation": "Common meeting formats used in professional settings.",
+            "terms": [
+                  "Standup",
+                  "Kickoff",
+                  "Retrospective",
+                  "Workshop"
+            ],
+            "definitions": {
+                  "Standup": "A short recurring meeting for quick status updates.",
+                  "Kickoff": "A meeting that starts a project, initiative, or workstream.",
+                  "Retrospective": "A meeting to reflect on what worked and what should improve.",
+                  "Workshop": "A collaborative session used to solve, plan, or create something."
+            }
+      },
+      {
+            "id": "filler-002",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Cybersecurity Basics",
+            "explanation": "Core terms related to protecting systems, data, and user access.",
+            "terms": [
+                  "Encryption",
+                  "Phishing",
+                  "Firewall",
+                  "Authentication"
+            ],
+            "definitions": {
+                  "Encryption": "Encoding information so only authorized users can read it.",
+                  "Phishing": "A fraudulent attempt to trick someone into sharing sensitive information.",
+                  "Firewall": "A security system that monitors and controls network traffic.",
+                  "Authentication": "The process of verifying a user’s identity."
+            }
+      },
+      {
+            "id": "filler-003",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Analytics Methods",
+            "explanation": "Common approaches used to analyze data, performance, and outcomes.",
+            "terms": [
+                  "Segmentation",
+                  "Benchmarking",
+                  "Forecasting",
+                  "Attribution"
+            ],
+            "definitions": {
+                  "Segmentation": "Dividing data into meaningful groups.",
+                  "Benchmarking": "Comparing performance against a standard or peer group.",
+                  "Forecasting": "Estimating future outcomes based on past data.",
+                  "Attribution": "Identifying which factors contributed to a result."
+            }
+      },
+      {
+            "id": "filler-004",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Review Crew",
+            "explanation": "Professional verbs that all involve checking, examining, or evaluating something.",
+            "terms": [
+                  "Validate",
+                  "Inspect",
+                  "Assess",
+                  "Audit"
+            ],
+            "definitions": {
+                  "Validate": "To confirm that something is correct or meets requirements.",
+                  "Inspect": "To examine something carefully.",
+                  "Assess": "To evaluate quality, risk, or performance.",
+                  "Audit": "To formally review records, processes, or controls."
+            }
+      },
+      {
+            "id": "filler-005",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Escalation Station",
+            "explanation": "Workplace items that may be raised to a higher level of attention.",
+            "terms": [
+                  "Issue",
+                  "Ticket",
+                  "Risk",
+                  "Concern"
+            ],
+            "definitions": {
+                  "Issue": "A problem that needs attention or resolution.",
+                  "Ticket": "A tracked request, question, or problem record.",
+                  "Risk": "A potential problem that could affect outcomes.",
+                  "Concern": "A point of worry that may require follow-up."
+            }
+      },
+      {
+            "id": "filler-006",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Alignment Club",
+            "explanation": "Terms about getting teams, expectations, timing, or standards to match.",
+            "terms": [
+                  "Consensus",
+                  "Calibration",
+                  "Synchronization",
+                  "Standardization"
+            ],
+            "definitions": {
+                  "Consensus": "General agreement among a group.",
+                  "Calibration": "Adjusting expectations or measurements to a shared standard.",
+                  "Synchronization": "Coordinating timing or activity across systems or teams.",
+                  "Standardization": "Making processes or outputs consistent."
+            }
+      },
+      {
+            "id": "filler-007",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Data’s Plus-Ones",
+            "explanation": "Each card can form a common professional term when placed after the word data.",
+            "terms": [
+                  "Lake",
+                  "Set",
+                  "Point",
+                  "Warehouse"
+            ],
+            "definitions": {
+                  "Lake": "A storage repository for large amounts of raw data.",
+                  "Set": "A collection of related data points or records.",
+                  "Point": "A single unit or observation within a dataset.",
+                  "Warehouse": "A central system used to store structured business data."
+            }
+      },
+      {
+            "id": "filler-008",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Review Warm-Ups",
+            "explanation": "Each card commonly appears before the word review in workplace language.",
+            "terms": [
+                  "Peer",
+                  "Code",
+                  "Performance",
+                  "Quarterly"
+            ],
+            "definitions": {
+                  "Peer": "A review performed by someone at a similar level or role.",
+                  "Code": "A technical review of software changes.",
+                  "Performance": "An evaluation of an employee’s work or results.",
+                  "Quarterly": "A review that happens once every quarter."
+            }
+      },
+      {
+            "id": "filler-009",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Rush-Hour Office",
+            "explanation": "Each word is used professionally and also relates to roads, driving, or traffic.",
+            "terms": [
+                  "Merge",
+                  "Route",
+                  "Signal",
+                  "Lane"
+            ],
+            "definitions": {
+                  "Merge": "To combine code, teams, data, or lanes.",
+                  "Route": "A path for traffic, requests, approvals, or messages.",
+                  "Signal": "An indicator used in communication, analytics, or traffic.",
+                  "Lane": "A defined workstream, ownership area, or road path."
+            }
+      },
+      {
+            "id": "filler-010",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Open Items",
+            "explanation": "Each card can be described as open in a workplace context.",
+            "terms": [
+                  "Ticket",
+                  "Position",
+                  "Issue",
+                  "Question"
+            ],
+            "definitions": {
+                  "Ticket": "A request or issue that has not yet been resolved.",
+                  "Position": "A job opening that is available to fill.",
+                  "Issue": "A problem that is still unresolved.",
+                  "Question": "A topic that has not yet been answered."
+            }
+      },
+      {
+            "id": "filler-011",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Change Department",
+            "explanation": "Each card forms a common professional phrase when placed after the word change.",
+            "terms": [
+                  "Request",
+                  "Log",
+                  "Management",
+                  "Control"
+            ],
+            "definitions": {
+                  "Request": "A formal ask to modify something.",
+                  "Log": "A record of updates or modifications.",
+                  "Management": "The practice of planning and guiding organizational or system changes.",
+                  "Control": "A process for managing and approving changes."
+            }
+      },
+      {
+            "id": "filler-012",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Plan Ahead",
+            "explanation": "Each card commonly appears before the word plan in professional settings.",
+            "terms": [
+                  "Action",
+                  "Project",
+                  "Contingency",
+                  "Strategic"
+            ],
+            "definitions": {
+                  "Action": "A plan that lists specific steps to complete.",
+                  "Project": "A plan outlining work, timing, and deliverables.",
+                  "Contingency": "A backup plan for possible risks or disruptions.",
+                  "Strategic": "A high-level plan tied to long-term goals."
+            }
+      },
+      {
+            "id": "filler-013",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Status Symbols",
+            "explanation": "Each card forms a familiar workplace phrase when placed after the word status.",
+            "terms": [
+                  "Update",
+                  "Report",
+                  "Check",
+                  "Meeting"
+            ],
+            "definitions": {
+                  "Update": "A summary of current progress or changes.",
+                  "Report": "A document or message describing current progress.",
+                  "Check": "A quick confirmation of current state or progress.",
+                  "Meeting": "A meeting focused on progress, blockers, or next steps."
+            }
+      },
+      {
+            "id": "filler-014",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Office Sports Desk",
+            "explanation": "Each word is used in business or technical settings and also appears in sports.",
+            "terms": [
+                  "Goal",
+                  "Handoff",
+                  "Sprint",
+                  "Playbook"
+            ],
+            "definitions": {
+                  "Goal": "A desired outcome or target.",
+                  "Handoff": "A transfer of work, information, or responsibility.",
+                  "Sprint": "A short, focused period of work in agile teams.",
+                  "Playbook": "A documented set of standard steps or strategies."
+            }
+      },
+      {
+            "id": "filler-015",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Corporate Climate",
+            "explanation": "Each word has a professional meaning and also relates to weather or forecasting.",
+            "terms": [
+                  "Forecast",
+                  "Cloud",
+                  "Storm",
+                  "Outlook"
+            ],
+            "definitions": {
+                  "Forecast": "An estimate of future performance, demand, or results.",
+                  "Cloud": "Online infrastructure or services hosted remotely.",
+                  "Storm": "A surge of urgent activity or problems.",
+                  "Outlook": "A view or expectation about future conditions."
+            }
+      },
+      {
+            "id": "filler-016",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Flag Squad",
+            "explanation": "Items that may be marked for attention, review, or follow-up.",
+            "terms": [
+                  "Risk",
+                  "Issue",
+                  "Transaction",
+                  "Comment"
+            ],
+            "definitions": {
+                  "Risk": "A potential issue marked for monitoring or mitigation.",
+                  "Issue": "A problem highlighted for action.",
+                  "Transaction": "An activity that may be marked for review or investigation.",
+                  "Comment": "A note that may be marked for follow-up."
+            }
+      },
+      {
+            "id": "filler-017",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Closet Cases",
+            "explanation": "Each word has a professional meaning and can also refer to clothing or fabric.",
+            "terms": [
+                  "Collar",
+                  "Suite",
+                  "Thread",
+                  "Shift"
+            ],
+            "definitions": {
+                  "Collar": "A classification term, as in white-collar or blue-collar work.",
+                  "Suite": "A group of related tools or products, and also a homophone of suit.",
+                  "Thread": "A conversation chain or sequence of messages.",
+                  "Shift": "A time period for work."
+            }
+      },
+      {
+            "id": "filler-018",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "The “-ing” Crowd",
+            "explanation": "Every card ends in “-ing” and is familiar in workplace conversations.",
+            "terms": [
+                  "Onboarding",
+                  "Scheduling",
+                  "Training",
+                  "Hiring"
+            ],
+            "definitions": {
+                  "Onboarding": "Helping someone get started in a new role, system, or process.",
+                  "Scheduling": "Arranging times for meetings, tasks, or events.",
+                  "Training": "Teaching skills, processes, or tools.",
+                  "Hiring": "Bringing a new person into an organization or role."
+            }
+      },
+      {
+            "id": "filler-019",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Keyboard Crew",
+            "explanation": "Each card is also the name of a keyboard key.",
+            "terms": [
+                  "Control",
+                  "Shift",
+                  "Command",
+                  "Option"
+            ],
+            "definitions": {
+                  "Control": "Authority or direction over a process, system, or decision.",
+                  "Shift": "A change in direction, timing, priority, or focus.",
+                  "Command": "An instruction, directive, or order.",
+                  "Option": "A choice or alternative available to someone."
+            }
+      },
+      {
+            "id": "filler-020",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Game Night at the Office",
+            "explanation": "Each card is the name of a board or card game and also works as a workplace word.",
+            "terms": [
+                  "Sorry",
+                  "Risk",
+                  "Clue",
+                  "Sequence"
+            ],
+            "definitions": {
+                  "Sorry": "An apology or expression of regret.",
+                  "Risk": "A potential problem or uncertainty that could affect outcomes.",
+                  "Clue": "A hint or piece of information that helps solve something.",
+                  "Sequence": "An ordered set of steps, events, or items."
+            }
+      },
+      {
+            "id": "filler-021",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Silent but Productive",
+            "explanation": "Each card contains at least one silent letter.",
+            "terms": [
+                  "Queue",
+                  "Receipt",
+                  "Column",
+                  "Debt"
+            ],
+            "definitions": {
+                  "Queue": "A line of items waiting to be handled or processed.",
+                  "Receipt": "Proof of a purchase, payment, or transaction.",
+                  "Column": "A vertical section in a table or spreadsheet.",
+                  "Debt": "Money that is owed to a person or organization."
+            }
+      },
+      {
+            "id": "filler-022",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Office Drama Club",
+            "explanation": "Each card is used at work and also belongs on a stage.",
+            "terms": [
+                  "Role",
+                  "Cue",
+                  "Stage",
+                  "Script"
+            ],
+            "definitions": {
+                  "Role": "A function, responsibility, or part someone plays.",
+                  "Cue": "A signal or prompt to begin an action.",
+                  "Stage": "A phase, step, or point in a process.",
+                  "Script": "A written set of words, steps, or instructions."
+            }
+      },
+      {
+            "id": "filler-023",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Add “-er,” Get a Job",
+            "explanation": "Adding “-er” turns each card into a familiar job title or role.",
+            "terms": [
+                  "Train",
+                  "Code",
+                  "Manage",
+                  "Design"
+            ],
+            "definitions": {
+                  "Train": "To teach someone a skill, process, or tool.",
+                  "Code": "To write instructions that software can run.",
+                  "Manage": "To oversee, coordinate, or guide work.",
+                  "Design": "To create the plan, structure, or look of something."
+            }
+      },
+      {
+            "id": "filler-024",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Roman Office Empire",
+            "explanation": "Each card hides Roman numerals inside the word.",
+            "terms": [
+                  "Civil",
+                  "Mix",
+                  "Deliver",
+                  "Pivot"
+            ],
+            "definitions": {
+                  "Civil": "Related to citizens, society, or public life.",
+                  "Mix": "To combine two or more things together.",
+                  "Deliver": "To bring, send, or provide something to the right place or person.",
+                  "Pivot": "To change direction or strategy when needed."
+            }
+      },
+      {
+            "id": "filler-025",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Acronyms in Disguise",
+            "explanation": "Each card started as an acronym but is commonly spoken like a regular word.",
+            "terms": [
+                  "Radar",
+                  "Laser",
+                  "Scuba",
+                  "Captcha"
+            ],
+            "definitions": {
+                  "Radar": "A system used to detect objects and measure their position or movement.",
+                  "Laser": "A focused beam of light used in tools, medicine, or scanning.",
+                  "Scuba": "Equipment used for breathing while swimming underwater.",
+                  "Captcha": "A web test used to check whether a user is human."
+            }
+      },
+      {
+            "id": "filler-026",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "The IT Cameo",
+            "explanation": "Each card includes the letters “IT” together.",
+            "terms": [
+                  "Audit",
+                  "Ticket",
+                  "Priority",
+                  "Position"
+            ],
+            "definitions": {
+                  "Audit": "A formal review of records, processes, or controls.",
+                  "Ticket": "A tracked request, task, or issue.",
+                  "Priority": "The level of importance assigned to work.",
+                  "Position": "A role, stance, or placement."
+            }
+      },
+      {
+            "id": "filler-027",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "The “-tion” Station",
+            "explanation": "Each card ends in “-tion” and is common in professional or technical settings.",
+            "terms": [
+                  "Migration",
+                  "Validation",
+                  "Integration",
+                  "Automation"
+            ],
+            "definitions": {
+                  "Migration": "Moving data, systems, or processes from one place to another.",
+                  "Validation": "Confirming that something is accurate or meets requirements.",
+                  "Integration": "Connecting systems, tools, or processes so they work together.",
+                  "Automation": "Using technology to perform tasks with less manual effort."
+            }
+      },
+      {
+            "id": "filler-028",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Alphabet Imposters",
+            "explanation": "Each card sounds like the name of a single letter.",
+            "terms": [
+                  "Queue",
+                  "Cue",
+                  "Sea",
+                  "Why"
+            ],
+            "definitions": {
+                  "Queue": "A line of items waiting to be handled or processed.",
+                  "Cue": "A signal or prompt to begin an action.",
+                  "Sea": "A large body of salt water.",
+                  "Why": "A reason, cause, or explanation."
+            }
+      },
+      {
+            "id": "filler-029",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "AI Spy",
+            "explanation": "Each card hides the letters “AI” together.",
+            "terms": [
+                  "Training",
+                  "Claim",
+                  "Email",
+                  "Detail"
+            ],
+            "definitions": {
+                  "Training": "Teaching skills, processes, or tools.",
+                  "Claim": "A request for payment, coverage, or reimbursement.",
+                  "Email": "A digital message sent electronically.",
+                  "Detail": "A specific piece of information."
+            }
+      },
+      {
+            "id": "filler-030",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Snackable Tech",
+            "explanation": "Each card is both a tech term or brand and something food-related.",
+            "terms": [
+                  "Cookie",
+                  "Spam",
+                  "Chip",
+                  "Apple"
+            ],
+            "definitions": {
+                  "Cookie": "A small data file stored by a browser.",
+                  "Spam": "Unwanted or unsolicited digital messages.",
+                  "Chip": "A small electronic component used in devices.",
+                  "Apple": "A major technology company known for consumer devices."
+            }
+      },
+      {
+            "id": "filler-031",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Command Center",
+            "explanation": "Each card is also the name of a common keyboard key.",
+            "terms": [
+                  "Shift",
+                  "Control",
+                  "Option",
+                  "Command"
+            ],
+            "definitions": {
+                  "Shift": "Change direction, timing, or focus.",
+                  "Control": "Manage, direct, or keep something in check.",
+                  "Option": "A choice or possible path.",
+                  "Command": "An instruction or directive."
+            }
+      },
+      {
+            "id": "filler-032",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Inbox Moves",
+            "explanation": "Each card is a common action available in email.",
+            "terms": [
+                  "Send",
+                  "Reply",
+                  "Forward",
+                  "Delete"
+            ],
+            "definitions": {
+                  "Send": "Move a message out to someone else.",
+                  "Reply": "Answer back.",
+                  "Forward": "Pass something along.",
+                  "Delete": "Remove something from view."
+            }
+      },
+      {
+            "id": "filler-033",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Desk Drawer Staples",
+            "explanation": "Each card is a common office supply.",
+            "terms": [
+                  "Stapler",
+                  "Tape",
+                  "Folder",
+                  "Marker"
+            ],
+            "definitions": {
+                  "Stapler": "Fastens pages together.",
+                  "Tape": "Sticks one thing to another.",
+                  "Folder": "Keeps papers grouped.",
+                  "Marker": "Writes boldly on a surface."
+            }
+      },
+      {
+            "id": "filler-034",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Iconic Behavior",
+            "explanation": "Each card is commonly represented by an app or interface icon.",
+            "terms": [
+                  "Bell",
+                  "Gear",
+                  "Search",
+                  "Home"
+            ],
+            "definitions": {
+                  "Bell": "Signals an alert.",
+                  "Gear": "Opens controls or settings.",
+                  "Search": "Looks for something.",
+                  "Home": "Takes you back to the main place."
+            }
+      },
+      {
+            "id": "filler-035",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Fine Lines",
+            "explanation": "Each card is a familiar word that ends with or contains LINE as a clear chunk.",
+            "terms": [
+                  "Deadline",
+                  "Headline",
+                  "Baseline",
+                  "Punchline"
+            ],
+            "definitions": {
+                  "Deadline": "The final cutoff.",
+                  "Headline": "The main title of a story.",
+                  "Baseline": "A starting point for comparison.",
+                  "Punchline": "The payoff of a joke."
+            }
+      },
+      {
+            "id": "filler-036",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Handle With Care",
+            "explanation": "Each card is something that can have a handle, physically or digitally.",
+            "terms": [
+                  "Door",
+                  "Mug",
+                  "Suitcase",
+                  "Username"
+            ],
+            "definitions": {
+                  "Door": "You open or close it.",
+                  "Mug": "Holds a hot drink.",
+                  "Suitcase": "Carries travel items.",
+                  "Username": "Identifies someone online."
+            }
+      },
+      {
+            "id": "filler-037",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Digital Small Fries",
+            "explanation": "Each card is a small unit, element, or building block in technology.",
+            "terms": [
+                  "Chip",
+                  "Bit",
+                  "Pixel",
+                  "Byte"
+            ],
+            "definitions": {
+                  "Chip": "A tiny electronic component.",
+                  "Bit": "A basic unit of digital information.",
+                  "Pixel": "A tiny dot in a digital image.",
+                  "Byte": "A small unit of computer data."
+            }
+      },
+      {
+            "id": "filler-038",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Roots in the System",
+            "explanation": "Each card is a nature word that also appears in technical or data contexts.",
+            "terms": [
+                  "Branch",
+                  "Root",
+                  "Leaf",
+                  "Stem"
+            ],
+            "definitions": {
+                  "Branch": "An offshoot from a main path.",
+                  "Root": "The base or source.",
+                  "Leaf": "An endpoint on a larger structure.",
+                  "Stem": "The main support or origin."
+            }
+      },
+      {
+            "id": "filler-039",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Post Moves",
+            "explanation": "Each card is a common social media action.",
+            "terms": [
+                  "Like",
+                  "Share",
+                  "Follow",
+                  "Block"
+            ],
+            "definitions": {
+                  "Like": "Show quick approval.",
+                  "Share": "Pass something along.",
+                  "Follow": "Subscribe to updates.",
+                  "Block": "Prevent contact or access."
+            }
+      },
+      {
+            "id": "filler-040",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Creature Features",
+            "explanation": "Each card is an animal word with a tech or computer meaning.",
+            "terms": [
+                  "Mouse",
+                  "Bug",
+                  "Spider",
+                  "Python"
+            ],
+            "definitions": {
+                  "Mouse": "A clicking desk companion.",
+                  "Bug": "An unwanted glitch.",
+                  "Spider": "A crawler on the web.",
+                  "Python": "A popular programming language."
+            }
+      },
+      {
+            "id": "filler-041",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Point Taken",
+            "explanation": "Each card is a common computer mouse action.",
+            "terms": [
+                  "Click",
+                  "Drag",
+                  "Hover",
+                  "Select"
+            ],
+            "definitions": {
+                  "Click": "Press and release.",
+                  "Drag": "Move while holding.",
+                  "Hover": "Pause over an item.",
+                  "Select": "Choose from options."
+            }
+      },
+      {
+            "id": "filler-042",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Case Closed",
+            "explanation": "Each card is the last name or common name of a fictional detective.",
+            "terms": [
+                  "Holmes",
+                  "Poirot",
+                  "Marple",
+                  "Monk"
+            ],
+            "definitions": {
+                  "Holmes": "A famous Baker Street brain.",
+                  "Poirot": "A Belgian solver with little gray cells.",
+                  "Marple": "A village mystery expert.",
+                  "Monk": "A meticulous TV sleuth."
+            }
+      },
+      {
+            "id": "filler-043",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Thread Count",
+            "explanation": "Each card can have or be part of a thread in a different sense.",
+            "terms": [
+                  "Needle",
+                  "Comment",
+                  "Screw",
+                  "Conversation"
+            ],
+            "definitions": {
+                  "Needle": "Used to sew.",
+                  "Comment": "Can start a chain of replies.",
+                  "Screw": "Has a spiral ridge.",
+                  "Conversation": "An exchange that can continue over time."
+            }
+      },
+      {
+            "id": "filler-044",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Web of Meanings",
+            "explanation": "Each card connects to the word web in a different way.",
+            "terms": [
+                  "Website",
+                  "Spider",
+                  "Silk",
+                  "Search"
+            ],
+            "definitions": {
+                  "Website": "A place online.",
+                  "Spider": "An eight-legged crawler.",
+                  "Silk": "A fine fiber used in weaving.",
+                  "Search": "Look something up."
+            }
+      },
+      {
+            "id": "filler-045",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Trailing Signs",
+            "explanation": "Each card is something that can have a tail.",
+            "terms": [
+                  "Comet",
+                  "Coin",
+                  "Dog",
+                  "Email"
+            ],
+            "definitions": {
+                  "Comet": "A bright object crossing the sky.",
+                  "Coin": "Can land one of two ways.",
+                  "Dog": "Often wags when happy.",
+                  "Email": "May end with a signature."
+            }
+      },
+      {
+            "id": "filler-046",
+            "difficultyKey": "filler",
+            "difficultyLabel": "Filler",
+            "name": "Status Update",
+            "explanation": "Each card is a common digital availability status.",
+            "terms": [
+                  "Online",
+                  "Away",
+                  "Busy",
+                  "Offline"
+            ],
+            "definitions": {
+                  "Online": "Connected now.",
+                  "Away": "Not at keyboard.",
+                  "Busy": "Occupied.",
+                  "Offline": "Disconnected."
+            }
+      }
+];
+
+    const difficultyConfigs = {
+      "warm-up": {
+        label: "✨ Warm-Up",
+        difficultyName: "Warm-Up",
+        copyLabel: "ConnectionZ ✨ Warm-Up",
+        title: "Warm-Up",
+        recipes: [
+          { weight: 50, pools: { "warm-up": 2, filler: 2 } },
+          { weight: 50, pools: { "warm-up": 3, filler: 1 } }
+        ]
+      },
+      "brain-bender": {
+        label: "🧠 Brain-Bender",
+        difficultyName: "Brain-Bender",
+        copyLabel: "ConnectionZ 🧠 Brain-Bender",
+        title: "Brain-Bender",
+        recipes: [
+          { weight: 60, pools: { "brain-bender": 3, filler: 1 } },
+          { weight: 25, pools: { "brain-bender": 3, "warm-up": 1 } },
+          { weight: 15, pools: { "brain-bender": 2, "warm-up": 1, filler: 1 } }
+        ]
+      },
+      expert: {
+        label: "🔥 Expert",
+        difficultyName: "Expert",
+        copyLabel: "ConnectionZ 🔥 Expert",
+        title: "Expert",
+        recipes: [
+          { weight: 40, pools: { expert: 3, "brain-bender": 1 } },
+          { weight: 35, pools: { expert: 3, filler: 1 } },
+          { weight: 15, pools: { expert: 2, "brain-bender": 1, filler: 1 } },
+          { weight: 10, pools: { expert: 4 } }
+        ]
+      }
     };
 
+    const STORAGE_KEY = "connectionzProgressV3";
+
+    let groups = [];
+    let definitions = {};
     let cards = [];
     let selected = new Set();
     let solvedGroupIds = new Set();
     let secondsElapsed = 0;
     let timerInterval = null;
     let wrongGuesses = 0;
+    let wrongGuessKeys = new Set();
     let hintsUsed = 0;
+    let hintedGroupIds = new Set();
+    let gaveUp = false;
+    let waitingForResults = false;
     let lastScore = 0;
     let lastRank = "";
     let musicEnabled = true;
+    let currentPuzzle = null;
+    let currentDifficultyKey = "brain-bender";
 
     const introScreen = document.getElementById("introScreen");
     const gameScreen = document.getElementById("gameScreen");
@@ -731,25 +3042,92 @@
     const clearBtn = document.getElementById("clearBtn");
     const shuffleBtn = document.getElementById("shuffleBtn");
     const hintBtn = document.getElementById("hintBtn");
+    const giveUpBtn = document.getElementById("giveUpBtn");
+    const seeResultsBtn = document.getElementById("seeResultsBtn");
+    const nextPuzzleBtn = document.getElementById("nextPuzzleBtn");
+    const returnTitleBtn = document.getElementById("returnTitleBtn");
+    const returnTitleBtnResult = document.getElementById("returnTitleBtnResult");
     const message = document.getElementById("message");
     const clueTitle = document.getElementById("clueTitle");
     const clueText = document.getElementById("clueText");
+    const puzzleName = document.getElementById("puzzleName");
     const toast = document.getElementById("toast");
     const bgMusic = document.getElementById("bgMusic");
     const musicToggleBtn = document.getElementById("musicToggleBtn");
     const volumeSlider = document.getElementById("volumeSlider");
+    const copyBtn = document.getElementById("copyBtn");
+    const newsBtn = document.getElementById("newsBtn");
+    const newsOverlay = document.getElementById("newsOverlay");
+    const newsCloseBtn = document.getElementById("newsCloseBtn");
+    const newsReturnBtn = document.getElementById("newsReturnBtn");
+    const statsBtn = document.getElementById("statsBtn");
+    const statsOverlay = document.getElementById("statsOverlay");
+    const statsCloseBtn = document.getElementById("statsCloseBtn");
+    const statsReturnBtn = document.getElementById("statsReturnBtn");
+    const copyStatsBtn = document.getElementById("copyStatsBtn");
+    const statsGrid = document.getElementById("statsGrid");
+    const miniCompleted = document.getElementById("miniCompleted");
+    const miniTotalBoards = document.getElementById("miniTotalBoards");
+    const miniBestScore = document.getElementById("miniBestScore");
+    const miniFavoriteLevel = document.getElementById("miniFavoriteLevel");
+    const miniFastestSolve = document.getElementById("miniFastestSolve");
+    const miniCleanSolves = document.getElementById("miniCleanSolves");
 
-    document.getElementById("startBtn").addEventListener("click", startGame);
-    document.getElementById("playAgainBtn").addEventListener("click", startGame);
+    document.querySelectorAll("[data-difficulty]").forEach(button => {
+      button.addEventListener("click", () => startGame(button.dataset.difficulty));
+    });
+    document.getElementById("playAgainBtn").addEventListener("click", () => startGame(currentDifficultyKey));
     submitBtn.addEventListener("click", submitSelection);
     clearBtn.addEventListener("click", clearSelection);
     shuffleBtn.addEventListener("click", shuffleBoard);
     hintBtn.addEventListener("click", useHint);
-    document.getElementById("copyBtn").addEventListener("click", copyScore);
+    giveUpBtn.addEventListener("click", giveUpAndReveal);
+    seeResultsBtn.addEventListener("click", () => finishGame(false));
+    nextPuzzleBtn.addEventListener("click", () => startGame(currentDifficultyKey, currentPuzzle ? currentPuzzle.id : null));
+    if (returnTitleBtn) returnTitleBtn.addEventListener("click", returnToTitleScreen);
+    if (returnTitleBtnResult) returnTitleBtnResult.addEventListener("click", returnToTitleScreen);
+    copyBtn.addEventListener("click", copyScore);
     musicToggleBtn.addEventListener("click", toggleMusic);
     volumeSlider.addEventListener("input", updateVolume);
     updateVolume();
     updateMusicButton();
+
+    if (newsBtn && newsOverlay) {
+      newsBtn.addEventListener("click", () => {
+        newsOverlay.classList.remove("hidden");
+      });
+    }
+    if (newsCloseBtn && newsOverlay) {
+      newsCloseBtn.addEventListener("click", () => {
+        newsOverlay.classList.add("hidden");
+      });
+    }
+    if (newsReturnBtn && newsOverlay) {
+      newsReturnBtn.addEventListener("click", () => {
+        newsOverlay.classList.add("hidden");
+        returnToTitleScreen();
+      });
+    }
+
+    if (statsBtn && statsOverlay) {
+      statsBtn.addEventListener("click", () => {
+        renderStats();
+        statsOverlay.classList.remove("hidden");
+      });
+    }
+    if (statsCloseBtn && statsOverlay) {
+      statsCloseBtn.addEventListener("click", () => {
+        statsOverlay.classList.add("hidden");
+      });
+    }
+    if (statsReturnBtn && statsOverlay) {
+      statsReturnBtn.addEventListener("click", () => {
+        statsOverlay.classList.add("hidden");
+        returnToTitleScreen();
+      });
+    }
+    if (copyStatsBtn) copyStatsBtn.addEventListener("click", copyTopStats);
+    renderStatsPreview();
 
     function shuffle(array) {
       const arr = [...array];
@@ -760,7 +3138,269 @@
       return arr;
     }
 
-    function startGame() {
+    function createDefaultProgress() {
+      return {
+        played: {},
+        bestScores: {},
+        puzzlesSolved: 0,
+        puzzlesGivenUp: 0,
+        totalBoardsPlayed: 0,
+        bestScore: 0,
+        bestRank: "—",
+        bestRankValue: 0,
+        fastestSolve: null,
+        cleanSolves: 0,
+        comebackSolves: 0,
+        hintsUsed: 0,
+        levelCompleted: { "warm-up": 0, "brain-bender": 0, expert: 0 },
+        levelAttempts: { "warm-up": 0, "brain-bender": 0, expert: 0 },
+        currentStreak: 0,
+        longestStreak: 0,
+        lastWorkdayPlayed: null
+      };
+    }
+
+    function normalizeProgress(progress) {
+      const defaults = createDefaultProgress();
+      const merged = Object.assign(defaults, progress || {});
+      merged.played = Object.assign({}, defaults.played, merged.played || {});
+      merged.bestScores = Object.assign({}, defaults.bestScores, merged.bestScores || {});
+      merged.levelCompleted = Object.assign({}, defaults.levelCompleted, merged.levelCompleted || {});
+      merged.levelAttempts = Object.assign({}, defaults.levelAttempts, merged.levelAttempts || {});
+      if (!merged.bestScore) {
+        const bestValues = Object.values(merged.bestScores || {}).map(Number).filter(Boolean);
+        merged.bestScore = bestValues.length ? Math.max(...bestValues) : 0;
+      }
+      if (!merged.totalBoardsPlayed) {
+        merged.totalBoardsPlayed = (merged.puzzlesSolved || 0) + (merged.puzzlesGivenUp || 0);
+      }
+      return merged;
+    }
+
+    function getProgress() {
+      try {
+        return normalizeProgress(JSON.parse(localStorage.getItem(STORAGE_KEY)) || {});
+      } catch (e) {
+        return createDefaultProgress();
+      }
+    }
+
+    function saveProgress(progress) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(normalizeProgress(progress)));
+      } catch (e) {}
+    }
+
+    function getRankValue(rankName) {
+      const values = {
+        "Lost in the Context Window": 1,
+        "AI Agent in Training": 2,
+        "Context Clue Collector": 3,
+        "Model Whisperer": 4,
+        "AI Oracle": 5
+      };
+      return values[rankName] || 0;
+    }
+
+    function pad2(num) {
+      return String(num).padStart(2, "0");
+    }
+
+    function localDateString(date = new Date()) {
+      return `${date.getFullYear()}-${pad2(date.getMonth() + 1)}-${pad2(date.getDate())}`;
+    }
+
+    function nthWeekdayOfMonth(year, monthIndex, weekday, n) {
+      const date = new Date(year, monthIndex, 1);
+      const offset = (weekday - date.getDay() + 7) % 7;
+      return new Date(year, monthIndex, 1 + offset + (n - 1) * 7);
+    }
+
+    function lastWeekdayOfMonth(year, monthIndex, weekday) {
+      const date = new Date(year, monthIndex + 1, 0);
+      const offset = (date.getDay() - weekday + 7) % 7;
+      return new Date(year, monthIndex, date.getDate() - offset);
+    }
+
+    function observedFixedHoliday(year, monthIndex, day) {
+      const date = new Date(year, monthIndex, day);
+      if (date.getDay() === 6) return new Date(year, monthIndex, day - 1);
+      if (date.getDay() === 0) return new Date(year, monthIndex, day + 1);
+      return date;
+    }
+
+    function getFederalHolidaySet(year) {
+      const holidays = [
+        observedFixedHoliday(year, 0, 1),
+        nthWeekdayOfMonth(year, 0, 1, 3),
+        nthWeekdayOfMonth(year, 1, 1, 3),
+        lastWeekdayOfMonth(year, 4, 1),
+        observedFixedHoliday(year, 5, 19),
+        observedFixedHoliday(year, 6, 4),
+        nthWeekdayOfMonth(year, 8, 1, 1),
+        nthWeekdayOfMonth(year, 9, 1, 2),
+        observedFixedHoliday(year, 10, 11),
+        nthWeekdayOfMonth(year, 10, 4, 4),
+        observedFixedHoliday(year, 11, 25)
+      ];
+      return new Set(holidays.map(localDateString));
+    }
+
+    function isWorkday(date) {
+      const day = date.getDay();
+      if (day === 0 || day === 6) return false;
+      return !getFederalHolidaySet(date.getFullYear()).has(localDateString(date));
+    }
+
+    function previousWorkday(date) {
+      const check = new Date(date.getFullYear(), date.getMonth(), date.getDate() - 1);
+      while (!isWorkday(check)) {
+        check.setDate(check.getDate() - 1);
+      }
+      return check;
+    }
+
+    function updateWorkdayStreak(progress) {
+      const today = new Date();
+      if (!isWorkday(today)) return;
+      const todayString = localDateString(today);
+      if (progress.lastWorkdayPlayed === todayString) return;
+      const previous = localDateString(previousWorkday(today));
+      progress.currentStreak = progress.lastWorkdayPlayed === previous ? (progress.currentStreak || 0) + 1 : 1;
+      progress.longestStreak = Math.max(progress.longestStreak || 0, progress.currentStreak || 0);
+      progress.lastWorkdayPlayed = todayString;
+    }
+
+    function getFavoriteLevel(progress) {
+      const attempts = progress.levelAttempts || {};
+      const entries = Object.entries(attempts).sort((a, b) => b[1] - a[1]);
+      if (!entries.length || !entries[0][1]) return "—";
+      const labels = { "warm-up": "Warm-Up", "brain-bender": "Brain-Bender", expert: "Expert" };
+      return labels[entries[0][0]] || entries[0][0];
+    }
+
+    function renderStatsPreview() {
+      const progress = getProgress();
+      if (miniCompleted) miniCompleted.textContent = String(progress.puzzlesSolved || 0);
+      if (miniTotalBoards) miniTotalBoards.textContent = String(progress.totalBoardsPlayed || ((progress.puzzlesSolved || 0) + (progress.puzzlesGivenUp || 0)));
+      if (miniBestScore) miniBestScore.textContent = progress.bestScore ? String(progress.bestScore) : "—";
+      if (miniFavoriteLevel) miniFavoriteLevel.textContent = getFavoriteLevel(progress);
+      if (miniFastestSolve) miniFastestSolve.textContent = progress.fastestSolve == null ? "—" : formatTime(progress.fastestSolve);
+      if (miniCleanSolves) miniCleanSolves.textContent = String(progress.cleanSolves || 0);
+    }
+
+    function addStatBox(label, value) {
+      return `<div class="stats-box"><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong></div>`;
+    }
+
+    function renderStats() {
+      const progress = getProgress();
+      renderStatsPreview();
+      if (!statsGrid) return;
+      const levelCompleted = progress.levelCompleted || {};
+      const totalBoardsPlayed = progress.totalBoardsPlayed || ((progress.puzzlesSolved || 0) + (progress.puzzlesGivenUp || 0));
+      const stats = [
+        ["Puzzles Completed", progress.puzzlesSolved || 0],
+        ["Puzzles Given Up", progress.puzzlesGivenUp || 0],
+        ["Total Boards Played", totalBoardsPlayed],
+        ["Best Score", progress.bestScore || "—"],
+        ["Best Rank", progress.bestRank || "—"],
+        ["Fastest Solve", progress.fastestSolve == null ? "—" : formatTime(progress.fastestSolve)],
+        ["Clean Solves", progress.cleanSolves || 0],
+        ["Comeback Solves", progress.comebackSolves || 0],
+        ["Favorite Level", getFavoriteLevel(progress)],
+        ["Warm-Up Completed", levelCompleted["warm-up"] || 0],
+        ["Brain-Bender Completed", levelCompleted["brain-bender"] || 0],
+        ["Expert Completed", levelCompleted.expert || 0],
+        ["Current Streak", `${progress.currentStreak || 0} Workdays`],
+        ["Longest Streak", `${progress.longestStreak || 0} Workdays`]
+      ];
+      statsGrid.innerHTML = stats.map(([label, value]) => addStatBox(label, String(value))).join("");
+    }
+
+    function chooseWeightedRecipe(recipes) {
+      const total = recipes.reduce((sum, recipe) => sum + recipe.weight, 0);
+      let roll = Math.random() * total;
+      for (const recipe of recipes) {
+        roll -= recipe.weight;
+        if (roll <= 0) return recipe;
+      }
+      return recipes[recipes.length - 1];
+    }
+
+    function sampleGroups(poolKey, count, alreadyChosenIds = new Set()) {
+      const pool = groupPool.filter(group => group.difficultyKey === poolKey && !alreadyChosenIds.has(group.id));
+      return shuffle(pool).slice(0, count);
+    }
+
+    function hasDuplicateTerms(selectedGroups) {
+      const normalizedTerms = selectedGroups.flatMap(group => group.terms.map(term => term.trim().toLowerCase()));
+      return new Set(normalizedTerms).size !== normalizedTerms.length;
+    }
+
+    function makePuzzleId(selectedGroups) {
+      return selectedGroups.map(group => group.id).sort().join("|");
+    }
+
+    function generateRandomPuzzle(difficultyKey, skipPuzzleId = null) {
+      const config = difficultyConfigs[difficultyKey] || difficultyConfigs["brain-bender"];
+      const progress = getProgress();
+      let fallbackPuzzle = null;
+
+      for (let attempt = 0; attempt < 700; attempt++) {
+        const recipe = chooseWeightedRecipe(config.recipes);
+        const chosen = [];
+        const chosenIds = new Set();
+        let complete = true;
+
+        Object.entries(recipe.pools).forEach(([poolKey, count]) => {
+          if (!complete) return;
+          const picked = sampleGroups(poolKey, count, chosenIds);
+          if (picked.length < count) {
+            complete = false;
+            return;
+          }
+          picked.forEach(group => {
+            chosen.push(group);
+            chosenIds.add(group.id);
+          });
+        });
+
+        if (!complete || chosen.length !== 4 || hasDuplicateTerms(chosen)) continue;
+
+        const puzzleId = makePuzzleId(chosen);
+        const puzzle = {
+          id: puzzleId,
+          difficultyKey,
+          difficultyLabel: config.label,
+          copyLabel: config.copyLabel,
+          title: config.title,
+          groups: shuffle(chosen)
+        };
+        fallbackPuzzle = fallbackPuzzle || puzzle;
+
+        if (puzzleId !== skipPuzzleId && !progress.played[puzzleId]) return puzzle;
+      }
+
+      if (fallbackPuzzle) return fallbackPuzzle;
+
+      const backupGroups = shuffle(groupPool.filter(group => group.difficultyKey === difficultyKey)).slice(0, 4);
+      return {
+        id: makePuzzleId(backupGroups),
+        difficultyKey,
+        difficultyLabel: config.label,
+        copyLabel: config.copyLabel,
+        title: config.title,
+        groups: backupGroups
+      };
+    }
+
+    function startGame(difficultyKey = "brain-bender", skipPuzzleId = null) {
+      currentDifficultyKey = difficultyKey;
+      currentPuzzle = generateRandomPuzzle(difficultyKey, skipPuzzleId);
+      groups = currentPuzzle.groups;
+      definitions = groups.reduce((all, group) => Object.assign(all, group.definitions), {});
+
       introScreen.classList.add("hidden");
       resultScreen.classList.add("hidden");
       gameScreen.classList.remove("hidden");
@@ -771,7 +3411,12 @@
       solvedGroupIds = new Set();
       secondsElapsed = 0;
       wrongGuesses = 0;
+      wrongGuessKeys = new Set();
       hintsUsed = 0;
+      hintedGroupIds = new Set();
+      gaveUp = false;
+      waitingForResults = false;
+      seeResultsBtn.classList.add("hidden");
 
       clearInterval(timerInterval);
       timerInterval = setInterval(() => {
@@ -782,6 +3427,7 @@
       timerEl.textContent = "0:00";
       mistakesEl.textContent = "0";
       solvedCountEl.textContent = "0/4";
+      puzzleName.textContent = `Level: ${currentPuzzle.difficultyName || currentPuzzle.difficultyLabel.replace(/^\S+\s*/, "")}`;
       setMessage("Choose 4 cards, then submit your group.");
       clueTitle.textContent = "Need a clue?";
       clueText.textContent = "Click any card to see a short definition here.";
@@ -790,13 +3436,25 @@
       updateButtons();
     }
 
+    function returnToTitleScreen() {
+      clearInterval(timerInterval);
+      pauseMusic();
+      selected.clear();
+      solvedGroupIds.clear();
+      waitingForResults = false;
+      seeResultsBtn.classList.add("hidden");
+      gameScreen.classList.add("hidden");
+      resultScreen.classList.add("hidden");
+      introScreen.classList.remove("hidden");
+    }
+
     function renderSolvedGroups() {
       solvedGroups.innerHTML = "";
       groups.forEach((group, index) => {
         const div = document.createElement("div");
         div.className = "solved-card group-" + group.id + (solvedGroupIds.has(group.id) ? " complete" : "");
         if (solvedGroupIds.has(group.id)) {
-          div.innerHTML = `<strong>${escapeHtml(group.name)}</strong><span>${group.terms.join(" | ")}</span>`;
+          div.innerHTML = `<strong>${escapeHtml(group.name)}</strong><span>${group.terms.map(escapeHtml).join(" | ")}</span>`;
         } else {
           div.innerHTML = `<strong>Hidden Group ${index + 1}</strong><span>Find four related terms.</span>`;
         }
@@ -828,7 +3486,7 @@
       if (solvedGroupIds.has(card.groupId)) return;
 
       clueTitle.textContent = card.term;
-      clueText.textContent = definitions[card.term];
+      clueText.textContent = definitions[card.term] || "No clue available for this card yet.";
 
       if (selected.has(card.term)) {
         selected.delete(card.term);
@@ -844,10 +3502,32 @@
     }
 
     function updateButtons() {
+      if (waitingForResults) {
+        submitBtn.disabled = true;
+        clearBtn.disabled = true;
+        shuffleBtn.disabled = true;
+        hintBtn.disabled = true;
+        giveUpBtn.disabled = true;
+        seeResultsBtn.classList.remove("hidden");
+        nextPuzzleBtn.disabled = false;
+        nextPuzzleBtn.textContent = "Next Puzzle";
+        return;
+      }
       submitBtn.disabled = selected.size !== 4;
       clearBtn.disabled = selected.size === 0;
       shuffleBtn.disabled = solvedGroupIds.size >= 4;
       hintBtn.disabled = solvedGroupIds.size >= 4;
+      giveUpBtn.disabled = solvedGroupIds.size >= 4;
+      seeResultsBtn.classList.add("hidden");
+      nextPuzzleBtn.disabled = false;
+      nextPuzzleBtn.textContent = "Next Puzzle";
+    }
+
+    function getGuessKey(terms) {
+      return terms
+        .map(term => String(term).trim().toLowerCase())
+        .sort()
+        .join("|");
     }
 
     function submitSelection() {
@@ -861,16 +3541,41 @@
       if (matchingGroup) {
         solvedGroupIds.add(matchingGroup.id);
         selected.clear();
+        const remainingGroups = groups.filter(group => !solvedGroupIds.has(group.id));
+        if (solvedGroupIds.size === 3 && remainingGroups.length === 1) {
+          const finalGroup = remainingGroups[0];
+          solvedGroupIds.add(finalGroup.id);
+          waitingForResults = true;
+          clearInterval(timerInterval);
+          pauseMusic();
+          renderSolvedGroups();
+          renderBoard();
+          solvedCountEl.textContent = "4/4";
+          setMessage(`Nice! You found ${matchingGroup.name}. Final group revealed: ${finalGroup.name}.`, "good");
+          clueTitle.textContent = "Final group revealed";
+          clueText.textContent = `${finalGroup.name}: ${finalGroup.terms.join(" | ")}`;
+          updateButtons();
+          return;
+        }
         renderSolvedGroups();
         renderBoard();
         solvedCountEl.textContent = `${solvedGroupIds.size}/4`;
         setMessage(`Nice! You found ${matchingGroup.name}.`, "good");
-        if (solvedGroupIds.size === 4) finishGame();
+        if (solvedGroupIds.size === 4) finishGame(false);
       } else {
-        wrongGuesses += 1;
-        mistakesEl.textContent = String(wrongGuesses);
+        const guessKey = getGuessKey(selectedTerms);
+        const isRepeatGuess = wrongGuessKeys.has(guessKey);
+        if (!isRepeatGuess) {
+          wrongGuessKeys.add(guessKey);
+          wrongGuesses += 1;
+          mistakesEl.textContent = String(wrongGuesses);
+        }
         const oneAway = isOneAway(selectedTerms);
-        setMessage(oneAway ? "So close! One term does not belong." : "Not quite. Those terms do not make one hidden group.", "bad");
+        if (isRepeatGuess) {
+          setMessage("You already tried that exact group.", "bad");
+        } else {
+          setMessage(oneAway ? "So close! One term does not belong." : "Not quite. Those terms do not make one hidden group.", "bad");
+        }
       }
       updateButtons();
     }
@@ -902,19 +3607,35 @@
     function useHint() {
       const unsolved = groups.filter(group => !solvedGroupIds.has(group.id));
       if (!unsolved.length) return;
-      hintsUsed += 1;
       const group = unsolved[0];
+      if (!hintedGroupIds.has(group.id)) {
+        hintedGroupIds.add(group.id);
+        hintsUsed += 1;
+      }
       setMessage(`Hint: one category is “${group.name}.”`, "good");
       updateButtons();
     }
 
-    function finishGame() {
+    function giveUpAndReveal() {
+      gaveUp = true;
+      selected.clear();
+      groups.forEach(group => solvedGroupIds.add(group.id));
+      renderSolvedGroups();
+      renderBoard();
+      solvedCountEl.textContent = "4/4";
+      setMessage("Answers revealed. No score saved for this round.", "bad");
+      updateButtons();
+      setTimeout(() => finishGame(true), 500);
+    }
+
+    function finishGame(wasGivenUp = false) {
       clearInterval(timerInterval);
       pauseMusic();
-      const score = calculateScore(secondsElapsed, wrongGuesses, hintsUsed);
-      const rank = getRank(score);
+      const score = wasGivenUp ? 0 : calculateScore(secondsElapsed, wrongGuesses, hintsUsed);
+      const rank = wasGivenUp ? getGiveUpRank() : getRank(score, wrongGuesses, hintsUsed, secondsElapsed);
       lastScore = score;
       lastRank = rank.name;
+      savePuzzleResult({ wasGivenUp, score, rank });
 
       gameScreen.classList.add("hidden");
       resultScreen.classList.remove("hidden");
@@ -922,9 +3643,10 @@
       document.getElementById("resultHeadline").textContent = rank.headline;
       document.getElementById("rankBadge").textContent = rank.name;
       document.getElementById("rankDescription").textContent = rank.description;
-      document.getElementById("finalScore").textContent = String(score);
+      document.getElementById("finalScore").textContent = wasGivenUp ? "—" : String(score);
       document.getElementById("finalTime").textContent = formatTime(secondsElapsed);
       document.getElementById("finalMisses").textContent = String(wrongGuesses);
+      copyBtn.classList.toggle("hidden", wasGivenUp);
 
       const answers = document.getElementById("answers");
       answers.innerHTML = "";
@@ -940,50 +3662,114 @@
       });
     }
 
-    function calculateScore(seconds, misses, hints) {
-      let score = 1000;
-      score -= Math.floor(seconds / 3);
-      score -= misses * 60;
-      score -= hints * 75;
-      if (misses === 0) score += 100;
-      if (seconds <= 180) score += 100;
-      if (seconds <= 150) score += 50;
-      return Math.max(1, score);
+    function savePuzzleResult({ wasGivenUp, score, rank }) {
+      if (!currentPuzzle) return;
+      const progress = getProgress();
+      progress.totalBoardsPlayed = (progress.totalBoardsPlayed || 0) + 1;
+      progress.levelAttempts[currentDifficultyKey] = (progress.levelAttempts[currentDifficultyKey] || 0) + 1;
+      updateWorkdayStreak(progress);
+
+      if (wasGivenUp) {
+        progress.puzzlesGivenUp = (progress.puzzlesGivenUp || 0) + 1;
+      } else {
+        progress.puzzlesSolved = (progress.puzzlesSolved || 0) + 1;
+        progress.played[currentPuzzle.id] = {
+          difficultyKey: currentDifficultyKey,
+          score,
+          rank: rank.name,
+          completedAt: new Date().toISOString()
+        };
+        progress.levelCompleted[currentDifficultyKey] = (progress.levelCompleted[currentDifficultyKey] || 0) + 1;
+        progress.bestScores[currentDifficultyKey] = Math.max(progress.bestScores[currentDifficultyKey] || 0, score);
+        progress.bestScore = Math.max(progress.bestScore || 0, score);
+        const rankValue = getRankValue(rank.name);
+        if (rankValue > (progress.bestRankValue || 0)) {
+          progress.bestRankValue = rankValue;
+          progress.bestRank = rank.name;
+        }
+        progress.fastestSolve = progress.fastestSolve == null ? secondsElapsed : Math.min(progress.fastestSolve, secondsElapsed);
+        if (wrongGuesses === 0) progress.cleanSolves = (progress.cleanSolves || 0) + 1;
+        if (wrongGuesses >= 10) progress.comebackSolves = (progress.comebackSolves || 0) + 1;
+      }
+
+      saveProgress(progress);
+      renderStatsPreview();
     }
 
-    function getRank(score) {
-      if (score >= 950) {
-        return {
-          name: "AI Oracle",
-          headline: "ConnectionZ complete.",
-          description: "You found the hidden groups with serious precision. Bragging rights unlocked."
-        };
-      }
-      if (score >= 800) {
-        return {
-          name: "Model Whisperer",
-          headline: "Puzzle solved.",
-          description: "Strong solve. You clearly know your way around the AI vocabulary jungle."
-        };
-      }
-      if (score >= 650) {
-        return {
-          name: "Context Clue Collector",
-          headline: "You made it out.",
-          description: "The board fought back a little, but you still solved it."
-        };
-      }
-      if (score >= 500) {
-        return {
+    function getFreeTimeSeconds() {
+      return currentDifficultyKey === "warm-up" ? 480 : 300;
+    }
+
+    function calculateScore(seconds, misses, hints) {
+      const freeMisses = 8;
+      const countedMisses = Math.max(0, misses - freeMisses);
+      const countedSeconds = Math.max(0, seconds - getFreeTimeSeconds());
+      let score = 1000;
+      score -= Math.floor(countedSeconds / 10);
+      score -= countedMisses * 35;
+      score -= hints * 40;
+      return Math.min(1000, Math.max(1, score));
+    }
+
+    function getRank(score, misses = 0, hints = 0, seconds = 0) {
+      const thresholdsByDifficulty = {
+        "warm-up": { oracle: 950, model: 850, context: 650, agent: 400 },
+        "brain-bender": { oracle: 950, model: 825, context: 625, agent: 400 },
+        expert: { oracle: 925, model: 800, context: 575, agent: 400 }
+      };
+      const thresholds = thresholdsByDifficulty[currentDifficultyKey] || thresholdsByDifficulty["brain-bender"];
+      const ranks = [
+        {
+          name: "Lost in the Context Window",
+          value: 1,
+          headline: "You made it through.",
+          description: "This one was a maze, but you still made it to the end."
+        },
+        {
           name: "AI Agent in Training",
+          value: 2,
           headline: "Puzzle complete!",
           description: "You solved it, just with a few extra clicks along the way."
-        };
-      }
+        },
+        {
+          name: "Context Clue Collector",
+          value: 3,
+          headline: "You made it out.",
+          description: "The board fought back a little, but you solved it. That counts."
+        },
+        {
+          name: "Model Whisperer",
+          value: 4,
+          headline: "Puzzle solved.",
+          description: "Strong solve. You clearly know your way around the AI vocabulary jungle."
+        },
+        {
+          name: "AI Oracle",
+          value: 5,
+          headline: "ConnectionZ complete.",
+          description: "You found the hidden groups with serious precision. Bragging rights unlocked."
+        }
+      ];
+
+      let rawValue = 1;
+      if (score >= thresholds.oracle && misses <= 5 && hints <= 1) rawValue = 5;
+      else if (score >= thresholds.model) rawValue = 4;
+      else if (score >= thresholds.context) rawValue = 3;
+      else if (score >= thresholds.agent) rawValue = 2;
+
+      let capValue = 5;
+      if (misses > 10 || hints >= 4) capValue = 3;
+      else if (misses > 5 || hints >= 2) capValue = 4;
+
+      const finalValue = Math.min(rawValue, capValue);
+      return ranks.find(rank => rank.value === finalValue) || ranks[0];
+    }
+
+    function getGiveUpRank() {
       return {
-        name: "Lost in the Context Window",
-        headline: "You made it through.",
-        description: "The hidden groups were not obvious, but you still made it to the end."
+        name: "No Score This Round",
+        headline: "Better luck next time.",
+        description: "Answers are shown below. Study the groups, then try another puzzle when you are ready."
       };
     }
 
@@ -1026,8 +3812,25 @@
       musicToggleBtn.setAttribute("aria-pressed", musicEnabled && !bgMusic.paused ? "true" : "false");
     }
 
+    function copyTopStats() {
+      const progress = getProgress();
+      const completed = progress.puzzlesSolved || 0;
+      const bestScore = progress.bestScore ? progress.bestScore : "—";
+      const text = `I’ve completed ${completed} ConnectionZ puzzles and my best score is ${bestScore}. Can you beat my stats?
+
+Play ConnectionZ here: https://pncaiteam-scan.github.io/ConnectionZ/`;
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(showToast).catch(() => fallbackCopy(text));
+      } else {
+        fallbackCopy(text);
+      }
+    }
+
     function copyScore() {
-      const text = `I scored ${lastScore} on ConnectionZ and earned ${lastRank} in ${formatTime(secondsElapsed)}. Can you beat my score?
+      const puzzleLabel = currentPuzzle ? currentPuzzle.copyLabel : "ConnectionZ";
+      const text = gaveUp
+        ? `I revealed the answers on ${puzzleLabel} in ${formatTime(secondsElapsed)}. Can you solve it without peeking?`
+        : `I scored ${lastScore} on ${puzzleLabel} and earned ${lastRank} in ${formatTime(secondsElapsed)}. Can you beat my score?
 
 Play ConnectionZ here: https://pncaiteam-scan.github.io/ConnectionZ/`;
       if (navigator.clipboard && window.isSecureContext) {
