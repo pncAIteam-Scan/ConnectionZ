@@ -472,8 +472,80 @@
     .stats-box strong { display: block; font-size: 1.35rem; margin-top: 5px; color: var(--text); }
     .stats-disclaimer { font-size: 0.95rem; color: var(--muted); line-height: 1.5; padding: 14px; border-radius: 18px; background: #ffffff; border: 1px solid #dae1ee; }
 
+
+    .badge-summary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin: 14px 0 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--accent-2);
+      color: var(--ink);
+      font-weight: 950;
+    }
+
+    .badge-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .badge-card {
+      min-height: 150px;
+      border: 1px solid #dae1ee;
+      border-radius: 20px;
+      background: #ffffff;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      box-shadow: 0 8px 18px rgba(86, 101, 130, 0.08);
+    }
+
+    .badge-card.unlocked:nth-child(4n+1) { background: #c9f7d8; border-color: #8de0ad; }
+    .badge-card.unlocked:nth-child(4n+2) { background: #cfe8ff; border-color: #97cafa; }
+    .badge-card.unlocked:nth-child(4n+3) { background: #fff3a8; border-color: #ead970; }
+    .badge-card.unlocked:nth-child(4n+4) { background: #ffd6e9; border-color: #f2a8cb; }
+    .badge-card.locked {
+      opacity: 0.62;
+      background: #f7f8fb;
+      filter: grayscale(0.75);
+    }
+
+    .badge-icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: #ffffff;
+      border: 1px solid rgba(218, 225, 238, 0.95);
+      font-size: 1.65rem;
+      box-shadow: 0 5px 12px rgba(86, 101, 130, 0.08);
+    }
+
+    .badge-card strong { font-size: 1.05rem; line-height: 1.1; color: var(--text); }
+    .badge-card p { margin: 0; color: var(--muted); font-size: 0.92rem; line-height: 1.35; }
+    .badge-status { margin-top: auto; font-size: 0.76rem; font-weight: 950; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+
+    .badge-unlocked-card {
+      margin: 20px auto 0;
+      max-width: 420px;
+      text-align: center;
+      padding: 20px;
+      border-radius: 24px;
+      border: 1px solid #dae1ee;
+      background: #c9f7d8;
+      box-shadow: 0 8px 18px rgba(86, 101, 130, 0.10);
+    }
+    .badge-unlocked-card .badge-icon { margin: 0 auto 10px; width: 62px; height: 62px; font-size: 2.1rem; }
+    .badge-unlocked-card strong { display: block; font-size: 1.25rem; margin-bottom: 6px; }
+
     @media (max-width: 700px) {
-      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stats-grid, .badge-grid { grid-template-columns: 1fr 1fr; }
       .version-widget { position: static; align-items: stretch; width: 100%; margin-bottom: 18px; }
       .hero-grid { gap: 24px; }
       .hero-stats-card { justify-self: stretch; width: 100%; }
@@ -792,7 +864,7 @@
       .board { gap: 9px; }
       .card { min-height: 84px; border-radius: 16px; padding: 12px 8px; }
       .controls .btn { width: 100%; }
-      .difficulty-grid { grid-template-columns: 1fr; }
+      .difficulty-grid, .badge-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -940,11 +1012,40 @@
     <div class="news-modal">
       <button id="statsCloseBtn" class="news-close" type="button" aria-label="Close stats">×</button>
       <h2 id="statsTitle">Your Stats</h2>
-      <p class="stats-disclaimer">Stats are saved only in this browser on this device. If you switch browsers/devices, use private browsing, or clear site data, your stats may reset.</p>
+      <p class="stats-disclaimer">Stats and badges are saved only in this browser on this device. If you switch browsers/devices, use private browsing, or clear site data, your progress may reset.</p>
       <div class="stats-grid" id="statsGrid"></div>
       <div class="actions">
         <button id="copyStatsBtn" class="btn" type="button">Copy Top Stats</button>
+        <button id="badgesBtn" class="btn secondary" type="button">View My Badges</button>
         <button id="statsReturnBtn" class="btn secondary" type="button">Return to Title Screen</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="badgesOverlay" class="news-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="badgesTitle">
+    <div class="news-modal">
+      <button id="badgesCloseBtn" class="news-close" type="button" aria-label="Close badges">×</button>
+      <h2 id="badgesTitle">Badge Case</h2>
+      <p class="stats-disclaimer">Badges are saved only in this browser on this device. If you switch browsers/devices, use private browsing, or clear site data, your badges may reset.</p>
+      <div id="badgeSummary" class="badge-summary">0 / 18 Badges Unlocked</div>
+      <div id="badgeGrid" class="badge-grid"></div>
+      <div class="actions">
+        <button id="copyBadgesBtn" class="btn" type="button">Share My Badges</button>
+        <button id="badgesBackStatsBtn" class="btn secondary" type="button">Back to Stats</button>
+        <button id="badgesReturnBtn" class="btn secondary" type="button">Return to Title Screen</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="badgeUnlockedOverlay" class="news-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="badgeUnlockedTitle">
+    <div class="news-modal">
+      <button id="badgeUnlockedCloseBtn" class="news-close" type="button" aria-label="Close badge notification">×</button>
+      <h2 id="badgeUnlockedTitle">Badge Unlocked!</h2>
+      <p>Congratulations — you earned a new ConnectionZ badge.</p>
+      <div id="badgeUnlockedContent" class="badge-unlocked-card"></div>
+      <div class="actions">
+        <button id="badgeUnlockedViewBtn" class="btn" type="button">View My Badges</button>
+        <button id="badgeUnlockedContinueBtn" class="btn secondary" type="button">Keep Playing</button>
       </div>
     </div>
   </div>
@@ -1008,7 +1109,7 @@
                   "Audience"
             ],
             "definitions": {
-                  "Tone": "How the answer should sound",
+                  "Tone": "The attitude, mood, or character conveyed through a specific medium.",
                   "Format": "How the answer is structured",
                   "Length": "How much it should write",
                   "Audience": "Who the answer is for"
@@ -1198,7 +1299,7 @@
                   "Success Criteria"
             ],
             "definitions": {
-                  "Goal": "What you want done",
+                  "Goal": "A desired outcome or target.",
                   "Inputs": "What information it should use",
                   "Limits": "What to avoid or follow",
                   "Success Criteria": "What good looks like"
@@ -1303,25 +1404,6 @@
             "id": "warmup-019",
             "difficultyKey": "warm-up",
             "difficultyLabel": "✨ Warm-Up",
-            "name": "Search vs. AI Differences",
-            "explanation": "Basic distinctions between looking things up and generating an answer.",
-            "terms": [
-                  "Keyword",
-                  "Result",
-                  "Generated Answer",
-                  "Source List"
-            ],
-            "definitions": {
-                  "Keyword": "Exact search term",
-                  "Result": "A page or item found",
-                  "Generated Answer": "Newly written response",
-                  "Source List": "Places to verify"
-            }
-      },
-      {
-            "id": "warmup-020",
-            "difficultyKey": "warm-up",
-            "difficultyLabel": "✨ Warm-Up",
             "name": "Safe Sharing Habits",
             "explanation": "Simple habits that reduce risk when using AI tools.",
             "terms": [
@@ -1338,7 +1420,349 @@
             }
       },
       {
-            "id": "brainbender-021",
+            "id": "warmup-020",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "Popular AI Chatbots",
+            "explanation": "Well-known AI assistants people can chat with.",
+            "terms": [
+                  "ChatGPT",
+                  "Claude",
+                  "Gemini",
+                  "Grok"
+            ],
+            "definitions": {
+                  "ChatGPT": "A product made by OpenAI.",
+                  "Claude": "A male name that may come from the Latin word for “lame.”",
+                  "Gemini": "A zodiac sign represented by twins.",
+                  "Grok": "A word meaning to understand something deeply."
+            }
+      },
+      {
+            "id": "warmup-021",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "Companies Behind Major AI Assistants",
+            "explanation": "Organizations that make or back popular AI chatbots.",
+            "terms": [
+                  "OpenAI",
+                  "Anthropic",
+                  "Google",
+                  "xAI"
+            ],
+            "definitions": {
+                  "OpenAI": "A company co-founded by Sam Altman and Greg Brockman.",
+                  "Anthropic": "An adjective that means of or relating to human beings or their span of existence on earth.",
+                  "Google": "A popular internet search engine used to find information online.",
+                  "xAI": "SpaceXAI is a division of American aerospace company SpaceX working in the area of artificial intelligence, social media and technology."
+            }
+      },
+      {
+            "id": "warmup-022",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "Ways ChatGPT Can Feel Personalized",
+            "explanation": "Settings or features that help tailor ChatGPT to a user.",
+            "terms": [
+                  "Name",
+                  "Tone",
+                  "Memory",
+                  "Instructions"
+            ],
+            "definitions": {
+                  "Name": "A word or set of words used to identify, designate, and distinguish a person, place, thing, or concept",
+                  "Tone": "The attitude, mood, or character conveyed through a specific medium.",
+                  "Memory": "The cognitive faculty that allows the mind to encode, store, and retrieve information and past experiences.",
+                  "Instructions": "Directions to follow."
+            }
+      },
+      {
+            "id": "warmup-023",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "Custom GPT Building Blocks",
+            "explanation": "Basic pieces used when creating a custom GPT.",
+            "terms": [
+                  "Name",
+                  "Description",
+                  "Instructions",
+                  "Knowledge"
+            ],
+            "definitions": {
+                  "Name": "A word or set of words used to identify, designate, and distinguish a person, place, thing, or concept",
+                  "Description": "A short explanation of what something is.",
+                  "Instructions": "Directions to follow.",
+                  "Knowledge": "Information someone has."
+            }
+      },
+      {
+            "id": "warmup-024",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "Files You Might Ask AI About",
+            "explanation": "Common file types people use with AI tools.",
+            "terms": [
+                  "PDF",
+                  "PNG",
+                  "XLSX",
+                  "DOCX"
+            ],
+            "definitions": {
+                  "PDF": "A fixed-layout document file.",
+                  "PNG": "A picture file.",
+                  "XLSX": "A file with rows and columns.",
+                  "DOCX": "The standard file format used by Microsoft Word for creating, saving, and editing text documents."
+            }
+      },
+      {
+            "id": "warmup-025",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "When AI Gets It Wrong",
+            "explanation": "Ways to describe an incorrect or invented AI answer.",
+            "terms": [
+                  "Guess",
+                  "Mistake",
+                  "Fabrication",
+                  "Hallucination"
+            ],
+            "definitions": {
+                  "Guess": "An answer given without certainty.",
+                  "Mistake": "An action, decision, or judgment that produces an unintended or incorrect result.",
+                  "Fabrication": "Something that is made up.",
+                  "Hallucination": "Seeing something that is not there."
+            }
+      },
+      {
+            "id": "warmup-026",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "Chat Tool Navigation",
+            "explanation": "Parts of an app or account area that help users move around or manage activity.",
+            "terms": [
+                  "Sidebar",
+                  "History",
+                  "Settings",
+                  "Profile"
+            ],
+            "definitions": {
+                  "Sidebar": "A vertical panel placed along the side of a screen or page.",
+                  "History": "A record of past events, actions, or activity.",
+                  "Settings": "Controls used to adjust how something works or appears.",
+                  "Profile": "A set of information that represents a person or account."
+            }
+      },
+      {
+            "id": "warmup-027",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "Image Generation Requests",
+            "explanation": "Common visual items someone might ask a tool to create or revise.",
+            "terms": [
+                  "Portrait",
+                  "Logo",
+                  "Mockup",
+                  "Illustration"
+            ],
+            "definitions": {
+                  "Portrait": "A picture or representation of a person, especially the face.",
+                  "Logo": "A symbol or design used to identify a brand or organization.",
+                  "Mockup": "A preliminary model or visual example of a design.",
+                  "Illustration": "A picture made to explain, decorate, or represent something."
+            }
+      },
+      {
+            "id": "warmup-028",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "Helpful Follow-Up Words",
+            "explanation": "Short words people use to adjust an answer after receiving it.",
+            "terms": [
+                  "More",
+                  "Less",
+                  "Again",
+                  "Specific"
+            ],
+            "definitions": {
+                  "More": "A greater amount, number, or degree.",
+                  "Less": "A smaller amount, number, or degree.",
+                  "Again": "One more time or another time.",
+                  "Specific": "Clearly defined, exact, or particular."
+            }
+      },
+      {
+            "id": "warmup-029",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "Data Displays",
+            "explanation": "Common ways to show information visually or at a glance.",
+            "terms": [
+                  "Chart",
+                  "Graph",
+                  "Dashboard",
+                  "Summary"
+            ],
+            "definitions": {
+                  "Chart": "A visual display of information or numbers.",
+                  "Graph": "A diagram showing relationships between values or quantities.",
+                  "Dashboard": "A display that summarizes important information in one place.",
+                  "Summary": "A brief statement of the main points."
+            }
+      },
+      {
+            "id": "warmup-030",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "ChatGPT Workspaces and Modes",
+            "explanation": "Places or modes in ChatGPT that support different kinds of work.",
+            "terms": [
+                  "Canvas",
+                  "Projects",
+                  "Voice",
+                  "Deep Research"
+            ],
+            "definitions": {
+                  "Canvas": "A surface or workspace used for creating or editing.",
+                  "Projects": "Organized collections of related work or materials.",
+                  "Voice": "Sound produced by speaking or represented in speech.",
+                  "Deep Research": "A careful investigation that looks across multiple sources."
+            }
+      },
+      {
+            "id": "warmup-031",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "Atlassian Workplace Tools",
+            "explanation": "Workplace tools or products connected to Atlassian-supported collaboration.",
+            "terms": [
+                  "Rovo",
+                  "Jira",
+                  "Confluence",
+                  "Compass"
+            ],
+            "definitions": {
+                  "Rovo": "A name that suggests roaming, searching, or moving across information.",
+                  "Jira": "A tool name commonly associated with tracking work items.",
+                  "Confluence": "The joining or flowing together of things, especially streams or ideas.",
+                  "Compass": "An instrument used to find direction."
+            }
+      },
+      {
+            "id": "warmup-032",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "Foundational AI Terms",
+            "explanation": "Basic terms that help explain how modern AI systems work.",
+            "terms": [
+                  "Generative AI",
+                  "Large Language Model",
+                  "Machine Learning",
+                  "Natural Language"
+            ],
+            "definitions": {
+                  "Generative AI": "Technology that can create new content based on patterns it has learned.",
+                  "Large Language Model": "A system trained on large amounts of text to understand and produce language.",
+                  "Machine Learning": "A field where systems improve by finding patterns in data.",
+                  "Natural Language": "Language used by people in ordinary speaking or writing."
+            }
+      },
+      {
+            "id": "warmup-033",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "Common Workplace Drafts",
+            "explanation": "Types of workplace writing someone might prepare before sending or sharing.",
+            "terms": [
+                  "Memo",
+                  "Proposal",
+                  "Announcement",
+                  "Recap"
+            ],
+            "definitions": {
+                  "Memo": "A short written message used for communication within an organization.",
+                  "Proposal": "A plan or suggestion offered for consideration.",
+                  "Announcement": "A public or formal statement about something.",
+                  "Recap": "A brief review of what happened or was discussed."
+            }
+      },
+      {
+            "id": "warmup-034",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "Human-Like AI Actions",
+            "explanation": "Common abilities that AI tools may imitate or support.",
+            "terms": [
+                  "Listen",
+                  "See",
+                  "Speak",
+                  "Reason"
+            ],
+            "definitions": {
+                  "Listen": "To pay attention to sound or spoken words.",
+                  "See": "To perceive something with the eyes.",
+                  "Speak": "To express thoughts or information using words.",
+                  "Reason": "To think through something logically."
+            }
+      },
+      {
+            "id": "warmup-035",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "Make It Sound ___",
+            "explanation": "Common style requests people use when revising AI-generated writing.",
+            "terms": [
+                  "Formal",
+                  "Friendly",
+                  "Concise",
+                  "Plain"
+            ],
+            "definitions": {
+                  "Formal": "Following established rules, conventions, or professional standards.",
+                  "Friendly": "Kind, pleasant, and easy to approach.",
+                  "Concise": "Giving information clearly in a few words.",
+                  "Plain": "Simple, clear, and not decorated or complicated."
+            }
+      },
+      {
+            "id": "warmup-036",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "Privacy Protection Moves",
+            "explanation": "Simple ways to reduce sensitive details before sharing information.",
+            "terms": [
+                  "Redact",
+                  "Mask",
+                  "Anonymize",
+                  "Omit"
+            ],
+            "definitions": {
+                  "Redact": "To remove or hide text before sharing a document.",
+                  "Mask": "To cover or disguise information so it is not fully visible.",
+                  "Anonymize": "To remove details that identify a specific person.",
+                  "Omit": "To leave something out."
+            }
+      },
+      {
+            "id": "warmup-037",
+            "difficultyKey": "warm-up",
+            "difficultyLabel": "✨ Warm-Up",
+            "name": "Output Problem Words",
+            "explanation": "Simple ways to describe an answer that may need improvement.",
+            "terms": [
+                  "Stale",
+                  "Incomplete",
+                  "Unclear",
+                  "Unsupported"
+            ],
+            "definitions": {
+                  "Stale": "No longer fresh, current, or useful.",
+                  "Incomplete": "Not having all necessary parts.",
+                  "Unclear": "Not easy to understand.",
+                  "Unsupported": "Not backed up by evidence, help, or confirmation."
+            }
+      },
+      {
+            "id": "brainbender-001",
             "difficultyKey": "brain-bender",
             "difficultyLabel": "🧠 Brain-Bender",
             "name": "Ways to Check AI Accuracy",
@@ -1357,7 +1781,7 @@
             }
       },
       {
-            "id": "brainbender-022",
+            "id": "brainbender-002",
             "difficultyKey": "brain-bender",
             "difficultyLabel": "🧠 Brain-Bender",
             "name": "AI System Design Choices",
@@ -1376,7 +1800,7 @@
             }
       },
       {
-            "id": "brainbender-023",
+            "id": "brainbender-003",
             "difficultyKey": "brain-bender",
             "difficultyLabel": "🧠 Brain-Bender",
             "name": "Responsible AI Concerns",
@@ -1395,7 +1819,7 @@
             }
       },
       {
-            "id": "brainbender-024",
+            "id": "brainbender-004",
             "difficultyKey": "brain-bender",
             "difficultyLabel": "🧠 Brain-Bender",
             "name": "Dimensions of AI Use",
@@ -1414,7 +1838,7 @@
             }
       },
       {
-            "id": "brainbender-025",
+            "id": "brainbender-005",
             "difficultyKey": "brain-bender",
             "difficultyLabel": "🧠 Brain-Bender",
             "name": "Model Evaluation Metrics",
@@ -1433,7 +1857,7 @@
             }
       },
       {
-            "id": "brainbender-026",
+            "id": "brainbender-006",
             "difficultyKey": "brain-bender",
             "difficultyLabel": "🧠 Brain-Bender",
             "name": "Retrieval Pipeline Steps",
@@ -1452,7 +1876,7 @@
             }
       },
       {
-            "id": "brainbender-027",
+            "id": "brainbender-007",
             "difficultyKey": "brain-bender",
             "difficultyLabel": "🧠 Brain-Bender",
             "name": "Model Behavior Settings",
@@ -1471,7 +1895,7 @@
             }
       },
       {
-            "id": "brainbender-028",
+            "id": "brainbender-008",
             "difficultyKey": "brain-bender",
             "difficultyLabel": "🧠 Brain-Bender",
             "name": "Human-in-the-Loop Patterns",
@@ -1490,7 +1914,7 @@
             }
       },
       {
-            "id": "brainbender-029",
+            "id": "brainbender-009",
             "difficultyKey": "brain-bender",
             "difficultyLabel": "🧠 Brain-Bender",
             "name": "Common Failure Modes",
@@ -1509,7 +1933,7 @@
             }
       },
       {
-            "id": "brainbender-030",
+            "id": "brainbender-010",
             "difficultyKey": "brain-bender",
             "difficultyLabel": "🧠 Brain-Bender",
             "name": "Data Preparation Steps",
@@ -1528,7 +1952,7 @@
             }
       },
       {
-            "id": "brainbender-031",
+            "id": "brainbender-011",
             "difficultyKey": "brain-bender",
             "difficultyLabel": "🧠 Brain-Bender",
             "name": "AI Governance Artifacts",
@@ -1547,7 +1971,7 @@
             }
       },
       {
-            "id": "brainbender-032",
+            "id": "brainbender-012",
             "difficultyKey": "brain-bender",
             "difficultyLabel": "🧠 Brain-Bender",
             "name": "Trustworthy Output Traits",
@@ -1566,7 +1990,7 @@
             }
       },
       {
-            "id": "brainbender-033",
+            "id": "brainbender-013",
             "difficultyKey": "brain-bender",
             "difficultyLabel": "🧠 Brain-Bender",
             "name": "Data Types for AI",
@@ -1585,7 +2009,7 @@
             }
       },
       {
-            "id": "brainbender-034",
+            "id": "brainbender-014",
             "difficultyKey": "brain-bender",
             "difficultyLabel": "🧠 Brain-Bender",
             "name": "Learning Approaches",
@@ -1604,7 +2028,7 @@
             }
       },
       {
-            "id": "brainbender-035",
+            "id": "brainbender-015",
             "difficultyKey": "brain-bender",
             "difficultyLabel": "🧠 Brain-Bender",
             "name": "AI Lifecycle Stages",
@@ -1623,7 +2047,7 @@
             }
       },
       {
-            "id": "brainbender-036",
+            "id": "brainbender-016",
             "difficultyKey": "brain-bender",
             "difficultyLabel": "🧠 Brain-Bender",
             "name": "Ways to Reduce AI Risk",
@@ -1642,7 +2066,7 @@
             }
       },
       {
-            "id": "brainbender-037",
+            "id": "brainbender-017",
             "difficultyKey": "brain-bender",
             "difficultyLabel": "🧠 Brain-Bender",
             "name": "Prompt Attack Concepts",
@@ -1661,7 +2085,7 @@
             }
       },
       {
-            "id": "brainbender-038",
+            "id": "brainbender-018",
             "difficultyKey": "brain-bender",
             "difficultyLabel": "🧠 Brain-Bender",
             "name": "Knowledge Management Concepts",
@@ -1680,7 +2104,7 @@
             }
       },
       {
-            "id": "brainbender-039",
+            "id": "brainbender-019",
             "difficultyKey": "brain-bender",
             "difficultyLabel": "🧠 Brain-Bender",
             "name": "AI Decision Support Boundaries",
@@ -1699,7 +2123,7 @@
             }
       },
       {
-            "id": "brainbender-040",
+            "id": "brainbender-020",
             "difficultyKey": "brain-bender",
             "difficultyLabel": "🧠 Brain-Bender",
             "name": "Evaluation Dataset Splits",
@@ -1718,7 +2142,349 @@
             }
       },
       {
-            "id": "expert-041",
+            "id": "brainbender-021",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Prompt Framing Patterns",
+            "explanation": "Ways to shape a request so an AI response has clearer direction.",
+            "terms": [
+                  "Persona",
+                  "Criteria",
+                  "Rubric",
+                  "Edge Case"
+            ],
+            "definitions": {
+                  "Persona": "A role or identity adopted for a particular purpose.",
+                  "Criteria": "Standards used to judge, decide, or evaluate something.",
+                  "Rubric": "A scoring guide that defines levels of quality or performance.",
+                  "Edge Case": "A situation that occurs at an extreme or unusual boundary."
+            }
+      },
+      {
+            "id": "brainbender-022",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Custom GPT Add-Ons",
+            "explanation": "Features that can make a specialized chatbot more useful or interactive.",
+            "terms": [
+                  "Conversation Starters",
+                  "Capabilities",
+                  "Actions",
+                  "Connectors"
+            ],
+            "definitions": {
+                  "Conversation Starters": "Suggested opening messages that help begin an interaction.",
+                  "Capabilities": "Abilities or functions that something is able to perform.",
+                  "Actions": "Operations that allow a system to do something beyond responding with text.",
+                  "Connectors": "Links that allow separate systems or sources to work together."
+            }
+      },
+      {
+            "id": "brainbender-023",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Deep Research Habits",
+            "explanation": "Practices that help turn research into a more reliable answer.",
+            "terms": [
+                  "Synthesis",
+                  "Triangulation",
+                  "Source Check",
+                  "Counterexample"
+            ],
+            "definitions": {
+                  "Synthesis": "The process of combining separate pieces into a coherent whole.",
+                  "Triangulation": "The use of multiple points of evidence to check or support a conclusion.",
+                  "Source Check": "An examination of where information came from.",
+                  "Counterexample": "An example that disproves or challenges a general claim."
+            }
+      },
+      {
+            "id": "brainbender-024",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Response Audience Levels",
+            "explanation": "Ways to aim an explanation at a particular reader or situation.",
+            "terms": [
+                  "Brief",
+                  "Detailed",
+                  "Executive",
+                  "Technical"
+            ],
+            "definitions": {
+                  "Brief": "Short in length or duration.",
+                  "Detailed": "Including many facts, parts, or pieces of information.",
+                  "Executive": "Relating to senior decision-making or management.",
+                  "Technical": "Requiring specialized knowledge of a subject or process."
+            }
+      },
+      {
+            "id": "brainbender-025",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Data Cleanup Concepts",
+            "explanation": "Terms that help describe how information is structured before analysis.",
+            "terms": [
+                  "Schema",
+                  "Delimiter",
+                  "Record",
+                  "Field"
+            ],
+            "definitions": {
+                  "Schema": "A defined structure that describes how data is organized.",
+                  "Delimiter": "A character used to separate pieces of data.",
+                  "Record": "A single complete entry in a set of data.",
+                  "Field": "A specific place where one kind of information is stored."
+            }
+      },
+      {
+            "id": "brainbender-026",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Responsible Data Handling",
+            "explanation": "Ideas that help reduce privacy risk when using information with AI tools.",
+            "terms": [
+                  "Consent",
+                  "Retention",
+                  "Minimization",
+                  "Disclosure"
+            ],
+            "definitions": {
+                  "Consent": "Permission for something to happen or be used.",
+                  "Retention": "The act of keeping something for a period of time.",
+                  "Minimization": "The practice of using only what is necessary.",
+                  "Disclosure": "The act of making information known or available."
+            }
+      },
+      {
+            "id": "brainbender-027",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "AI Work Modes",
+            "explanation": "Working styles that match different kinds of AI-assisted tasks.",
+            "terms": [
+                  "Draft Mode",
+                  "Analysis Mode",
+                  "Research Mode",
+                  "Voice Mode"
+            ],
+            "definitions": {
+                  "Draft Mode": "A working state focused on creating an early version.",
+                  "Analysis Mode": "A working state focused on examining information carefully.",
+                  "Research Mode": "A working state focused on finding and comparing information.",
+                  "Voice Mode": "A working state based on spoken interaction."
+            }
+      },
+      {
+            "id": "brainbender-028",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Collaborative Editing Terms",
+            "explanation": "Terms that show up when people work with AI on drafts, documents, or revisions.",
+            "terms": [
+                  "Canvas",
+                  "Workspace",
+                  "Version",
+                  "Selection"
+            ],
+            "definitions": {
+                  "Canvas": "A workspace used for creating, arranging, or editing content.",
+                  "Workspace": "An area or environment where work is organized and completed.",
+                  "Version": "A particular form of something that may change over time.",
+                  "Selection": "A chosen part of a larger whole."
+            }
+      },
+      {
+            "id": "brainbender-029",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Reusable Prompt Pieces",
+            "explanation": "Parts of a repeatable request that can be swapped, filled in, or reused.",
+            "terms": [
+                  "Variable",
+                  "Parameter",
+                  "Placeholder",
+                  "Example Set"
+            ],
+            "definitions": {
+                  "Variable": "A value or element that can change.",
+                  "Parameter": "A limit, factor, or setting that helps define how something works.",
+                  "Placeholder": "A temporary item used until the final one is supplied.",
+                  "Example Set": "A collection of samples used to show a pattern."
+            }
+      },
+      {
+            "id": "brainbender-030",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Shot-Based Prompting",
+            "explanation": "Prompting patterns based on how many examples are provided before asking for an answer.",
+            "terms": [
+                  "Zero-Shot",
+                  "One-Shot",
+                  "Few-Shot",
+                  "Multi-Shot"
+            ],
+            "definitions": {
+                  "Zero-Shot": "A task attempt made without providing examples first.",
+                  "One-Shot": "A task attempt guided by a single example.",
+                  "Few-Shot": "A task attempt guided by a small number of examples.",
+                  "Multi-Shot": "A task attempt guided by several examples."
+            }
+      },
+      {
+            "id": "brainbender-031",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Pieces of a Language Model",
+            "explanation": "Basic components or concepts that help explain how language models process and generate text.",
+            "terms": [
+                  "Token",
+                  "Parameter",
+                  "Weight",
+                  "Vocabulary"
+            ],
+            "definitions": {
+                  "Token": "A small unit of text that a language system can process.",
+                  "Parameter": "A stored value that helps shape how a model behaves.",
+                  "Weight": "A numerical value that affects the strength of a connection or pattern.",
+                  "Vocabulary": "The set of words, pieces, or symbols a system can recognize."
+            }
+      },
+      {
+            "id": "brainbender-032",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Responsible AI Principles",
+            "explanation": "Ideas that support safer, more thoughtful use of AI systems.",
+            "terms": [
+                  "Accountability",
+                  "Oversight",
+                  "Safety",
+                  "Inclusion"
+            ],
+            "definitions": {
+                  "Accountability": "Responsibility for decisions, actions, or outcomes.",
+                  "Oversight": "The act of supervising or monitoring something.",
+                  "Safety": "The condition of being protected from harm or risk.",
+                  "Inclusion": "The practice of considering and involving different people or perspectives."
+            }
+      },
+      {
+            "id": "brainbender-033",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Human Roles in AI Workflows",
+            "explanation": "Roles people may play when reviewing, improving, or controlling AI-assisted work.",
+            "terms": [
+                  "Annotator",
+                  "Validator",
+                  "Moderator",
+                  "Owner"
+            ],
+            "definitions": {
+                  "Annotator": "A person who adds labels, notes, or explanations to information.",
+                  "Validator": "A person or process that checks whether something meets a standard.",
+                  "Moderator": "A person who reviews content or behavior against rules.",
+                  "Owner": "A person responsible for something’s use, quality, or outcome."
+            }
+      },
+      {
+            "id": "brainbender-034",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Prompt Debugging Moves",
+            "explanation": "Ways to improve a prompt when the first answer is not good enough.",
+            "terms": [
+                  "Isolate",
+                  "Specify",
+                  "Reproduce",
+                  "Revise"
+            ],
+            "definitions": {
+                  "Isolate": "To separate one part from others so it can be examined.",
+                  "Specify": "To state something clearly and in detail.",
+                  "Reproduce": "To create the same result again.",
+                  "Revise": "To change something in order to improve it."
+            }
+      },
+      {
+            "id": "brainbender-035",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "AI System Boundaries",
+            "explanation": "Controls or limits that shape what a system is allowed to do.",
+            "terms": [
+                  "Guardrail",
+                  "Threshold",
+                  "Policy",
+                  "Permission"
+            ],
+            "definitions": {
+                  "Guardrail": "A protective limit meant to prevent unsafe or unwanted behavior.",
+                  "Threshold": "The point at which a condition or change begins to apply.",
+                  "Policy": "A rule or set of rules that guides decisions or actions.",
+                  "Permission": "Authorization to access, use, or do something."
+            }
+      },
+      {
+            "id": "brainbender-036",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Chat Memory Concepts",
+            "explanation": "Terms related to how information may persist, appear, or be brought back in a chat experience.",
+            "terms": [
+                  "Session",
+                  "Profile",
+                  "Preference Store",
+                  "Context Window"
+            ],
+            "definitions": {
+                  "Session": "A period of activity within a system or application.",
+                  "Profile": "A set of information that represents a person or account.",
+                  "Preference Store": "A saved place for choices or settings.",
+                  "Context Window": "The amount of surrounding information a system can consider at once."
+            }
+      },
+      {
+            "id": "brainbender-037",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "Multimodal Source Materials",
+            "explanation": "Different kinds of source material someone might ask an AI tool to understand.",
+            "terms": [
+                  "Screenshot",
+                  "Transcript",
+                  "Recording",
+                  "Attachment"
+            ],
+            "definitions": {
+                  "Screenshot": "An image that captures what appears on a screen.",
+                  "Transcript": "A written record of spoken words.",
+                  "Recording": "A captured version of sound, video, or activity.",
+                  "Attachment": "A file or item added to a message, record, or conversation."
+            }
+      },
+      {
+            "id": "brainbender-038",
+            "difficultyKey": "brain-bender",
+            "difficultyLabel": "🧠 Brain-Bender",
+            "name": "___ Model",
+            "explanation": "Words that commonly appear before “model” in AI discussions.",
+            "terms": [
+                  "Foundation",
+                  "Frontier",
+                  "Open-Source",
+                  "Proprietary"
+            ],
+            "definitions": {
+                  "Foundation": "Something that serves as a base for further work.",
+                  "Frontier": "The most advanced edge of a field or area.",
+                  "Open-Source": "Available for others to inspect, use, or modify.",
+                  "Proprietary": "Owned or controlled by a particular company or person."
+            }
+      },
+      {
+            "id": "expert-001",
             "difficultyKey": "expert",
             "difficultyLabel": "🔥 Expert",
             "name": "LLM Architecture Concepts",
@@ -1737,7 +2503,7 @@
             }
       },
       {
-            "id": "expert-042",
+            "id": "expert-002",
             "difficultyKey": "expert",
             "difficultyLabel": "🔥 Expert",
             "name": "Alignment Techniques",
@@ -1756,7 +2522,7 @@
             }
       },
       {
-            "id": "expert-043",
+            "id": "expert-003",
             "difficultyKey": "expert",
             "difficultyLabel": "🔥 Expert",
             "name": "Advanced Retrieval Evaluation",
@@ -1775,7 +2541,7 @@
             }
       },
       {
-            "id": "expert-044",
+            "id": "expert-004",
             "difficultyKey": "expert",
             "difficultyLabel": "🔥 Expert",
             "name": "Vector Search Concepts",
@@ -1794,7 +2560,7 @@
             }
       },
       {
-            "id": "expert-045",
+            "id": "expert-005",
             "difficultyKey": "expert",
             "difficultyLabel": "🔥 Expert",
             "name": "Model Compression Methods",
@@ -1813,7 +2579,7 @@
             }
       },
       {
-            "id": "expert-046",
+            "id": "expert-006",
             "difficultyKey": "expert",
             "difficultyLabel": "🔥 Expert",
             "name": "Robustness Testing Methods",
@@ -1832,7 +2598,7 @@
             }
       },
       {
-            "id": "expert-047",
+            "id": "expert-007",
             "difficultyKey": "expert",
             "difficultyLabel": "🔥 Expert",
             "name": "Privacy-Preserving AI Methods",
@@ -1851,7 +2617,7 @@
             }
       },
       {
-            "id": "expert-048",
+            "id": "expert-008",
             "difficultyKey": "expert",
             "difficultyLabel": "🔥 Expert",
             "name": "Agent Architecture Pieces",
@@ -1870,7 +2636,7 @@
             }
       },
       {
-            "id": "expert-049",
+            "id": "expert-009",
             "difficultyKey": "expert",
             "difficultyLabel": "🔥 Expert",
             "name": "MLOps Monitoring Signals",
@@ -1889,7 +2655,7 @@
             }
       },
       {
-            "id": "expert-050",
+            "id": "expert-010",
             "difficultyKey": "expert",
             "difficultyLabel": "🔥 Expert",
             "name": "Security Threats for AI Systems",
@@ -1908,7 +2674,7 @@
             }
       },
       {
-            "id": "expert-051",
+            "id": "expert-011",
             "difficultyKey": "expert",
             "difficultyLabel": "🔥 Expert",
             "name": "Calibration Concepts",
@@ -1927,7 +2693,7 @@
             }
       },
       {
-            "id": "expert-052",
+            "id": "expert-012",
             "difficultyKey": "expert",
             "difficultyLabel": "🔥 Expert",
             "name": "Evaluation Pitfalls",
@@ -1946,7 +2712,7 @@
             }
       },
       {
-            "id": "expert-053",
+            "id": "expert-013",
             "difficultyKey": "expert",
             "difficultyLabel": "🔥 Expert",
             "name": "Generation Decoding Methods",
@@ -1965,7 +2731,7 @@
             }
       },
       {
-            "id": "expert-054",
+            "id": "expert-014",
             "difficultyKey": "expert",
             "difficultyLabel": "🔥 Expert",
             "name": "RAG Failure Points",
@@ -1984,7 +2750,7 @@
             }
       },
       {
-            "id": "expert-055",
+            "id": "expert-015",
             "difficultyKey": "expert",
             "difficultyLabel": "🔥 Expert",
             "name": "Responsible AI Governance Roles",
@@ -2003,7 +2769,7 @@
             }
       },
       {
-            "id": "expert-056",
+            "id": "expert-016",
             "difficultyKey": "expert",
             "difficultyLabel": "🔥 Expert",
             "name": "Explainability Methods",
@@ -2022,7 +2788,7 @@
             }
       },
       {
-            "id": "expert-057",
+            "id": "expert-017",
             "difficultyKey": "expert",
             "difficultyLabel": "🔥 Expert",
             "name": "Training Data Risks",
@@ -2041,7 +2807,7 @@
             }
       },
       {
-            "id": "expert-058",
+            "id": "expert-018",
             "difficultyKey": "expert",
             "difficultyLabel": "🔥 Expert",
             "name": "LLM Memory Types",
@@ -2060,7 +2826,7 @@
             }
       },
       {
-            "id": "expert-059",
+            "id": "expert-019",
             "difficultyKey": "expert",
             "difficultyLabel": "🔥 Expert",
             "name": "Optimization Objectives",
@@ -2079,7 +2845,7 @@
             }
       },
       {
-            "id": "expert-060",
+            "id": "expert-020",
             "difficultyKey": "expert",
             "difficultyLabel": "🔥 Expert",
             "name": "Multimodal AI Concepts",
@@ -2098,9 +2864,465 @@
             }
       },
       {
-            "id": "filler-001",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "expert-021",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Chain-of-___ Concepts",
+            "explanation": "AI-adjacent terms that commonly follow “chain of” in prompting, verification, summarization, or data review.",
+            "terms": [
+                  "Thought",
+                  "Verification",
+                  "Density",
+                  "Custody"
+            ],
+            "definitions": {
+                  "Thought": "A mental process involving ideas, reasoning, or reflection.",
+                  "Verification": "The process of checking whether something is true, accurate, or valid.",
+                  "Density": "The amount of information, matter, or content within a given space.",
+                  "Custody": "The care, control, or responsibility for something being preserved or handled."
+            }
+      },
+      {
+            "id": "expert-022",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "___ Injection Variants",
+            "explanation": "Types or patterns of injection-style attacks that can affect AI systems and connected tools.",
+            "terms": [
+                  "Direct",
+                  "Indirect",
+                  "Stored",
+                  "Multimodal"
+            ],
+            "definitions": {
+                  "Direct": "Straightforward, immediate, or without an intermediary.",
+                  "Indirect": "Happening through another source, step, or intermediary.",
+                  "Stored": "Kept or saved for later use.",
+                  "Multimodal": "Involving more than one type of input, such as text, image, audio, or video."
+            }
+      },
+      {
+            "id": "expert-023",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "___ Tuning",
+            "explanation": "Terms that can appear before “tuning” in discussions of adapting models or prompts.",
+            "terms": [
+                  "Fine",
+                  "Instruction",
+                  "Hyperparameter",
+                  "Adapter"
+            ],
+            "definitions": {
+                  "Fine": "Delicate, precise, or involving small distinctions.",
+                  "Instruction": "A direction or order that tells someone or something what to do.",
+                  "Hyperparameter": "A setting chosen before training that influences how a system learns.",
+                  "Adapter": "A device, part, or method that allows one thing to work with another."
+            }
+      },
+      {
+            "id": "expert-024",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "RAG Pipeline Verbs",
+            "explanation": "Actions that often happen when retrieved information is prepared, found, and ordered for an AI answer.",
+            "terms": [
+                  "Embed",
+                  "Index",
+                  "Retrieve",
+                  "Rerank"
+            ],
+            "definitions": {
+                  "Embed": "To place something firmly within a surrounding structure or context.",
+                  "Index": "To organize information so it can be found more easily.",
+                  "Retrieve": "To get something back or bring it from storage.",
+                  "Rerank": "To arrange items again in a new order of priority or relevance."
+            }
+      },
+      {
+            "id": "expert-025",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Model Control Settings",
+            "explanation": "Settings that can influence how long, varied, or repetitive a generated answer may be.",
+            "terms": [
+                  "Top-p",
+                  "Output Limit",
+                  "Presence Penalty",
+                  "Frequency Penalty"
+            ],
+            "definitions": {
+                  "Top-p": "A sampling setting that limits choices to a probability-based pool.",
+                  "Output Limit": "A restriction on how much content may be produced.",
+                  "Presence Penalty": "A setting that discourages repeating topics that have already appeared.",
+                  "Frequency Penalty": "A setting that discourages repeating words or patterns too often."
+            }
+      },
+      {
+            "id": "expert-026",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Safety Response Outcomes",
+            "explanation": "Ways an AI system may respond when a request is risky, restricted, or only partly acceptable.",
+            "terms": [
+                  "Refusal",
+                  "Deflection",
+                  "Safe Completion",
+                  "Partial Compliance"
+            ],
+            "definitions": {
+                  "Refusal": "An answer that declines to do something.",
+                  "Deflection": "The act of redirecting attention or movement away from something.",
+                  "Safe Completion": "A response that provides allowed help while avoiding unsafe content.",
+                  "Partial Compliance": "Fulfilling only the acceptable parts of a request."
+            }
+      },
+      {
+            "id": "expert-027",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Text Preprocessing Steps",
+            "explanation": "Steps that can prepare raw language data before it is searched, analyzed, or modeled.",
+            "terms": [
+                  "Lowercasing",
+                  "Stopword Removal",
+                  "Stemming",
+                  "Lemmatization"
+            ],
+            "definitions": {
+                  "Lowercasing": "The process of converting letters to their lowercase form.",
+                  "Stopword Removal": "The process of removing very common words that may add little search value.",
+                  "Stemming": "The process of reducing words to a shorter root-like form.",
+                  "Lemmatization": "The process of reducing words to their dictionary base form."
+            }
+      },
+      {
+            "id": "expert-028",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Training Feedback Sources",
+            "explanation": "Forms of feedback that can help shape, correct, or improve AI behavior.",
+            "terms": [
+                  "Demonstration",
+                  "Critique",
+                  "Correction",
+                  "Reward Signal"
+            ],
+            "definitions": {
+                  "Demonstration": "An example that shows how something should be done.",
+                  "Critique": "A careful judgment or analysis of something’s strengths and weaknesses.",
+                  "Correction": "A change made to fix something that is wrong.",
+                  "Reward Signal": "Information that indicates whether an action or result is desirable."
+            }
+      },
+      {
+            "id": "expert-029",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Data Provenance Checks",
+            "explanation": "Ways to understand where information came from and whether it can be responsibly used.",
+            "terms": [
+                  "Lineage",
+                  "License",
+                  "Origin",
+                  "Traceability"
+            ],
+            "definitions": {
+                  "Lineage": "The history or sequence of origin and development for something.",
+                  "License": "Official permission to use, own, or do something under stated conditions.",
+                  "Origin": "The point or place where something begins or comes from.",
+                  "Traceability": "The ability to follow the history, use, or location of something."
+            }
+      },
+      {
+            "id": "expert-030",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Answer Verification Tactics",
+            "explanation": "Methods for checking whether an AI-generated answer is supported and reliable.",
+            "terms": [
+                  "Backtracking",
+                  "Cross-Check",
+                  "Citation Chase",
+                  "Claim Extraction"
+            ],
+            "definitions": {
+                  "Backtracking": "The act of retracing steps to find an earlier point or source.",
+                  "Cross-Check": "A comparison against another source or method to confirm accuracy.",
+                  "Citation Chase": "The practice of following references back to their supporting sources.",
+                  "Claim Extraction": "The process of identifying specific statements that can be checked."
+            }
+      },
+      {
+            "id": "expert-031",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Agent Failure Patterns",
+            "explanation": "Ways an AI agent or automated workflow can get stuck, fail, or stop being useful.",
+            "terms": [
+                  "Looping",
+                  "Tool Error",
+                  "Timeout",
+                  "Dead End"
+            ],
+            "definitions": {
+                  "Looping": "Repeating the same steps or behavior again and again.",
+                  "Tool Error": "A failure caused by a tool not working as expected.",
+                  "Timeout": "A stop caused by something taking too long.",
+                  "Dead End": "A point where no useful progress can continue."
+            }
+      },
+      {
+            "id": "expert-032",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Evaluation Set Types",
+            "explanation": "Types of test sets or collections used to judge performance more carefully.",
+            "terms": [
+                  "Holdout",
+                  "Gold Set",
+                  "Shadow Set",
+                  "Eval Set"
+            ],
+            "definitions": {
+                  "Holdout": "A reserved portion kept separate for later checking or comparison.",
+                  "Gold Set": "A trusted reference collection used as a standard for comparison.",
+                  "Shadow Set": "A hidden or separate set used to test behavior without affecting the main process.",
+                  "Eval Set": "A collection used to measure how well something performs."
+            }
+      },
+      {
+            "id": "expert-033",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "___ Prompt Types",
+            "explanation": "Prompt types that shape how a model should interpret, resist, or respond to a request.",
+            "terms": [
+                  "Negative",
+                  "Meta",
+                  "Hidden",
+                  "Adversarial"
+            ],
+            "definitions": {
+                  "Negative": "Expressing denial, refusal, absence, or opposition.",
+                  "Meta": "Referring to itself or to the structure around it.",
+                  "Hidden": "Kept out of sight or not immediately visible.",
+                  "Adversarial": "Involving opposition, challenge, or an attempt to exploit weakness."
+            }
+      },
+      {
+            "id": "expert-034",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Context Window Management",
+            "explanation": "Ways to reduce, reshape, or manage information before giving it to a model.",
+            "terms": [
+                  "Compression",
+                  "Compaction",
+                  "Batching",
+                  "Truncation"
+            ],
+            "definitions": {
+                  "Compression": "The process of making something smaller or more compact.",
+                  "Compaction": "The act of pressing or condensing material into a smaller space.",
+                  "Batching": "The process of grouping items together for handling or processing.",
+                  "Truncation": "The process of cutting something short."
+            }
+      },
+      {
+            "id": "expert-035",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Advanced Learning Approaches",
+            "explanation": "Training or improvement approaches that describe how systems may learn from data, signals, or interaction.",
+            "terms": [
+                  "Active",
+                  "Transfer",
+                  "Contrastive",
+                  "Online"
+            ],
+            "definitions": {
+                  "Active": "Involving direct participation or deliberate action.",
+                  "Transfer": "The act of moving something from one place, use, or situation to another.",
+                  "Contrastive": "Based on comparing differences between things.",
+                  "Online": "Connected to or operating through a network or ongoing system."
+            }
+      },
+      {
+            "id": "expert-036",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Generation Quality Dimensions",
+            "explanation": "Qualities that help judge whether an AI-generated answer is useful, readable, and trustworthy.",
+            "terms": [
+                  "Faithfulness",
+                  "Coherence",
+                  "Fluency",
+                  "Robustness"
+            ],
+            "definitions": {
+                  "Faithfulness": "The quality of staying true to the original source or meaning.",
+                  "Coherence": "The quality of being logical, consistent, and easy to follow.",
+                  "Fluency": "The ability to express language smoothly and naturally.",
+                  "Robustness": "The ability to remain effective under varied or difficult conditions."
+            }
+      },
+      {
+            "id": "expert-037",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Data Access Labels",
+            "explanation": "Labels that can describe how widely information should be shared or protected.",
+            "terms": [
+                  "Public",
+                  "Internal",
+                  "Sensitive",
+                  "Restricted"
+            ],
+            "definitions": {
+                  "Public": "Open or available to people generally.",
+                  "Internal": "Existing or used within an organization or system.",
+                  "Sensitive": "Requiring careful handling because harm could result from exposure or misuse.",
+                  "Restricted": "Limited to certain people, uses, or conditions."
+            }
+      },
+      {
+            "id": "expert-038",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Agentic Workflow Roles",
+            "explanation": "Roles that may appear in AI-assisted workflows that decide, gather, combine, or judge information.",
+            "terms": [
+                  "Router",
+                  "Retriever",
+                  "Synthesizer",
+                  "Evaluator"
+            ],
+            "definitions": {
+                  "Router": "A person or system that directs something along a path.",
+                  "Retriever": "A person or system that gets something back from storage or another location.",
+                  "Synthesizer": "A person or system that combines parts into a unified whole.",
+                  "Evaluator": "A person or system that judges value, quality, or performance."
+            }
+      },
+      {
+            "id": "expert-039",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Retrieval Failure Qualities",
+            "explanation": "Ways retrieved information can be less useful than it first appears.",
+            "terms": [
+                  "Staleness",
+                  "Ambiguity",
+                  "Irrelevance",
+                  "Duplication"
+            ],
+            "definitions": {
+                  "Staleness": "The condition of no longer being fresh, current, or useful.",
+                  "Ambiguity": "The quality of having more than one possible meaning.",
+                  "Irrelevance": "The quality of not being connected to the matter at hand.",
+                  "Duplication": "The presence of an unnecessary copy or repeated item."
+            }
+      },
+      {
+            "id": "expert-040",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "De-Identification Techniques",
+            "explanation": "Ways to reduce the chance that information can be tied back to a specific person or case.",
+            "terms": [
+                  "Generalize",
+                  "Suppress",
+                  "Pseudonymize",
+                  "Perturb"
+            ],
+            "definitions": {
+                  "Generalize": "To make something less specific and more broadly applicable.",
+                  "Suppress": "To hold back, hide, or prevent something from being shown.",
+                  "Pseudonymize": "To replace identifying details with substitute names or values.",
+                  "Perturb": "To alter something slightly or disturb its usual state."
+            }
+      },
+      {
+            "id": "expert-041",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Evaluation Comparison Setups",
+            "explanation": "Ways to structure comparisons when judging answers, systems, or outputs.",
+            "terms": [
+                  "Pairwise",
+                  "Blind",
+                  "A/B",
+                  "Regression"
+            ],
+            "definitions": {
+                  "Pairwise": "Involving two items considered together.",
+                  "Blind": "Done without seeing or knowing certain information that could influence judgment.",
+                  "A/B": "Involving a comparison between two different versions.",
+                  "Regression": "A return to an earlier or less advanced state."
+            }
+      },
+      {
+            "id": "expert-042",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Tool Call Stages",
+            "explanation": "Steps that can occur when a system prepares, checks, performs, and reports an external action.",
+            "terms": [
+                  "Parse",
+                  "Authorize",
+                  "Execute",
+                  "Return"
+            ],
+            "definitions": {
+                  "Parse": "To break information into parts so its structure can be understood.",
+                  "Authorize": "To give official permission for something to happen.",
+                  "Execute": "To carry out a command, plan, or action.",
+                  "Return": "To send, give, or bring something back."
+            }
+      },
+      {
+            "id": "expert-043",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "___ Retrieval",
+            "explanation": "Types of retrieval used to find information for search, assistants, or AI-generated answers.",
+            "terms": [
+                  "Sparse",
+                  "Dense",
+                  "Hybrid",
+                  "Semantic"
+            ],
+            "definitions": {
+                  "Sparse": "Thinly distributed or present in small amounts.",
+                  "Dense": "Closely packed or containing many parts in a small space.",
+                  "Hybrid": "Combining two or more different types or methods.",
+                  "Semantic": "Related to meaning in language or symbols."
+            }
+      },
+      {
+            "id": "expert-044",
+            "difficultyKey": "expert",
+            "difficultyLabel": "🔥 Expert",
+            "name": "Model Card Sections",
+            "explanation": "Sections or topics that help document what a model is for, how it was built, and how well it performs.",
+            "terms": [
+                  "Intended Use",
+                  "Limitations",
+                  "Training Data",
+                  "Evaluation Results"
+            ],
+            "definitions": {
+                  "Intended Use": "The purpose for which something is designed or expected to be used.",
+                  "Limitations": "Restrictions, weaknesses, or boundaries on what something can do.",
+                  "Training Data": "Information used to teach or develop a system.",
+                  "Evaluation Results": "Outcomes from a process used to judge quality or performance."
+            }
+      },
+      {
+            "id": "Work-001",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Meeting Types",
             "explanation": "Common meeting formats used in professional settings.",
             "terms": [
@@ -2117,9 +3339,9 @@
             }
       },
       {
-            "id": "filler-002",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-002",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Cybersecurity Basics",
             "explanation": "Core terms related to protecting systems, data, and user access.",
             "terms": [
@@ -2136,9 +3358,9 @@
             }
       },
       {
-            "id": "filler-003",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-003",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Analytics Methods",
             "explanation": "Common approaches used to analyze data, performance, and outcomes.",
             "terms": [
@@ -2155,9 +3377,9 @@
             }
       },
       {
-            "id": "filler-004",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-004",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Review Crew",
             "explanation": "Professional verbs that all involve checking, examining, or evaluating something.",
             "terms": [
@@ -2174,28 +3396,9 @@
             }
       },
       {
-            "id": "filler-005",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
-            "name": "Escalation Station",
-            "explanation": "Workplace items that may be raised to a higher level of attention.",
-            "terms": [
-                  "Issue",
-                  "Ticket",
-                  "Risk",
-                  "Concern"
-            ],
-            "definitions": {
-                  "Issue": "A problem that needs attention or resolution.",
-                  "Ticket": "A tracked request, question, or problem record.",
-                  "Risk": "A potential problem that could affect outcomes.",
-                  "Concern": "A point of worry that may require follow-up."
-            }
-      },
-      {
-            "id": "filler-006",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-005",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Alignment Club",
             "explanation": "Terms about getting teams, expectations, timing, or standards to match.",
             "terms": [
@@ -2212,9 +3415,9 @@
             }
       },
       {
-            "id": "filler-007",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-006",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Data’s Plus-Ones",
             "explanation": "Each card can form a common professional term when placed after the word data.",
             "terms": [
@@ -2231,9 +3434,9 @@
             }
       },
       {
-            "id": "filler-008",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-007",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Review Warm-Ups",
             "explanation": "Each card commonly appears before the word review in workplace language.",
             "terms": [
@@ -2250,9 +3453,9 @@
             }
       },
       {
-            "id": "filler-009",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-008",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Rush-Hour Office",
             "explanation": "Each word is used professionally and also relates to roads, driving, or traffic.",
             "terms": [
@@ -2269,9 +3472,9 @@
             }
       },
       {
-            "id": "filler-010",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-009",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Open Items",
             "explanation": "Each card can be described as open in a workplace context.",
             "terms": [
@@ -2288,9 +3491,9 @@
             }
       },
       {
-            "id": "filler-011",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-010",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Change Department",
             "explanation": "Each card forms a common professional phrase when placed after the word change.",
             "terms": [
@@ -2307,9 +3510,9 @@
             }
       },
       {
-            "id": "filler-012",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-011",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Plan Ahead",
             "explanation": "Each card commonly appears before the word plan in professional settings.",
             "terms": [
@@ -2326,9 +3529,9 @@
             }
       },
       {
-            "id": "filler-013",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-012",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Status Symbols",
             "explanation": "Each card forms a familiar workplace phrase when placed after the word status.",
             "terms": [
@@ -2345,9 +3548,9 @@
             }
       },
       {
-            "id": "filler-014",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-013",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Office Sports Desk",
             "explanation": "Each word is used in business or technical settings and also appears in sports.",
             "terms": [
@@ -2364,9 +3567,9 @@
             }
       },
       {
-            "id": "filler-015",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-014",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Corporate Climate",
             "explanation": "Each word has a professional meaning and also relates to weather or forecasting.",
             "terms": [
@@ -2383,28 +3586,9 @@
             }
       },
       {
-            "id": "filler-016",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
-            "name": "Flag Squad",
-            "explanation": "Items that may be marked for attention, review, or follow-up.",
-            "terms": [
-                  "Risk",
-                  "Issue",
-                  "Transaction",
-                  "Comment"
-            ],
-            "definitions": {
-                  "Risk": "A potential issue marked for monitoring or mitigation.",
-                  "Issue": "A problem highlighted for action.",
-                  "Transaction": "An activity that may be marked for review or investigation.",
-                  "Comment": "A note that may be marked for follow-up."
-            }
-      },
-      {
-            "id": "filler-017",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-015",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Closet Cases",
             "explanation": "Each word has a professional meaning and can also refer to clothing or fabric.",
             "terms": [
@@ -2421,9 +3605,9 @@
             }
       },
       {
-            "id": "filler-018",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-016",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "The “-ing” Crowd",
             "explanation": "Every card ends in “-ing” and is familiar in workplace conversations.",
             "terms": [
@@ -2440,9 +3624,9 @@
             }
       },
       {
-            "id": "filler-019",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-017",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Keyboard Crew",
             "explanation": "Each card is also the name of a keyboard key.",
             "terms": [
@@ -2459,9 +3643,9 @@
             }
       },
       {
-            "id": "filler-020",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-018",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Game Night at the Office",
             "explanation": "Each card is the name of a board or card game and also works as a workplace word.",
             "terms": [
@@ -2478,9 +3662,9 @@
             }
       },
       {
-            "id": "filler-021",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-019",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Silent but Productive",
             "explanation": "Each card contains at least one silent letter.",
             "terms": [
@@ -2497,9 +3681,9 @@
             }
       },
       {
-            "id": "filler-022",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-020",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Office Drama Club",
             "explanation": "Each card is used at work and also belongs on a stage.",
             "terms": [
@@ -2516,9 +3700,9 @@
             }
       },
       {
-            "id": "filler-023",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-021",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Add “-er,” Get a Job",
             "explanation": "Adding “-er” turns each card into a familiar job title or role.",
             "terms": [
@@ -2535,9 +3719,9 @@
             }
       },
       {
-            "id": "filler-024",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-022",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Roman Office Empire",
             "explanation": "Each card hides Roman numerals inside the word.",
             "terms": [
@@ -2554,9 +3738,9 @@
             }
       },
       {
-            "id": "filler-025",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-023",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Acronyms in Disguise",
             "explanation": "Each card started as an acronym but is commonly spoken like a regular word.",
             "terms": [
@@ -2573,9 +3757,9 @@
             }
       },
       {
-            "id": "filler-026",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-024",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "The IT Cameo",
             "explanation": "Each card includes the letters “IT” together.",
             "terms": [
@@ -2592,9 +3776,9 @@
             }
       },
       {
-            "id": "filler-027",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-025",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "The “-tion” Station",
             "explanation": "Each card ends in “-tion” and is common in professional or technical settings.",
             "terms": [
@@ -2611,47 +3795,28 @@
             }
       },
       {
-            "id": "filler-028",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
-            "name": "Alphabet Imposters",
-            "explanation": "Each card sounds like the name of a single letter.",
-            "terms": [
-                  "Queue",
-                  "Cue",
-                  "Sea",
-                  "Why"
-            ],
-            "definitions": {
-                  "Queue": "A line of items waiting to be handled or processed.",
-                  "Cue": "A signal or prompt to begin an action.",
-                  "Sea": "A large body of salt water.",
-                  "Why": "A reason, cause, or explanation."
-            }
-      },
-      {
-            "id": "filler-029",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-026",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "AI Spy",
             "explanation": "Each card hides the letters “AI” together.",
             "terms": [
                   "Training",
                   "Claim",
-                  "Email",
+                  "Fairness",
                   "Detail"
             ],
             "definitions": {
                   "Training": "Teaching skills, processes, or tools.",
                   "Claim": "A request for payment, coverage, or reimbursement.",
-                  "Email": "A digital message sent electronically.",
+                  "Fairness": "Making outcomes equitable.",
                   "Detail": "A specific piece of information."
             }
       },
       {
-            "id": "filler-030",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-027",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Snackable Tech",
             "explanation": "Each card is both a tech term or brand and something food-related.",
             "terms": [
@@ -2668,28 +3833,9 @@
             }
       },
       {
-            "id": "filler-031",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
-            "name": "Command Center",
-            "explanation": "Each card is also the name of a common keyboard key.",
-            "terms": [
-                  "Shift",
-                  "Control",
-                  "Option",
-                  "Command"
-            ],
-            "definitions": {
-                  "Shift": "Change direction, timing, or focus.",
-                  "Control": "Manage, direct, or keep something in check.",
-                  "Option": "A choice or possible path.",
-                  "Command": "An instruction or directive."
-            }
-      },
-      {
-            "id": "filler-032",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-028",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Inbox Moves",
             "explanation": "Each card is a common action available in email.",
             "terms": [
@@ -2706,9 +3852,9 @@
             }
       },
       {
-            "id": "filler-033",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-029",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Desk Drawer Staples",
             "explanation": "Each card is a common office supply.",
             "terms": [
@@ -2725,9 +3871,9 @@
             }
       },
       {
-            "id": "filler-034",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-030",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Iconic Behavior",
             "explanation": "Each card is commonly represented by an app or interface icon.",
             "terms": [
@@ -2744,9 +3890,9 @@
             }
       },
       {
-            "id": "filler-035",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-031",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Fine Lines",
             "explanation": "Each card is a familiar word that ends with or contains LINE as a clear chunk.",
             "terms": [
@@ -2763,9 +3909,9 @@
             }
       },
       {
-            "id": "filler-036",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-032",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Handle With Care",
             "explanation": "Each card is something that can have a handle, physically or digitally.",
             "terms": [
@@ -2782,9 +3928,9 @@
             }
       },
       {
-            "id": "filler-037",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-033",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Digital Small Fries",
             "explanation": "Each card is a small unit, element, or building block in technology.",
             "terms": [
@@ -2801,9 +3947,9 @@
             }
       },
       {
-            "id": "filler-038",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-034",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Roots in the System",
             "explanation": "Each card is a nature word that also appears in technical or data contexts.",
             "terms": [
@@ -2820,9 +3966,9 @@
             }
       },
       {
-            "id": "filler-039",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-035",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Post Moves",
             "explanation": "Each card is a common social media action.",
             "terms": [
@@ -2839,9 +3985,9 @@
             }
       },
       {
-            "id": "filler-040",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-036",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Creature Features",
             "explanation": "Each card is an animal word with a tech or computer meaning.",
             "terms": [
@@ -2858,9 +4004,9 @@
             }
       },
       {
-            "id": "filler-041",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-037",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Point Taken",
             "explanation": "Each card is a common computer mouse action.",
             "terms": [
@@ -2877,9 +4023,9 @@
             }
       },
       {
-            "id": "filler-042",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-038",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Case Closed",
             "explanation": "Each card is the last name or common name of a fictional detective.",
             "terms": [
@@ -2896,9 +4042,9 @@
             }
       },
       {
-            "id": "filler-043",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-039",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Thread Count",
             "explanation": "Each card can have or be part of a thread in a different sense.",
             "terms": [
@@ -2915,9 +4061,47 @@
             }
       },
       {
-            "id": "filler-044",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-040",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
+            "name": "Cooking Words With Coding Meanings",
+            "explanation": "Each word has a food-related meaning and a programming or technical meaning.",
+            "terms": [
+                  "Fork",
+                  "Hash",
+                  "Slice",
+                  "Stack"
+            ],
+            "definitions": {
+                  "Fork": "A utensil with prongs or a copied branch of a software project.",
+                  "Hash": "Chopped food or a value produced from data by an algorithm.",
+                  "Slice": "A thin piece cut from something or a selected portion of data.",
+                  "Stack": "A pile of objects or an ordered structure for storing items."
+            }
+      },
+      {
+            "id": "Work-041",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
+            "name": "Typography Measures and Spacing Terms",
+            "explanation": "Each word is used in typography or text layout.",
+            "terms": [
+                  "Pica",
+                  "Em",
+                  "En",
+                  "Tracking"
+            ],
+            "definitions": {
+                  "Pica": "A typographic unit of measurement.",
+                  "Em": "A unit of width based on the size of type.",
+                  "En": "A unit of width equal to about half an em.",
+                  "Tracking": "The adjustment of spacing across a range of letters."
+            }
+      },
+      {
+            "id": "Work-042",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Web of Meanings",
             "explanation": "Each card connects to the word web in a different way.",
             "terms": [
@@ -2934,9 +4118,28 @@
             }
       },
       {
-            "id": "filler-045",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-043",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
+            "name": "Browsers With Other Meanings",
+            "explanation": "Each word is also the name of a web browser.",
+            "terms": [
+                  "Chrome",
+                  "Safari",
+                  "Edge",
+                  "Opera"
+            ],
+            "definitions": {
+                  "Chrome": "A shiny metallic coating or finish.",
+                  "Safari": "A journey to observe or hunt animals, especially in Africa.",
+                  "Edge": "The outside limit, border, or sharp side of something.",
+                  "Opera": "A dramatic musical performance with singing and orchestra."
+            }
+      },
+      {
+            "id": "Work-044",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Trailing Signs",
             "explanation": "Each card is something that can have a tail.",
             "terms": [
@@ -2953,9 +4156,9 @@
             }
       },
       {
-            "id": "filler-046",
-            "difficultyKey": "filler",
-            "difficultyLabel": "Filler",
+            "id": "Work-045",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
             "name": "Status Update",
             "explanation": "Each card is a common digital availability status.",
             "terms": [
@@ -2970,6 +4173,1165 @@
                   "Busy": "Occupied.",
                   "Offline": "Disconnected."
             }
+      },
+      {
+            "id": "Work-046",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
+            "name": "URL Pieces",
+            "explanation": "Each word names a part of a web address.",
+            "terms": [
+                  "Protocol",
+                  "Domain",
+                  "Path",
+                  "Fragment"
+            ],
+            "definitions": {
+                  "Protocol": "A formal system of rules or procedures.",
+                  "Domain": "An area of knowledge, activity, territory, or control.",
+                  "Path": "A route or course followed from one place to another.",
+                  "Fragment": "A small broken-off piece of something larger."
+            }
+      },
+      {
+            "id": "Work-047",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
+            "name": "Apple Names Before They Were Apple Names",
+            "explanation": "Each word has been used as the name of an Apple product, project, or platform.",
+            "terms": [
+                  "Macintosh",
+                  "Newton",
+                  "Lisa",
+                  "Vision"
+            ],
+            "definitions": {
+                  "Macintosh": "A type of apple with red and green skin.",
+                  "Newton": "A unit of force named after a scientist.",
+                  "Lisa": "A common female given name.",
+                  "Vision": "The ability to see or imagine what could happen."
+            }
+      },
+      {
+            "id": "Work-048",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
+            "name": "Release Labels",
+            "explanation": "Each word can describe a stage or label used before or around a product release.",
+            "terms": [
+                  "Alpha",
+                  "Beta",
+                  "Canary",
+                  "Stable"
+            ],
+            "definitions": {
+                  "Alpha": "The first letter of the Greek alphabet.",
+                  "Beta": "The second letter of the Greek alphabet.",
+                  "Canary": "A small yellow bird once used to warn miners of danger.",
+                  "Stable": "Firm, steady, or unlikely to change suddenly."
+            }
+      },
+      {
+            "id": "Work-049",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
+            "name": "___ware",
+            "explanation": "Each word can combine with “ware” to form a technology-related word.",
+            "terms": [
+                  "Soft",
+                  "Hard",
+                  "Firm",
+                  "Vapor"
+            ],
+            "definitions": {
+                  "Soft": "Easy to press, bend, or shape.",
+                  "Hard": "Firm, solid, or difficult to bend.",
+                  "Firm": "Steady, solid, or not easily moved.",
+                  "Vapor": "A substance in gas form, especially one that is usually liquid or solid."
+            }
+      },
+      {
+            "id": "Work-050",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
+            "name": "___Script",
+            "explanation": "Each word can combine with “script” to form a programming or text-related term.",
+            "terms": [
+                  "Java",
+                  "Type",
+                  "Post",
+                  "Sub"
+            ],
+            "definitions": {
+                  "Java": "An island in Indonesia and a word associated with coffee.",
+                  "Type": "A category, kind, or printed character.",
+                  "Post": "To place, publish, or send something.",
+                  "Sub": "A shortened form for something below, secondary, or substitute."
+            }
+      },
+      {
+            "id": "Work-051",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
+            "name": "Programming Languages That Are Common Words",
+            "explanation": "Each word is also the name of a programming language.",
+            "terms": [
+                  "Ruby",
+                  "Rust",
+                  "Swift",
+                  "Go"
+            ],
+            "definitions": {
+                  "Ruby": "A red precious stone.",
+                  "Rust": "A reddish-brown coating that forms on iron or steel.",
+                  "Swift": "Fast or quick in movement.",
+                  "Go": "To move or travel from one place to another."
+            }
+      },
+      {
+            "id": "Work-052",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
+            "name": "Email Folders",
+            "explanation": "Each word can name a place where messages are sorted or stored.",
+            "terms": [
+                  "Inbox",
+                  "Drafts",
+                  "Sent",
+                  "Trash"
+            ],
+            "definitions": {
+                  "Inbox": "A place where newly received messages arrive.",
+                  "Drafts": "Unfinished messages or versions not yet finalized.",
+                  "Sent": "Messages that have already been delivered or dispatched.",
+                  "Trash": "A place for items marked to be discarded."
+            }
+      },
+      {
+            "id": "Work-053",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
+            "name": "Space Words With Everyday Uses",
+            "explanation": "Each word has an astronomy meaning and a broader everyday meaning.",
+            "terms": [
+                  "Orbit",
+                  "Satellite",
+                  "Gravity",
+                  "Eclipse"
+            ],
+            "definitions": {
+                  "Orbit": "The curved path of one object around another.",
+                  "Satellite": "An object that revolves around a larger object or supports something from outside.",
+                  "Gravity": "A force that attracts objects or the seriousness of a situation.",
+                  "Eclipse": "An event where one body blocks another or a loss of prominence."
+            }
+      },
+      {
+            "id": "Work-054",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
+            "name": "Data ___",
+            "explanation": "Each word can follow “data” to form a common phrase.",
+            "terms": [
+                  "Mining",
+                  "Science",
+                  "Entry",
+                  "Center"
+            ],
+            "definitions": {
+                  "Mining": "The process of extracting something valuable from a larger source.",
+                  "Science": "A field of study based on observation, testing, and evidence.",
+                  "Entry": "An item written, recorded, or submitted into a system.",
+                  "Center": "The middle point or main place of activity."
+            }
+      },
+      {
+            "id": "Work-055",
+            "difficultyKey": "work-filler",
+            "difficultyLabel": "Work Filler",
+            "name": "Computing Words Borrowed From Elsewhere",
+            "explanation": "Each word has a common nontechnical meaning and a specific computing meaning.",
+            "terms": [
+                  "Port",
+                  "Cache",
+                  "Kernel",
+                  "Patch"
+            ],
+            "definitions": {
+                  "Port": "A harbor or a connection point for devices or networks.",
+                  "Cache": "A hidden store of supplies or stored data kept for faster access.",
+                  "Kernel": "The central part of a seed or the core of an operating system.",
+                  "Patch": "A piece used to cover a hole or an update used to fix software."
+            }
+      },
+      {
+            "id": "Silly-001",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Silent First Letters",
+            "explanation": "Each word begins with a letter that is not pronounced.",
+            "terms": [
+                  "Gnome",
+                  "Knight",
+                  "Wrist",
+                  "Honest"
+            ],
+            "definitions": {
+                  "Gnome": "A small mythical creature often shown as a garden statue.",
+                  "Knight": "A mounted warrior from the medieval period.",
+                  "Wrist": "The joint connecting the hand and forearm.",
+                  "Honest": "Truthful and free from deception."
+            }
+      },
+      {
+            "id": "Silly-002",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Palindromes",
+            "explanation": "Each word reads the same forward and backward.",
+            "terms": [
+                  "Level",
+                  "Civic",
+                  "Kayak",
+                  "Rotator"
+            ],
+            "definitions": {
+                  "Level": "Flat, even, or at the same height.",
+                  "Civic": "Relating to a city, town, or citizenship.",
+                  "Kayak": "A small narrow boat moved with a double-bladed paddle.",
+                  "Rotator": "Something that turns around a central point."
+            }
+      },
+      {
+            "id": "Silly-003",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "___ Board",
+            "explanation": "Each word can come before “board” to form a common phrase.",
+            "terms": [
+                  "White",
+                  "Cutting",
+                  "Surf",
+                  "Score"
+            ],
+            "definitions": {
+                  "White": "The color of snow or milk.",
+                  "Cutting": "The act of slicing or separating something with a sharp edge.",
+                  "Surf": "Waves breaking near the shore.",
+                  "Score": "A number showing points, results, or performance."
+            }
+      },
+      {
+            "id": "Silly-004",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Double Letters",
+            "explanation": "Each word contains a repeated letter pair.",
+            "terms": [
+                  "Coffee",
+                  "Balloon",
+                  "Address",
+                  "Committee"
+            ],
+            "definitions": {
+                  "Coffee": "A brewed drink made from roasted beans.",
+                  "Balloon": "A flexible bag that expands when filled with air or gas.",
+                  "Address": "The place where someone lives or receives mail.",
+                  "Committee": "A group of people chosen to consider or manage something."
+            }
+      },
+      {
+            "id": "Silly-006",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "___cast",
+            "explanation": "Each word can combine with “cast” to form another word.",
+            "terms": [
+                  "Broad",
+                  "Pod",
+                  "Fore",
+                  "Weather"
+            ],
+            "definitions": {
+                  "Broad": "Wide in extent, range, or meaning.",
+                  "Pod": "A small group, container, or seed case.",
+                  "Fore": "Located at or toward the front.",
+                  "Weather": "The state of the atmosphere at a particular time and place."
+            }
+      },
+      {
+            "id": "Silly-007",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "___ Bug",
+            "explanation": "Each word can come before “bug” to name an insect, pest, or issue.",
+            "terms": [
+                  "Lady",
+                  "Bed",
+                  "Fire",
+                  "Stink"
+            ],
+            "definitions": {
+                  "Lady": "A polite term for a woman.",
+                  "Bed": "A piece of furniture used for sleeping.",
+                  "Fire": "Heat, light, and flame produced by burning.",
+                  "Stink": "A strong unpleasant smell."
+            }
+      },
+      {
+            "id": "Silly-008",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Keyboard Symbol Names",
+            "explanation": "Names of symbols commonly found on a keyboard.",
+            "terms": [
+                  "Tilde",
+                  "Ampersand",
+                  "Asterisk",
+                  "Caret"
+            ],
+            "definitions": {
+                  "Tilde": "A mark shaped like a small wave.",
+                  "Ampersand": "A symbol meaning “and.”",
+                  "Asterisk": "A star-shaped symbol used for notes, emphasis, or multiplication.",
+                  "Caret": "A mark shaped like an upward angle."
+            }
+      },
+      {
+            "id": "Silly-009",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Common Font Names",
+            "explanation": "Each word is also the name of a commonly recognized typeface.",
+            "terms": [
+                  "Georgia",
+                  "Courier",
+                  "Impact",
+                  "Times"
+            ],
+            "definitions": {
+                  "Georgia": "A state in the southeastern United States.",
+                  "Courier": "A person or service that delivers messages or packages.",
+                  "Impact": "A strong effect or collision.",
+                  "Times": "Instances, occasions, or periods."
+            }
+      },
+      {
+            "id": "Silly-010",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "___ Key",
+            "explanation": "Each word can come before “key” to form a familiar phrase.",
+            "terms": [
+                  "House",
+                  "Car",
+                  "Piano",
+                  "Answer"
+            ],
+            "definitions": {
+                  "House": "A building where people live.",
+                  "Car": "A road vehicle with four wheels.",
+                  "Piano": "A musical instrument with keys and strings.",
+                  "Answer": "A response to a question."
+            }
+      },
+      {
+            "id": "Silly-011",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "___ Line",
+            "explanation": "Each word can come before “line” to form a familiar phrase.",
+            "terms": [
+                  "Punch",
+                  "Finish",
+                  "Bottom",
+                  "Subject"
+            ],
+            "definitions": {
+                  "Punch": "A hit made with a closed hand.",
+                  "Finish": "The end or final part of something.",
+                  "Bottom": "The lowest part of something.",
+                  "Subject": "The topic being discussed or studied."
+            }
+      },
+      {
+            "id": "Silly-012",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Words With Hidden Numbers",
+            "explanation": "Each word contains the letters of a number in order.",
+            "terms": [
+                  "Stone",
+                  "Freight",
+                  "Twinkle",
+                  "Height"
+            ],
+            "definitions": {
+                  "Stone": "A hard natural material found in the ground.",
+                  "Freight": "Goods transported by truck, train, ship, or plane.",
+                  "Twinkle": "To shine with a flickering or sparkling light.",
+                  "Height": "The measurement of how tall something is."
+            }
+      },
+      {
+            "id": "Silly-013",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Silent B Words",
+            "explanation": "Each word contains a “b” that is not pronounced.",
+            "terms": [
+                  "Comb",
+                  "Doubt",
+                  "Lamb",
+                  "Thumb"
+            ],
+            "definitions": {
+                  "Comb": "A tool with teeth used to arrange hair.",
+                  "Doubt": "A feeling of uncertainty or lack of conviction.",
+                  "Lamb": "A young sheep.",
+                  "Thumb": "The short thick digit on the side of the hand."
+            }
+      },
+      {
+            "id": "Silly-014",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Letter Soundalikes",
+            "explanation": "Each word sounds like a single letter of the alphabet.",
+            "terms": [
+                  "Bee",
+                  "Jay",
+                  "Tea",
+                  "Eye"
+            ],
+            "definitions": {
+                  "Bee": "A flying insect known for making honey.",
+                  "Jay": "A bird often known for its loud calls and colorful feathers.",
+                  "Tea": "A drink made by steeping leaves in hot water.",
+                  "Eye": "The organ used for seeing."
+            }
+      },
+      {
+            "id": "Silly-015",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "___ Jam",
+            "explanation": "Each word can come before “jam” to form a familiar phrase.",
+            "terms": [
+                  "Traffic",
+                  "Paper",
+                  "Space",
+                  "Pearl"
+            ],
+            "definitions": {
+                  "Traffic": "Vehicles moving along roads or through an area.",
+                  "Paper": "A thin material used for writing, printing, or wrapping.",
+                  "Space": "The area or distance around, between, or beyond things.",
+                  "Pearl": "A smooth round object formed inside some shellfish."
+            }
+      },
+      {
+            "id": "Silly-016",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "___ Star",
+            "explanation": "Each word can come before “star” to form a familiar phrase.",
+            "terms": [
+                  "North",
+                  "Movie",
+                  "Shooting",
+                  "Pop"
+            ],
+            "definitions": {
+                  "North": "The direction toward the top of most maps.",
+                  "Movie": "A story shown through moving images.",
+                  "Shooting": "The act of firing something or moving quickly across the sky.",
+                  "Pop": "A sharp short sound or a style of popular music."
+            }
+      },
+      {
+            "id": "Silly-017",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "___ Fish",
+            "explanation": "Each word can come before “fish” to name a creature.",
+            "terms": [
+                  "Gold",
+                  "Sword",
+                  "Jelly",
+                  "Star"
+            ],
+            "definitions": {
+                  "Gold": "A yellow precious metal.",
+                  "Sword": "A weapon with a long blade.",
+                  "Jelly": "A soft sweet food that holds its shape.",
+                  "Star": "A bright object seen in the night sky."
+            }
+      },
+      {
+            "id": "Silly-018",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Major Arcana Cards",
+            "explanation": "Each word is the name of a card in the tarot’s Major Arcana.",
+            "terms": [
+                  "Fool",
+                  "Magician",
+                  "Lovers",
+                  "Hermit"
+            ],
+            "definitions": {
+                  "Fool": "A person who acts unwisely or lacks good judgment.",
+                  "Magician": "A person who performs tricks or illusions.",
+                  "Lovers": "People who are romantically connected.",
+                  "Hermit": "A person who lives alone or apart from society."
+            }
+      },
+      {
+            "id": "Silly-019",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "___ Bank",
+            "explanation": "Each word can come before “bank” to form a familiar phrase.",
+            "terms": [
+                  "River",
+                  "Blood",
+                  "Word",
+                  "Power"
+            ],
+            "definitions": {
+                  "River": "A natural stream of water flowing toward a larger body of water.",
+                  "Blood": "The red fluid that circulates through the body.",
+                  "Word": "A unit of language with meaning.",
+                  "Power": "The ability or capacity to do something."
+            }
+      },
+      {
+            "id": "Silly-020",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Playing Card Terms",
+            "explanation": "Each word can name something found in or associated with a deck of cards.",
+            "terms": [
+                  "Ace",
+                  "Joker",
+                  "Spade",
+                  "Club"
+            ],
+            "definitions": {
+                  "Ace": "A playing card that can often have the highest or lowest value.",
+                  "Joker": "A playing card often used as a wild card.",
+                  "Spade": "A black suit symbol shaped like a pointed leaf.",
+                  "Club": "A black suit symbol shaped like a three-leaf clover."
+            }
+      },
+      {
+            "id": "Silly-021",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Release Labels",
+            "explanation": "Each word can describe a stage or label used before or around a product release.",
+            "terms": [
+                  "Alpha",
+                  "Beta",
+                  "Canary",
+                  "Stable"
+            ],
+            "definitions": {
+                  "Alpha": "The first letter of the Greek alphabet.",
+                  "Beta": "The second letter of the Greek alphabet.",
+                  "Canary": "A small yellow bird once used to warn miners of danger.",
+                  "Stable": "Firm, steady, or unlikely to change suddenly."
+            }
+      },
+      {
+            "id": "Silly-022",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "___ware",
+            "explanation": "Each word can combine with “ware” to form a technology-related word.",
+            "terms": [
+                  "Soft",
+                  "Hard",
+                  "Firm",
+                  "Vapor"
+            ],
+            "definitions": {
+                  "Soft": "Easy to press, bend, or shape.",
+                  "Hard": "Firm, solid, or difficult to bend.",
+                  "Firm": "Steady, solid, or not easily moved.",
+                  "Vapor": "A substance in gas form, especially one that is usually liquid or solid."
+            }
+      },
+      {
+            "id": "Silly-023",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Cloud Types",
+            "explanation": "Each word names a type of cloud.",
+            "terms": [
+                  "Cirrus",
+                  "Cumulus",
+                  "Stratus",
+                  "Nimbus"
+            ],
+            "definitions": {
+                  "Cirrus": "A thin wispy cloud usually found high in the sky.",
+                  "Cumulus": "A puffy cloud with a rounded top and flatter base.",
+                  "Stratus": "A low cloud that often forms a gray layer.",
+                  "Nimbus": "A cloud or halo associated with rain or radiance."
+            }
+      },
+      {
+            "id": "Silly-024",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "File Menu Verbs",
+            "explanation": "Each word is a common action in a file menu.",
+            "terms": [
+                  "New",
+                  "Open",
+                  "Save",
+                  "Print"
+            ],
+            "definitions": {
+                  "New": "Not existing before or recently made.",
+                  "Open": "Not closed, covered, or blocked.",
+                  "Save": "To keep something from being lost, wasted, or harmed.",
+                  "Print": "To produce text or images on paper."
+            }
+      },
+      {
+            "id": "Silly-025",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "___light",
+            "explanation": "Each word can come before “light” to form a familiar word.",
+            "terms": [
+                  "Flash",
+                  "Spot",
+                  "Gas",
+                  "Moon"
+            ],
+            "definitions": {
+                  "Flash": "A sudden brief burst of light or movement.",
+                  "Spot": "A small mark, place, or particular location.",
+                  "Gas": "A substance that expands freely to fill available space.",
+                  "Moon": "The natural satellite that orbits Earth."
+            }
+      },
+      {
+            "id": "Silly-026",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "___storm",
+            "explanation": "Each word can come before “storm” to form a familiar word.",
+            "terms": [
+                  "Thunder",
+                  "Snow",
+                  "Sand",
+                  "Hail"
+            ],
+            "definitions": {
+                  "Thunder": "The loud sound that follows lightning.",
+                  "Snow": "Frozen precipitation made of ice crystals.",
+                  "Sand": "Tiny loose grains of rock or mineral.",
+                  "Hail": "Pellets of ice that fall from clouds."
+            }
+      },
+      {
+            "id": "Silly-027",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Bracket Shapes",
+            "explanation": "Each word can describe a type or shape of bracket.",
+            "terms": [
+                  "Round",
+                  "Square",
+                  "Curly",
+                  "Angle"
+            ],
+            "definitions": {
+                  "Round": "Shaped like a circle or curve.",
+                  "Square": "Having four equal sides and four right angles.",
+                  "Curly": "Formed in curls, coils, or twisting shapes.",
+                  "Angle": "The space between two lines or surfaces that meet."
+            }
+      },
+      {
+            "id": "Silly-028",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "___ Pack",
+            "explanation": "Each word can come before “pack” to form a familiar word or phrase.",
+            "terms": [
+                  "Back",
+                  "Six",
+                  "Jet",
+                  "Snack"
+            ],
+            "definitions": {
+                  "Back": "The rear part or opposite side of something.",
+                  "Six": "The number after five and before seven.",
+                  "Jet": "A fast aircraft or a stream of liquid or gas.",
+                  "Snack": "A small amount of food eaten between meals."
+            }
+      },
+      {
+            "id": "Silly-029",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Silent G Words",
+            "explanation": "Each word contains a “g” that is not pronounced.",
+            "terms": [
+                  "Gnat",
+                  "Gnaw",
+                  "Sign",
+                  "Reign"
+            ],
+            "definitions": {
+                  "Gnat": "A tiny flying insect.",
+                  "Gnaw": "To bite or chew something repeatedly.",
+                  "Sign": "A mark, gesture, or object that communicates meaning.",
+                  "Reign": "The period during which a ruler holds power."
+            }
+      },
+      {
+            "id": "Silly-030",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Words That Change When Capitalized",
+            "explanation": "Each word can become a proper noun with a different common meaning when capitalized.",
+            "terms": [
+                  "Polish",
+                  "Turkey",
+                  "Mobile",
+                  "Reading"
+            ],
+            "definitions": {
+                  "Polish": "To make something smooth, shiny, or more refined.",
+                  "Turkey": "A large bird often associated with holiday meals.",
+                  "Mobile": "Able to move or be moved easily.",
+                  "Reading": "The act of looking at and understanding written words."
+            }
+      },
+      {
+            "id": "Silly-031",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Math Words With Everyday Meanings",
+            "explanation": "Each word is both a math term and a common non-math word.",
+            "terms": [
+                  "Mean",
+                  "Mode",
+                  "Range",
+                  "Root"
+            ],
+            "definitions": {
+                  "Mean": "Unkind or intended to hurt someone.",
+                  "Mode": "A way or manner in which something happens or is done.",
+                  "Range": "The distance or area between limits.",
+                  "Root": "The part of a plant that usually grows underground."
+            }
+      },
+      {
+            "id": "Silly-032",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Keyboard Keys Hiding in Plain Sight",
+            "explanation": "Each word contains the name of a keyboard key inside it.",
+            "terms": [
+                  "Escape",
+                  "Tabloid",
+                  "Entertain",
+                  "Delete"
+            ],
+            "definitions": {
+                  "Escape": "To get away from danger, confinement, or an unwanted situation.",
+                  "Tabloid": "A newspaper or publication with a compact format or sensational style.",
+                  "Entertain": "To amuse, interest, or host someone.",
+                  "Delete": "To remove or erase something."
+            }
+      },
+      {
+            "id": "Silly-033",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Words With Three Consecutive Vowels",
+            "explanation": "Each word contains three vowel letters in a row.",
+            "terms": [
+                  "Beauty",
+                  "Queueing",
+                  "Obsequious",
+                  "Maneuver"
+            ],
+            "definitions": {
+                  "Beauty": "The quality of being pleasing to the senses or mind.",
+                  "Queueing": "The act of waiting in or forming a line.",
+                  "Obsequious": "Excessively eager to please or obey.",
+                  "Maneuver": "To move skillfully or carefully."
+            }
+      },
+      {
+            "id": "Silly-034",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Words That Become New Words When Reversed",
+            "explanation": "Each word forms another valid word when spelled backward.",
+            "terms": [
+                  "Stressed",
+                  "Drawer",
+                  "Reward",
+                  "Deliver"
+            ],
+            "definitions": {
+                  "Stressed": "Feeling mental or emotional strain.",
+                  "Drawer": "A sliding storage compartment in a piece of furniture.",
+                  "Reward": "Something given in return for good work or behavior.",
+                  "Deliver": "To bring or transport something to a person or place."
+            }
+      },
+      {
+            "id": "Silly-035",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Words With Hidden Months",
+            "explanation": "Each word contains a three-letter month abbreviation in order.",
+            "terms": [
+                  "Decade",
+                  "Apron",
+                  "Maybe",
+                  "Octopus"
+            ],
+            "definitions": {
+                  "Decade": "A period of ten years.",
+                  "Apron": "A garment worn over clothing to protect it.",
+                  "Maybe": "Used to show that something is possible but not certain.",
+                  "Octopus": "A sea animal with eight arms."
+            }
+      },
+      {
+            "id": "Silly-036",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Words With Silent Internal Letters",
+            "explanation": "Each word contains a letter inside the word that is usually not pronounced.",
+            "terms": [
+                  "Island",
+                  "Castle",
+                  "Wednesday",
+                  "Receipt"
+            ],
+            "definitions": {
+                  "Island": "A piece of land surrounded by water.",
+                  "Castle": "A large fortified building, especially from the past.",
+                  "Wednesday": "The day of the week between Tuesday and Thursday.",
+                  "Receipt": "A written or electronic record showing that something was received or paid for."
+            }
+      },
+      {
+            "id": "Silly-037",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Words That Are Also Music Symbols",
+            "explanation": "Each word is also used as a symbol or marking in written music.",
+            "terms": [
+                  "Flat",
+                  "Sharp",
+                  "Rest",
+                  "Accent"
+            ],
+            "definitions": {
+                  "Flat": "Level, smooth, or without raised areas.",
+                  "Sharp": "Having a thin edge or point that can cut or pierce.",
+                  "Rest": "A period of relaxation or inactivity.",
+                  "Accent": "A distinctive emphasis, pronunciation, or manner of speaking."
+            }
+      },
+      {
+            "id": "Silly-038",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "One-Letter Chemical Symbols",
+            "explanation": "Each word is also the full name of an element represented by a single-letter symbol.",
+            "terms": [
+                  "Carbon",
+                  "Hydrogen",
+                  "Oxygen",
+                  "Nitrogen"
+            ],
+            "definitions": {
+                  "Carbon": "A chemical element found in all known life.",
+                  "Hydrogen": "A very light chemical element that can combine with oxygen to form water.",
+                  "Oxygen": "A chemical element needed by many living things to breathe.",
+                  "Nitrogen": "A chemical element that makes up most of Earth’s atmosphere."
+            }
+      },
+      {
+            "id": "Silly-039",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Heteronyms",
+            "explanation": "Each word can be pronounced two ways with different meanings.",
+            "terms": [
+                  "Lead",
+                  "Wind",
+                  "Tear",
+                  "Bow"
+            ],
+            "definitions": {
+                  "Lead": "To guide someone.",
+                  "Wind": "The act of turning something.",
+                  "Tear": "A drop from the eye.",
+                  "Bow": "A bend at the waist."
+            }
+      },
+      {
+            "id": "Silly-040",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Silent Final Letters",
+            "explanation": "Each word ends with a letter that is usually not pronounced.",
+            "terms": [
+                  "Autumn",
+                  "Hymn",
+                  "Condemn",
+                  "Solemn"
+            ],
+            "definitions": {
+                  "Autumn": "The season between summer and winter.",
+                  "Hymn": "A religious song or poem of praise.",
+                  "Condemn": "To express strong disapproval or impose a penalty.",
+                  "Solemn": "Serious, formal, or deeply sincere."
+            }
+      },
+      {
+            "id": "Silly-041",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Tree Names That Are Also Names",
+            "explanation": "Each word can name a tree and also be used as a person’s name.",
+            "terms": [
+                  "Willow",
+                  "Hazel",
+                  "Olive",
+                  "Ash"
+            ],
+            "definitions": {
+                  "Willow": "A tree with long flexible branches and narrow leaves.",
+                  "Hazel": "A shrub or tree that produces nuts.",
+                  "Olive": "A small fruit used for food and oil.",
+                  "Ash": "A powdery residue left after burning."
+            }
+      },
+      {
+            "id": "Silly-042",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Foods That Are Also Colors",
+            "explanation": "Each word can refer to something edible and to a color.",
+            "terms": [
+                  "Salmon",
+                  "Peach",
+                  "Plum",
+                  "Mustard"
+            ],
+            "definitions": {
+                  "Salmon": "A fish often known for pinkish-orange flesh.",
+                  "Peach": "A soft juicy fruit with fuzzy skin.",
+                  "Plum": "A sweet purple or reddish fruit with a pit.",
+                  "Mustard": "A yellow or brown condiment made from seeds."
+            }
+      },
+      {
+            "id": "Silly-043",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Magazine Titles That Are Common Words",
+            "explanation": "Each word is also the title of a well-known magazine.",
+            "terms": [
+                  "Time",
+                  "People",
+                  "Fortune",
+                  "Wired"
+            ],
+            "definitions": {
+                  "Time": "The measured progress of events from past to future.",
+                  "People": "Human beings considered individually or as a group.",
+                  "Fortune": "Chance, luck, or great wealth.",
+                  "Wired": "Equipped with wires or feeling tense and energetic."
+            }
+      },
+      {
+            "id": "Silly-044",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Car Models That Are Common Words",
+            "explanation": "Each word is also the name of a vehicle model.",
+            "terms": [
+                  "Accord",
+                  "Civic",
+                  "Pilot",
+                  "Ranger"
+            ],
+            "definitions": {
+                  "Accord": "Agreement or harmony between people or groups.",
+                  "Civic": "Relating to a city, town, or citizenship.",
+                  "Pilot": "A person who operates an aircraft or guides something.",
+                  "Ranger": "A person who patrols or protects a park, forest, or area."
+            }
+      },
+      {
+            "id": "Silly-045",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Poker Moves",
+            "explanation": "Each word can describe an action taken during a poker hand.",
+            "terms": [
+                  "Call",
+                  "Raise",
+                  "Fold",
+                  "Bluff"
+            ],
+            "definitions": {
+                  "Call": "To name or summon someone.",
+                  "Raise": "To lift something higher.",
+                  "Fold": "To bend something over on itself.",
+                  "Bluff": "To deceive someone by pretending to be more confident than you are."
+            }
+      },
+      {
+            "id": "Silly-046",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Kitchen Words in Computing",
+            "explanation": "Each word has a kitchen meaning and a computing or internet-related meaning.",
+            "terms": [
+                  "Cookie",
+                  "Menu",
+                  "Server",
+                  "Cloud"
+            ],
+            "definitions": {
+                  "Cookie": "A small file or piece of data stored by a website in a browser.",
+                  "Menu": "A list of food or drink choices.",
+                  "Server": "A computer or system that provides data, resources, or services to other devices.",
+                  "Cloud": "A visible mass of tiny water droplets in the sky."
+            }
+      },
+      {
+            "id": "Silly-047",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Units With Everyday Meanings",
+            "explanation": "Each word is both a unit of measurement and a common everyday word.",
+            "terms": [
+                  "Yard",
+                  "Pound",
+                  "Foot",
+                  "Second"
+            ],
+            "definitions": {
+                  "Yard": "An outdoor area beside a building.",
+                  "Pound": "To strike something repeatedly with force.",
+                  "Foot": "The lower part of the leg.",
+                  "Second": "The item after the first."
+            }
+      },
+      {
+            "id": "Silly-048",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Foods That Are Also Terms of Endearment",
+            "explanation": "Each word can be food-related and also used affectionately for a person.",
+            "terms": [
+                  "Honey",
+                  "Sugar",
+                  "Sweetie",
+                  "Pumpkin"
+            ],
+            "definitions": {
+                  "Honey": "An affectionate name for someone loved or cared for.",
+                  "Sugar": "A sweet crystalline substance used in food and drinks.",
+                  "Sweetie": "A term of affection for a kind, lovable, or cherished person.",
+                  "Pumpkin": "A large orange squash often associated with Halloween."
+            }
+      },
+      {
+            "id": "Silly-049",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Kitchen Words in Computing",
+            "explanation": "Each word has a kitchen meaning and a computing or internet-related meaning.",
+            "terms": [
+                  "Cookie",
+                  "Menu",
+                  "Server",
+                  "Cloud"
+            ],
+            "definitions": {
+                  "Cookie": "A small file or piece of data stored by a website in a browser.",
+                  "Menu": "A list of commands or options shown in a software interface.",
+                  "Server": "A computer or system that provides data, resources, or services to other devices.",
+                  "Cloud": "Online computing or storage resources accessed over the internet."
+            }
+      },
+      {
+            "id": "Silly-050",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Culinary Measurements That Also Mean Something Else",
+            "explanation": "Each word can describe an amount in cooking and also has another common meaning.",
+            "terms": [
+                  "Dash",
+                  "Pinch",
+                  "Splash",
+                  "Drop"
+            ],
+            "definitions": {
+                  "Dash": "To run or move quickly.",
+                  "Pinch": "To squeeze something between fingers or other opposing surfaces.",
+                  "Splash": "A 1984 romantic comedy starring Daryl Hannah as a mermaid.",
+                  "Drop": "To let something fall from a higher place."
+            }
+      },
+      {
+            "id": "Silly-051",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Foods That Are Also Terms of Endearment",
+            "explanation": "Each word can be food-related and also used affectionately for a person.",
+            "terms": [
+                  "Honey",
+                  "Sugar",
+                  "Sweetie",
+                  "Pumpkin"
+            ],
+            "definitions": {
+                  "Honey": "An affectionate name for someone loved or cared for.",
+                  "Sugar": "An affectionate form of address used for someone sweet or dear.",
+                  "Sweetie": "A term of affection for a kind, lovable, or cherished person.",
+                  "Pumpkin": "An affectionate nickname often used for a child or loved one."
+            }
+      },
+      {
+            "id": "Silly-052",
+            "difficultyKey": "silly-filler",
+            "difficultyLabel": "Silly Filler",
+            "name": "Companies With Ordinary-Word Names",
+            "explanation": "Each word is also the name of a major company or brand.",
+            "terms": [
+                  "Jaguar",
+                  "Amazon",
+                  "Shell",
+                  "Target"
+            ],
+            "definitions": {
+                  "Jaguar": "A large wild cat found in the Americas.",
+                  "Amazon": "A large river in South America or a woman warrior from mythology.",
+                  "Shell": "A hard outer covering that protects something.",
+                  "Target": "An object or goal that someone aims at."
+            }
       }
 ];
 
@@ -2980,8 +5342,9 @@
         copyLabel: "ConnectionZ ✨ Warm-Up",
         title: "Warm-Up",
         recipes: [
-          { weight: 50, pools: { "warm-up": 2, filler: 2 } },
-          { weight: 50, pools: { "warm-up": 3, filler: 1 } }
+          { weight: 40, pools: { "warm-up": 2, "silly-filler": 2 } },
+          { weight: 35, pools: { "warm-up": 2, "work-filler": 2 } },
+          { weight: 25, pools: { "warm-up": 3, "work-filler": 1 } }
         ]
       },
       "brain-bender": {
@@ -2990,9 +5353,9 @@
         copyLabel: "ConnectionZ 🧠 Brain-Bender",
         title: "Brain-Bender",
         recipes: [
-          { weight: 60, pools: { "brain-bender": 3, filler: 1 } },
-          { weight: 25, pools: { "brain-bender": 3, "warm-up": 1 } },
-          { weight: 15, pools: { "brain-bender": 2, "warm-up": 1, filler: 1 } }
+          { weight: 45, pools: { "brain-bender": 3, "work-filler": 1 } },
+          { weight: 40, pools: { "brain-bender": 2, "warm-up": 1, "work-filler": 1 } },
+          { weight: 15, pools: { "brain-bender": 2, "silly-filler": 2 } }
         ]
       },
       expert: {
@@ -3001,10 +5364,10 @@
         copyLabel: "ConnectionZ 🔥 Expert",
         title: "Expert",
         recipes: [
-          { weight: 40, pools: { expert: 3, "brain-bender": 1 } },
-          { weight: 35, pools: { expert: 3, filler: 1 } },
-          { weight: 15, pools: { expert: 2, "brain-bender": 1, filler: 1 } },
-          { weight: 10, pools: { expert: 4 } }
+          { weight: 40, pools: { expert: 2, "brain-bender": 2 } },
+          { weight: 30, pools: { expert: 2, "brain-bender": 1, "work-filler": 1 } },
+          { weight: 20, pools: { expert: 2, "warm-up": 1, "work-filler": 1 } },
+          { weight: 10, pools: { expert: 2, "warm-up": 2 } }
         ]
       }
     };
@@ -3066,6 +5429,19 @@
     const statsReturnBtn = document.getElementById("statsReturnBtn");
     const copyStatsBtn = document.getElementById("copyStatsBtn");
     const statsGrid = document.getElementById("statsGrid");
+    const badgesBtn = document.getElementById("badgesBtn");
+    const badgesOverlay = document.getElementById("badgesOverlay");
+    const badgesCloseBtn = document.getElementById("badgesCloseBtn");
+    const badgesBackStatsBtn = document.getElementById("badgesBackStatsBtn");
+    const badgesReturnBtn = document.getElementById("badgesReturnBtn");
+    const copyBadgesBtn = document.getElementById("copyBadgesBtn");
+    const badgeSummary = document.getElementById("badgeSummary");
+    const badgeGrid = document.getElementById("badgeGrid");
+    const badgeUnlockedOverlay = document.getElementById("badgeUnlockedOverlay");
+    const badgeUnlockedCloseBtn = document.getElementById("badgeUnlockedCloseBtn");
+    const badgeUnlockedContinueBtn = document.getElementById("badgeUnlockedContinueBtn");
+    const badgeUnlockedViewBtn = document.getElementById("badgeUnlockedViewBtn");
+    const badgeUnlockedContent = document.getElementById("badgeUnlockedContent");
     const miniCompleted = document.getElementById("miniCompleted");
     const miniTotalBoards = document.getElementById("miniTotalBoards");
     const miniBestScore = document.getElementById("miniBestScore");
@@ -3127,6 +5503,25 @@
       });
     }
     if (copyStatsBtn) copyStatsBtn.addEventListener("click", copyTopStats);
+    if (badgesBtn) badgesBtn.addEventListener("click", openBadgesFromStats);
+    if (badgesCloseBtn) badgesCloseBtn.addEventListener("click", () => badgesOverlay.classList.add("hidden"));
+    if (badgesBackStatsBtn) badgesBackStatsBtn.addEventListener("click", () => {
+      badgesOverlay.classList.add("hidden");
+      renderStats();
+      statsOverlay.classList.remove("hidden");
+    });
+    if (badgesReturnBtn) badgesReturnBtn.addEventListener("click", () => {
+      badgesOverlay.classList.add("hidden");
+      returnToTitleScreen();
+    });
+    if (copyBadgesBtn) copyBadgesBtn.addEventListener("click", copyBadgeSummary);
+    if (badgeUnlockedCloseBtn) badgeUnlockedCloseBtn.addEventListener("click", () => badgeUnlockedOverlay.classList.add("hidden"));
+    if (badgeUnlockedContinueBtn) badgeUnlockedContinueBtn.addEventListener("click", () => badgeUnlockedOverlay.classList.add("hidden"));
+    if (badgeUnlockedViewBtn) badgeUnlockedViewBtn.addEventListener("click", () => {
+      badgeUnlockedOverlay.classList.add("hidden");
+      renderBadges();
+      badgesOverlay.classList.remove("hidden");
+    });
     renderStatsPreview();
 
     function shuffle(array) {
@@ -3156,7 +5551,9 @@
         levelAttempts: { "warm-up": 0, "brain-bender": 0, expert: 0 },
         currentStreak: 0,
         longestStreak: 0,
-        lastWorkdayPlayed: null
+        lastWorkdayPlayed: null,
+        recentGroupIdsByBoard: [],
+        badges: {}
       };
     }
 
@@ -3167,6 +5564,14 @@
       merged.bestScores = Object.assign({}, defaults.bestScores, merged.bestScores || {});
       merged.levelCompleted = Object.assign({}, defaults.levelCompleted, merged.levelCompleted || {});
       merged.levelAttempts = Object.assign({}, defaults.levelAttempts, merged.levelAttempts || {});
+      merged.recentGroupIdsByBoard = Array.isArray(merged.recentGroupIdsByBoard)
+        ? merged.recentGroupIdsByBoard
+            .filter(boardIds => Array.isArray(boardIds))
+            .map(boardIds => boardIds.map(String).filter(Boolean))
+            .filter(boardIds => boardIds.length)
+            .slice(-2)
+        : [];
+      merged.badges = Object.assign({}, defaults.badges, merged.badges || {});
       if (!merged.bestScore) {
         const bestValues = Object.values(merged.bestScores || {}).map(Number).filter(Boolean);
         merged.bestScore = bestValues.length ? Math.max(...bestValues) : 0;
@@ -3279,6 +5684,107 @@
       return labels[entries[0][0]] || entries[0][0];
     }
 
+
+    const badgeDefinitions = [
+      { id: "first-connection", icon: "🔗", name: "First Connection", description: "Complete your first puzzle." },
+      { id: "warmed-up", icon: "✨", name: "Warmed Up", description: "Complete one Warm-Up puzzle." },
+      { id: "brain-bent", icon: "🧠", name: "Brain Bent", description: "Complete one Brain-Bender puzzle." },
+      { id: "expert-energy", icon: "🔥", name: "Expert Energy", description: "Complete one Expert puzzle." },
+      { id: "clean-sweep", icon: "🧼", name: "Clean Sweep", description: "Solve a puzzle with zero misses." },
+      { id: "speed-solver", icon: "⚡", name: "Speed Solver", description: "Solve any puzzle in under 2 minutes." },
+      { id: "under-one-minute", icon: "⏱️", name: "Under One Minute?!", description: "Solve a Warm-Up puzzle in under 1 minute." },
+      { id: "no-hint-needed", icon: "💡", name: "No Hint Needed", description: "Solve a puzzle without using a hint." },
+      { id: "one-little-nudge", icon: "👉", name: "One Little Nudge", description: "Solve a puzzle after using exactly one hint." },
+      { id: "still-standing", icon: "🧍", name: "Still Standing", description: "Solve a puzzle after 10 or more misses." },
+      { id: "five-boards-deep", icon: "5️⃣", name: "Five Boards Deep", description: "Complete 5 puzzles." },
+      { id: "puzzle-regular", icon: "🗓️", name: "Puzzle Regular", description: "Complete 10 puzzles." },
+      { id: "connectionz-loyalist", icon: "🏅", name: "ConnectionZ Loyalist", description: "Complete 25 puzzles." },
+      { id: "back-to-back", icon: "🔁", name: "Back-to-Back", description: "Play two workdays in a row." },
+      { id: "workweek-warrior", icon: "💼", name: "Workweek Warrior", description: "Play five workdays in a row." },
+      { id: "ai-oracle", icon: "🔮", name: "AI Oracle", description: "Earn the AI Oracle rank." },
+      { id: "model-whisperer", icon: "🤫", name: "Model Whisperer", description: "Earn the Model Whisperer rank." },
+      { id: "oracle-on-expert", icon: "👑", name: "Oracle on Expert", description: "Earn AI Oracle on Expert." }
+    ];
+
+    function unlockBadge(progress, id, newlyUnlocked) {
+      if (!progress.badges) progress.badges = {};
+      if (!progress.badges[id]) {
+        progress.badges[id] = new Date().toISOString();
+        const badge = badgeDefinitions.find(item => item.id === id);
+        if (badge) newlyUnlocked.push(badge);
+      }
+    }
+
+    function evaluateBadges(progress, result) {
+      const newlyUnlocked = [];
+      if (!result.wasGivenUp) {
+        unlockBadge(progress, "first-connection", newlyUnlocked);
+        if (result.difficultyKey === "warm-up") unlockBadge(progress, "warmed-up", newlyUnlocked);
+        if (result.difficultyKey === "brain-bender") unlockBadge(progress, "brain-bent", newlyUnlocked);
+        if (result.difficultyKey === "expert") unlockBadge(progress, "expert-energy", newlyUnlocked);
+        if (result.misses === 0) unlockBadge(progress, "clean-sweep", newlyUnlocked);
+        if (result.seconds <= 120) unlockBadge(progress, "speed-solver", newlyUnlocked);
+        if (result.difficultyKey === "warm-up" && result.seconds <= 60) unlockBadge(progress, "under-one-minute", newlyUnlocked);
+        if (result.hints === 0) unlockBadge(progress, "no-hint-needed", newlyUnlocked);
+        if (result.hints === 1) unlockBadge(progress, "one-little-nudge", newlyUnlocked);
+        if (result.misses >= 10) unlockBadge(progress, "still-standing", newlyUnlocked);
+        if ((progress.puzzlesSolved || 0) >= 5) unlockBadge(progress, "five-boards-deep", newlyUnlocked);
+        if ((progress.puzzlesSolved || 0) >= 10) unlockBadge(progress, "puzzle-regular", newlyUnlocked);
+        if ((progress.puzzlesSolved || 0) >= 25) unlockBadge(progress, "connectionz-loyalist", newlyUnlocked);
+        if (result.rank && result.rank.name === "AI Oracle") unlockBadge(progress, "ai-oracle", newlyUnlocked);
+        if (result.rank && result.rank.name === "Model Whisperer") unlockBadge(progress, "model-whisperer", newlyUnlocked);
+        if (result.difficultyKey === "expert" && result.rank && result.rank.name === "AI Oracle") unlockBadge(progress, "oracle-on-expert", newlyUnlocked);
+      }
+      if ((progress.currentStreak || 0) >= 2) unlockBadge(progress, "back-to-back", newlyUnlocked);
+      if ((progress.currentStreak || 0) >= 5) unlockBadge(progress, "workweek-warrior", newlyUnlocked);
+      return newlyUnlocked;
+    }
+
+    function getUnlockedBadgeCount(progress) {
+      return Object.values(progress.badges || {}).filter(Boolean).length;
+    }
+
+    function renderBadges() {
+      const progress = getProgress();
+      const unlockedCount = getUnlockedBadgeCount(progress);
+      if (badgeSummary) badgeSummary.textContent = `${unlockedCount} / ${badgeDefinitions.length} Badges Unlocked`;
+      if (!badgeGrid) return;
+      badgeGrid.innerHTML = badgeDefinitions.map(badge => {
+        const unlocked = Boolean((progress.badges || {})[badge.id]);
+        const icon = unlocked ? badge.icon : "❔";
+        const name = unlocked ? badge.name : "Hidden Badge";
+        const description = unlocked ? badge.description : "Keep playing to unlock this badge.";
+        const status = unlocked ? "Unlocked" : "Locked";
+        return `
+          <div class="badge-card ${unlocked ? "unlocked" : "locked"}">
+            <div class="badge-icon">${icon}</div>
+            <strong>${escapeHtml(name)}</strong>
+            <p>${escapeHtml(description)}</p>
+            <div class="badge-status">${status}</div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function openBadgesFromStats() {
+      if (statsOverlay) statsOverlay.classList.add("hidden");
+      renderBadges();
+      badgesOverlay.classList.remove("hidden");
+    }
+
+    function showBadgeUnlockedModal(newBadges) {
+      if (!newBadges || !newBadges.length || !badgeUnlockedOverlay || !badgeUnlockedContent) return;
+      const badge = newBadges[0];
+      const extra = newBadges.length > 1 ? `<p class="badge-status">+${newBadges.length - 1} more badge${newBadges.length > 2 ? "s" : ""} unlocked</p>` : "";
+      badgeUnlockedContent.innerHTML = `
+        <div class="badge-icon">${badge.icon}</div>
+        <strong>${escapeHtml(badge.name)}</strong>
+        <p>${escapeHtml(badge.description)}</p>
+        ${extra}
+      `;
+      badgeUnlockedOverlay.classList.remove("hidden");
+    }
+
     function renderStatsPreview() {
       const progress = getProgress();
       if (miniCompleted) miniCompleted.textContent = String(progress.puzzlesSolved || 0);
@@ -3328,9 +5834,35 @@
       return recipes[recipes.length - 1];
     }
 
-    function sampleGroups(poolKey, count, alreadyChosenIds = new Set()) {
-      const pool = groupPool.filter(group => group.difficultyKey === poolKey && !alreadyChosenIds.has(group.id));
+    function sampleGroups(poolKey, count, alreadyChosenIds = new Set(), blockedGroupIds = new Set()) {
+      const pool = groupPool.filter(group =>
+        group.difficultyKey === poolKey &&
+        !alreadyChosenIds.has(group.id) &&
+        !blockedGroupIds.has(group.id)
+      );
       return shuffle(pool).slice(0, count);
+    }
+
+    function getRecentGroupCooldownSet(progress, boardCount = 2) {
+      const recentBoards = Array.isArray(progress.recentGroupIdsByBoard)
+        ? progress.recentGroupIdsByBoard.slice(-boardCount)
+        : [];
+      return new Set(recentBoards.flat().map(String).filter(Boolean));
+    }
+
+    function rememberSeenGroups(puzzle) {
+      if (!puzzle || !Array.isArray(puzzle.groups)) return;
+      const progress = getProgress();
+      const groupIds = puzzle.groups.map(group => group.id).filter(Boolean);
+      if (!groupIds.length) return;
+
+      const currentHistory = Array.isArray(progress.recentGroupIdsByBoard) ? progress.recentGroupIdsByBoard : [];
+      const lastBoard = currentHistory[currentHistory.length - 1] || [];
+      const sameAsLastBoard = lastBoard.length === groupIds.length && lastBoard.every((id, index) => id === groupIds[index]);
+      if (!sameAsLastBoard) {
+        progress.recentGroupIdsByBoard = [...currentHistory, groupIds].slice(-2);
+        saveProgress(progress);
+      }
     }
 
     function hasDuplicateTerms(selectedGroups) {
@@ -3347,44 +5879,49 @@
       const progress = getProgress();
       let fallbackPuzzle = null;
 
-      for (let attempt = 0; attempt < 700; attempt++) {
-        const recipe = chooseWeightedRecipe(config.recipes);
-        const chosen = [];
-        const chosenIds = new Set();
-        let complete = true;
+      for (const cooldownBoards of [2, 1, 0]) {
+        const blockedGroupIds = getRecentGroupCooldownSet(progress, cooldownBoards);
 
-        Object.entries(recipe.pools).forEach(([poolKey, count]) => {
-          if (!complete) return;
-          const picked = sampleGroups(poolKey, count, chosenIds);
-          if (picked.length < count) {
-            complete = false;
-            return;
-          }
-          picked.forEach(group => {
-            chosen.push(group);
-            chosenIds.add(group.id);
+        for (let attempt = 0; attempt < 700; attempt++) {
+          const recipe = chooseWeightedRecipe(config.recipes);
+          const chosen = [];
+          const chosenIds = new Set();
+          let complete = true;
+
+          Object.entries(recipe.pools).forEach(([poolKey, count]) => {
+            if (!complete) return;
+            const picked = sampleGroups(poolKey, count, chosenIds, blockedGroupIds);
+            if (picked.length < count) {
+              complete = false;
+              return;
+            }
+            picked.forEach(group => {
+              chosen.push(group);
+              chosenIds.add(group.id);
+            });
           });
-        });
 
-        if (!complete || chosen.length !== 4 || hasDuplicateTerms(chosen)) continue;
+          if (!complete || chosen.length !== 4 || hasDuplicateTerms(chosen)) continue;
 
-        const puzzleId = makePuzzleId(chosen);
-        const puzzle = {
-          id: puzzleId,
-          difficultyKey,
-          difficultyLabel: config.label,
-          copyLabel: config.copyLabel,
-          title: config.title,
-          groups: shuffle(chosen)
-        };
-        fallbackPuzzle = fallbackPuzzle || puzzle;
+          const puzzleId = makePuzzleId(chosen);
+          const puzzle = {
+            id: puzzleId,
+            difficultyKey,
+            difficultyLabel: config.label,
+            copyLabel: config.copyLabel,
+            title: config.title,
+            groups: shuffle(chosen)
+          };
+          fallbackPuzzle = fallbackPuzzle || puzzle;
 
-        if (puzzleId !== skipPuzzleId && !progress.played[puzzleId]) return puzzle;
+          if (puzzleId !== skipPuzzleId && !progress.played[puzzleId]) return puzzle;
+        }
       }
 
       if (fallbackPuzzle) return fallbackPuzzle;
 
-      const backupGroups = shuffle(groupPool.filter(group => group.difficultyKey === difficultyKey)).slice(0, 4);
+      const blockedGroupIds = getRecentGroupCooldownSet(progress, 0);
+      const backupGroups = shuffle(groupPool.filter(group => group.difficultyKey === difficultyKey && !blockedGroupIds.has(group.id))).slice(0, 4);
       return {
         id: makePuzzleId(backupGroups),
         difficultyKey,
@@ -3398,6 +5935,7 @@
     function startGame(difficultyKey = "brain-bender", skipPuzzleId = null) {
       currentDifficultyKey = difficultyKey;
       currentPuzzle = generateRandomPuzzle(difficultyKey, skipPuzzleId);
+      rememberSeenGroups(currentPuzzle);
       groups = currentPuzzle.groups;
       definitions = groups.reduce((all, group) => Object.assign(all, group.definitions), {});
 
@@ -3635,7 +6173,7 @@
       const rank = wasGivenUp ? getGiveUpRank() : getRank(score, wrongGuesses, hintsUsed, secondsElapsed);
       lastScore = score;
       lastRank = rank.name;
-      savePuzzleResult({ wasGivenUp, score, rank });
+      const newBadges = savePuzzleResult({ wasGivenUp, score, rank });
 
       gameScreen.classList.add("hidden");
       resultScreen.classList.remove("hidden");
@@ -3660,10 +6198,11 @@
         `;
         answers.appendChild(div);
       });
+      showBadgeUnlockedModal(newBadges);
     }
 
     function savePuzzleResult({ wasGivenUp, score, rank }) {
-      if (!currentPuzzle) return;
+      if (!currentPuzzle) return [];
       const progress = getProgress();
       progress.totalBoardsPlayed = (progress.totalBoardsPlayed || 0) + 1;
       progress.levelAttempts[currentDifficultyKey] = (progress.levelAttempts[currentDifficultyKey] || 0) + 1;
@@ -3692,8 +6231,18 @@
         if (wrongGuesses >= 10) progress.comebackSolves = (progress.comebackSolves || 0) + 1;
       }
 
+      const newBadges = evaluateBadges(progress, {
+        wasGivenUp,
+        score,
+        rank,
+        difficultyKey: currentDifficultyKey,
+        seconds: secondsElapsed,
+        misses: wrongGuesses,
+        hints: hintsUsed
+      });
       saveProgress(progress);
       renderStatsPreview();
+      return newBadges;
     }
 
     function getFreeTimeSeconds() {
@@ -3810,6 +6359,20 @@
       if (!musicToggleBtn) return;
       musicToggleBtn.textContent = musicEnabled && !bgMusic.paused ? "Music Off" : "Music On";
       musicToggleBtn.setAttribute("aria-pressed", musicEnabled && !bgMusic.paused ? "true" : "false");
+    }
+
+
+    function copyBadgeSummary() {
+      const progress = getProgress();
+      const unlockedCount = getUnlockedBadgeCount(progress);
+      const text = `I’ve unlocked ${unlockedCount} of ${badgeDefinitions.length} ConnectionZ badges. Can you beat my badge case?
+
+Play ConnectionZ here: https://pncaiteam-scan.github.io/ConnectionZ/`;
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(showToast).catch(() => fallbackCopy(text));
+      } else {
+        fallbackCopy(text);
+      }
     }
 
     function copyTopStats() {
