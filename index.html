@@ -1057,7 +1057,7 @@
 
   <script>
 
-    const groupPool = [
+    let groupPool = [
       {
             "id": "warmup-001",
             "difficultyKey": "warm-up",
@@ -5335,6 +5335,82 @@
       }
 ];
 
+
+
+    function normalizeDifficultyKey(value) {
+      const key = String(value || "").trim().toLowerCase();
+      const map = {
+        "warm-up": "warm-up",
+        "warmup": "warm-up",
+        "warm up": "warm-up",
+        "brain-bender": "brain-bender",
+        "brainbender": "brain-bender",
+        "brain bender": "brain-bender",
+        "expert": "expert",
+        "work": "work-filler",
+        "work filler": "work-filler",
+        "work-filler": "work-filler",
+        "silly": "silly-filler",
+        "silly filler": "silly-filler",
+        "silly-filler": "silly-filler",
+        "filler": "work-filler"
+      };
+      return map[key] || key;
+    }
+
+    function normalizeExternalGroupPool(data) {
+      const sourceGroups = Array.isArray(data) ? data : (data && Array.isArray(data.groups) ? data.groups : []);
+      return sourceGroups
+        .map((group, index) => {
+          const terms = Array.isArray(group.terms) ? group.terms.map(term => String(term).trim()).filter(Boolean) : [];
+          const difficultyKey = normalizeDifficultyKey(group.difficultyKey || group.pool || group.type || group.difficulty || group.categoryType);
+          const definitions = Object.assign({}, group.definitions || {});
+          return {
+            id: String(group.id || `${difficultyKey || "group"}-${index + 1}`),
+            difficultyKey,
+            difficultyLabel: group.difficultyLabel || difficultyKey,
+            name: String(group.name || group.category || `Group ${index + 1}`),
+            explanation: String(group.explanation || group.description || ""),
+            terms,
+            definitions: terms.reduce((all, term) => {
+              all[term] = definitions[term] || definitions[term.trim()] || "No clue available for this card yet.";
+              return all;
+            }, {})
+          };
+        })
+        .filter(group =>
+          group.id &&
+          group.name &&
+          ["warm-up", "brain-bender", "expert", "work-filler", "silly-filler"].includes(group.difficultyKey) &&
+          group.terms.length === 4
+        );
+    }
+
+    let groupPoolLoadPromise = null;
+
+    function loadExternalGroupPool() {
+      if (groupPoolLoadPromise) return groupPoolLoadPromise;
+      if (typeof fetch !== "function") return Promise.resolve(false);
+
+      groupPoolLoadPromise = fetch("./connectionz-groups.json?updated=" + Date.now(), { cache: "no-store" })
+        .then(response => {
+          if (!response.ok) throw new Error("Group file not found.");
+          return response.json();
+        })
+        .then(data => {
+          const loadedGroups = normalizeExternalGroupPool(data);
+          if (loadedGroups.length >= 4) {
+            groupPool = loadedGroups;
+            return true;
+          }
+          return false;
+        })
+        .catch(() => false);
+
+      return groupPoolLoadPromise;
+    }
+
+    loadExternalGroupPool();
     const difficultyConfigs = {
       "warm-up": {
         label: "✨ Warm-Up",
@@ -5932,7 +6008,8 @@
       };
     }
 
-    function startGame(difficultyKey = "brain-bender", skipPuzzleId = null) {
+    async function startGame(difficultyKey = "brain-bender", skipPuzzleId = null) {
+      await loadExternalGroupPool();
       currentDifficultyKey = difficultyKey;
       currentPuzzle = generateRandomPuzzle(difficultyKey, skipPuzzleId);
       rememberSeenGroups(currentPuzzle);
@@ -6246,18 +6323,47 @@
     }
 
     function getFreeTimeSeconds() {
-      return currentDifficultyKey === "warm-up" ? 480 : 300;
+      return 60;
+    }
+
+    function getMissScoringConfig() {
+      const configs = {
+        "warm-up": { freeMisses: 4, penalty: 25 },
+        "brain-bender": { freeMisses: 3, penalty: 35 },
+        expert: { freeMisses: 3, penalty: 40 }
+      };
+      return configs[currentDifficultyKey] || configs["brain-bender"];
     }
 
     function calculateScore(seconds, misses, hints) {
-      const freeMisses = 8;
-      const countedMisses = Math.max(0, misses - freeMisses);
+      const missConfig = getMissScoringConfig();
+      const countedMisses = Math.max(0, misses - missConfig.freeMisses);
       const countedSeconds = Math.max(0, seconds - getFreeTimeSeconds());
       let score = 1000;
       score -= Math.floor(countedSeconds / 10);
-      score -= countedMisses * 35;
-      score -= hints * 40;
+      score -= countedMisses * missConfig.penalty;
       return Math.min(1000, Math.max(1, score));
+    }
+
+    function getMissRankCapValue(misses) {
+      if (currentDifficultyKey === "warm-up") {
+        if (misses <= 3) return 5;
+        if (misses <= 5) return 4;
+        if (misses <= 10) return 3;
+        return 2;
+      }
+
+      if (currentDifficultyKey === "brain-bender") {
+        if (misses <= 2) return 5;
+        if (misses === 3) return 4;
+        if (misses <= 5) return 3;
+        return 2;
+      }
+
+      if (misses <= 2) return 5;
+      if (misses === 3) return 4;
+      if (misses <= 5) return 3;
+      return 2;
     }
 
     function getRank(score, misses = 0, hints = 0, seconds = 0) {
@@ -6301,16 +6407,12 @@
       ];
 
       let rawValue = 1;
-      if (score >= thresholds.oracle && misses <= 5 && hints <= 1) rawValue = 5;
+      if (score >= thresholds.oracle) rawValue = 5;
       else if (score >= thresholds.model) rawValue = 4;
       else if (score >= thresholds.context) rawValue = 3;
       else if (score >= thresholds.agent) rawValue = 2;
 
-      let capValue = 5;
-      if (misses > 10 || hints >= 4) capValue = 3;
-      else if (misses > 5 || hints >= 2) capValue = 4;
-
-      const finalValue = Math.min(rawValue, capValue);
+      const finalValue = Math.min(rawValue, getMissRankCapValue(misses));
       return ranks.find(rank => rank.value === finalValue) || ranks[0];
     }
 
