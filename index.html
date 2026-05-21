@@ -958,7 +958,7 @@
           <button id="nextPuzzleBtn" class="btn secondary">Next Puzzle</button>
           <button id="returnTitleBtn" class="btn secondary">Return to Title Screen</button>
         </div>
-        <p class="footer-note">Your score is calculated at the end. Speed helps. Misses hurt. Hints are allowed, but they cost points.</p>
+        <p class="footer-note">Your score is calculated at the end. Speed helps. Unique misses hurt. Hints are free for now.</p>
       </section>
 
       <section id="resultScreen" class="screen hidden">
@@ -6328,42 +6328,20 @@
 
     function getMissScoringConfig() {
       const configs = {
-        "warm-up": { freeMisses: 4, penalty: 25 },
-        "brain-bender": { freeMisses: 3, penalty: 35 },
-        expert: { freeMisses: 3, penalty: 40 }
+        "warm-up": { penalty: 25 },
+        "brain-bender": { penalty: 35 },
+        expert: { penalty: 40 }
       };
       return configs[currentDifficultyKey] || configs["brain-bender"];
     }
 
     function calculateScore(seconds, misses, hints) {
       const missConfig = getMissScoringConfig();
-      const countedMisses = Math.max(0, misses - missConfig.freeMisses);
       const countedSeconds = Math.max(0, seconds - getFreeTimeSeconds());
       let score = 1000;
       score -= Math.floor(countedSeconds / 10);
-      score -= countedMisses * missConfig.penalty;
+      score -= misses * missConfig.penalty;
       return Math.min(1000, Math.max(1, score));
-    }
-
-    function getMissRankCapValue(misses) {
-      if (currentDifficultyKey === "warm-up") {
-        if (misses <= 3) return 5;
-        if (misses <= 5) return 4;
-        if (misses <= 10) return 3;
-        return 2;
-      }
-
-      if (currentDifficultyKey === "brain-bender") {
-        if (misses <= 2) return 5;
-        if (misses === 3) return 4;
-        if (misses <= 5) return 3;
-        return 2;
-      }
-
-      if (misses <= 2) return 5;
-      if (misses === 3) return 4;
-      if (misses <= 5) return 3;
-      return 2;
     }
 
     function getRank(score, misses = 0, hints = 0, seconds = 0) {
@@ -6412,8 +6390,7 @@
       else if (score >= thresholds.context) rawValue = 3;
       else if (score >= thresholds.agent) rawValue = 2;
 
-      const finalValue = Math.min(rawValue, getMissRankCapValue(misses));
-      return ranks.find(rank => rank.value === finalValue) || ranks[0];
+      return ranks.find(rank => rank.value === rawValue) || ranks[0];
     }
 
     function getGiveUpRank() {
