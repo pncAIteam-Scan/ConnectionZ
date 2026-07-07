@@ -1,0 +1,5075 @@
+[
+  {
+    "id": "warmup-001",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "AI Input Ingredients",
+    "explanation": "Basic pieces that shape what an AI tool receives before it answers.",
+    "terms": [
+      "Prompt",
+      "Context",
+      "Example",
+      "Constraint"
+    ],
+    "definitions": {
+      "Prompt": "The instruction or request you give",
+      "Context": "Background information it should consider",
+      "Example": "A pattern you want it to follow",
+      "Constraint": "A rule or limit for the answer"
+    }
+  },
+  {
+    "id": "warmup-002",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "Common AI Tasks",
+    "explanation": "Everyday ways people ask AI to help with work.",
+    "terms": [
+      "Summarize",
+      "Draft",
+      "Rewrite",
+      "Brainstorm"
+    ],
+    "definitions": {
+      "Summarize": "Reduce text to key points",
+      "Draft": "Create a first version",
+      "Rewrite": "Improve existing wording",
+      "Brainstorm": "Generate possible ideas"
+    }
+  },
+  {
+    "id": "warmup-003",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "Output Controls",
+    "explanation": "Choices that influence how an AI response looks, sounds, or feels.",
+    "terms": [
+      "Tone",
+      "Format",
+      "Length",
+      "Audience"
+    ],
+    "definitions": {
+      "Tone": "The attitude, mood, or character conveyed through a specific medium.",
+      "Format": "How the answer is structured",
+      "Length": "How much it should write",
+      "Audience": "Who the answer is for"
+    }
+  },
+  {
+    "id": "warmup-004",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "Trust Signals",
+    "explanation": "Helpful signs that an AI answer can be checked or relied on.",
+    "terms": [
+      "Source",
+      "Citation",
+      "Quote",
+      "Date"
+    ],
+    "definitions": {
+      "Source": "Where information came from",
+      "Citation": "A link or reference to evidence",
+      "Quote": "Exact wording from a source",
+      "Date": "When the information applies"
+    }
+  },
+  {
+    "id": "warmup-005",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "Things AI Can Create",
+    "explanation": "Common content types AI tools can help produce.",
+    "terms": [
+      "Email",
+      "Checklist",
+      "Table",
+      "Script"
+    ],
+    "definitions": {
+      "Email": "A workplace message",
+      "Checklist": "A list of steps or items",
+      "Table": "Information in rows and columns",
+      "Script": "Words prepared to say aloud"
+    }
+  },
+  {
+    "id": "warmup-006",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "AI Conversation Moves",
+    "explanation": "Ways to steer an AI chat after the first response.",
+    "terms": [
+      "Clarify",
+      "Refine",
+      "Compare",
+      "Expand"
+    ],
+    "definitions": {
+      "Clarify": "Make the request more specific",
+      "Refine": "Improve the answer in stages",
+      "Compare": "Put options side by side",
+      "Expand": "Add more detail"
+    }
+  },
+  {
+    "id": "warmup-007",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "Basic AI Cautions",
+    "explanation": "Simple risks to watch for when using AI outputs.",
+    "terms": [
+      "Bias",
+      "Error",
+      "Missing Context",
+      "Overconfidence"
+    ],
+    "definitions": {
+      "Bias": "Unfair pattern in an answer",
+      "Error": "Something incorrect",
+      "Missing Context": "Important info left out",
+      "Overconfidence": "Sounds sure but may be wrong"
+    }
+  },
+  {
+    "id": "warmup-008",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "Ways to Give Examples",
+    "explanation": "Simple example-based prompting patterns.",
+    "terms": [
+      "Sample",
+      "Template",
+      "Before",
+      "After"
+    ],
+    "definitions": {
+      "Sample": "A model answer to copy",
+      "Template": "A reusable structure",
+      "Before": "The original version",
+      "After": "The improved version"
+    }
+  },
+  {
+    "id": "warmup-009",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "AI Reading Jobs",
+    "explanation": "Things AI can do with information you provide.",
+    "terms": [
+      "Extract",
+      "Classify",
+      "Highlight",
+      "Condense"
+    ],
+    "definitions": {
+      "Extract": "Pull out specific details",
+      "Classify": "Sort into categories",
+      "Highlight": "Call attention to key parts",
+      "Condense": "Make shorter without losing meaning"
+    }
+  },
+  {
+    "id": "warmup-010",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "Workplace AI Uses",
+    "explanation": "Practical ways AI can support office work.",
+    "terms": [
+      "Meeting Notes",
+      "FAQ",
+      "Training Aid",
+      "Job Aid"
+    ],
+    "definitions": {
+      "Meeting Notes": "Clean up discussion points",
+      "FAQ": "Answer repeated questions",
+      "Training Aid": "Help explain a topic",
+      "Job Aid": "Create a quick reference"
+    }
+  },
+  {
+    "id": "warmup-011",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "Document Improvement Requests",
+    "explanation": "Common instructions for polishing workplace content.",
+    "terms": [
+      "Simplify",
+      "Organize",
+      "Proofread",
+      "Shorten"
+    ],
+    "definitions": {
+      "Simplify": "Make easier to understand",
+      "Organize": "Improve structure",
+      "Proofread": "Catch grammar or typos",
+      "Shorten": "Cut unnecessary wording"
+    }
+  },
+  {
+    "id": "warmup-012",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "AI Output Formats",
+    "explanation": "Common shapes an AI answer can take.",
+    "terms": [
+      "Bullets",
+      "Paragraph",
+      "Matrix",
+      "Steps"
+    ],
+    "definitions": {
+      "Bullets": "Short list items",
+      "Paragraph": "Written explanation",
+      "Matrix": "Side-by-side grid",
+      "Steps": "Ordered instructions"
+    }
+  },
+  {
+    "id": "warmup-013",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "Prompt Quality Checks",
+    "explanation": "Basic checks that make a request easier for AI to follow.",
+    "terms": [
+      "Goal",
+      "Inputs",
+      "Limits",
+      "Success Criteria"
+    ],
+    "definitions": {
+      "Goal": "A desired outcome or target.",
+      "Inputs": "What information it should use",
+      "Limits": "What to avoid or follow",
+      "Success Criteria": "What good looks like"
+    }
+  },
+  {
+    "id": "warmup-014",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "AI Help Verbs",
+    "explanation": "Action words that tell AI what kind of help you need.",
+    "terms": [
+      "Analyze",
+      "Explain",
+      "Suggest",
+      "Prioritize"
+    ],
+    "definitions": {
+      "Analyze": "Break something down",
+      "Explain": "Make something understandable",
+      "Suggest": "Offer possible choices",
+      "Prioritize": "Rank by importance"
+    }
+  },
+  {
+    "id": "warmup-015",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "Human Feedback Types",
+    "explanation": "Simple ways people respond to an AI draft.",
+    "terms": [
+      "Approve",
+      "Edit",
+      "Reject",
+      "Rate"
+    ],
+    "definitions": {
+      "Approve": "Accept as useful",
+      "Edit": "Change part of it",
+      "Reject": "Do not use it",
+      "Rate": "Score its quality"
+    }
+  },
+  {
+    "id": "warmup-016",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "Information Sensitivity",
+    "explanation": "Basic types of information that deserve extra caution.",
+    "terms": [
+      "Personal Data",
+      "Confidential",
+      "Financial",
+      "Credentials"
+    ],
+    "definitions": {
+      "Personal Data": "Info about a person",
+      "Confidential": "Not meant for broad sharing",
+      "Financial": "Money-related details",
+      "Credentials": "Passwords or access info"
+    }
+  },
+  {
+    "id": "warmup-017",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "AI Collaboration Roles",
+    "explanation": "Friendly ways to think about AI as a helper, not the owner of the work.",
+    "terms": [
+      "Assistant",
+      "Reviewer",
+      "Tutor",
+      "Coach"
+    ],
+    "definitions": {
+      "Assistant": "Helps with tasks",
+      "Reviewer": "Checks a draft",
+      "Tutor": "Explains concepts",
+      "Coach": "Suggests improvements"
+    }
+  },
+  {
+    "id": "warmup-018",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "Answer Quality Traits",
+    "explanation": "Everyday qualities people want in a useful AI response.",
+    "terms": [
+      "Clear",
+      "Relevant",
+      "Complete",
+      "Actionable"
+    ],
+    "definitions": {
+      "Clear": "Easy to understand",
+      "Relevant": "Matches the request",
+      "Complete": "Covers the needed parts",
+      "Actionable": "Can be used next"
+    }
+  },
+  {
+    "id": "warmup-019",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "Safe Sharing Habits",
+    "explanation": "Simple habits that reduce risk when using AI tools.",
+    "terms": [
+      "Remove Names",
+      "Use Examples",
+      "Check Policy",
+      "Review Output"
+    ],
+    "definitions": {
+      "Remove Names": "Avoid unnecessary identifiers",
+      "Use Examples": "Share fake samples when possible",
+      "Check Policy": "Follow company rules",
+      "Review Output": "Read before sending"
+    }
+  },
+  {
+    "id": "warmup-020",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "Popular AI Chatbots",
+    "explanation": "Well-known AI assistants people can chat with.",
+    "terms": [
+      "ChatGPT",
+      "Claude",
+      "Gemini",
+      "Grok"
+    ],
+    "definitions": {
+      "ChatGPT": "A product made by OpenAI.",
+      "Claude": "A male name that may come from the Latin word for “lame.”",
+      "Gemini": "A zodiac sign represented by twins.",
+      "Grok": "A word meaning to understand something deeply."
+    }
+  },
+  {
+    "id": "warmup-021",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "Companies Behind Major AI Assistants",
+    "explanation": "Organizations that make or back popular AI chatbots.",
+    "terms": [
+      "OpenAI",
+      "Anthropic",
+      "Google",
+      "xAI"
+    ],
+    "definitions": {
+      "OpenAI": "A company co-founded by Sam Altman and Greg Brockman.",
+      "Anthropic": "An adjective that means of or relating to human beings or their span of existence on earth.",
+      "Google": "A popular internet search engine used to find information online.",
+      "xAI": "SpaceXAI is a division of American aerospace company SpaceX working in the area of artificial intelligence, social media and technology."
+    }
+  },
+  {
+    "id": "warmup-022",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "Ways ChatGPT Can Feel Personalized",
+    "explanation": "Settings or features that help tailor ChatGPT to a user.",
+    "terms": [
+      "Name",
+      "Tone",
+      "Memory",
+      "Instructions"
+    ],
+    "definitions": {
+      "Name": "A word or set of words used to identify, designate, and distinguish a person, place, thing, or concept",
+      "Tone": "The attitude, mood, or character conveyed through a specific medium.",
+      "Memory": "The cognitive faculty that allows the mind to encode, store, and retrieve information and past experiences.",
+      "Instructions": "Directions to follow."
+    }
+  },
+  {
+    "id": "warmup-023",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "Custom GPT Building Blocks",
+    "explanation": "Basic pieces used when creating a custom GPT.",
+    "terms": [
+      "Name",
+      "Description",
+      "Instructions",
+      "Knowledge"
+    ],
+    "definitions": {
+      "Name": "A word or set of words used to identify, designate, and distinguish a person, place, thing, or concept",
+      "Description": "A short explanation of what something is.",
+      "Instructions": "Directions to follow.",
+      "Knowledge": "Information someone has."
+    }
+  },
+  {
+    "id": "warmup-024",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "Files You Might Ask AI About",
+    "explanation": "Common file types people use with AI tools.",
+    "terms": [
+      "PDF",
+      "PNG",
+      "XLSX",
+      "DOCX"
+    ],
+    "definitions": {
+      "PDF": "A fixed-layout document file.",
+      "PNG": "A picture file.",
+      "XLSX": "A file with rows and columns.",
+      "DOCX": "The standard file format used by Microsoft Word for creating, saving, and editing text documents."
+    }
+  },
+  {
+    "id": "warmup-025",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "When AI Gets It Wrong",
+    "explanation": "Ways to describe an incorrect or invented AI answer.",
+    "terms": [
+      "Guess",
+      "Mistake",
+      "Fabrication",
+      "Hallucination"
+    ],
+    "definitions": {
+      "Guess": "An answer given without certainty.",
+      "Mistake": "An action, decision, or judgment that produces an unintended or incorrect result.",
+      "Fabrication": "Something that is made up.",
+      "Hallucination": "Seeing something that is not there."
+    }
+  },
+  {
+    "id": "warmup-026",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "Chat Tool Navigation",
+    "explanation": "Parts of an app or account area that help users move around or manage activity.",
+    "terms": [
+      "Sidebar",
+      "History",
+      "Settings",
+      "Profile"
+    ],
+    "definitions": {
+      "Sidebar": "A vertical panel placed along the side of a screen or page.",
+      "History": "A record of past events, actions, or activity.",
+      "Settings": "Controls used to adjust how something works or appears.",
+      "Profile": "A set of information that represents a person or account."
+    }
+  },
+  {
+    "id": "warmup-027",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "Image Generation Requests",
+    "explanation": "Common visual items someone might ask a tool to create or revise.",
+    "terms": [
+      "Portrait",
+      "Logo",
+      "Mockup",
+      "Illustration"
+    ],
+    "definitions": {
+      "Portrait": "A picture or representation of a person, especially the face.",
+      "Logo": "A symbol or design used to identify a brand or organization.",
+      "Mockup": "A preliminary model or visual example of a design.",
+      "Illustration": "A picture made to explain, decorate, or represent something."
+    }
+  },
+  {
+    "id": "warmup-028",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "Helpful Follow-Up Words",
+    "explanation": "Short words people use to adjust an answer after receiving it.",
+    "terms": [
+      "More",
+      "Less",
+      "Again",
+      "Specific"
+    ],
+    "definitions": {
+      "More": "A greater amount, number, or degree.",
+      "Less": "A smaller amount, number, or degree.",
+      "Again": "One more time or another time.",
+      "Specific": "Clearly defined, exact, or particular."
+    }
+  },
+  {
+    "id": "warmup-029",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "Data Displays",
+    "explanation": "Common ways to show information visually or at a glance.",
+    "terms": [
+      "Chart",
+      "Graph",
+      "Dashboard",
+      "Summary"
+    ],
+    "definitions": {
+      "Chart": "A visual display of information or numbers.",
+      "Graph": "A diagram showing relationships between values or quantities.",
+      "Dashboard": "A display that summarizes important information in one place.",
+      "Summary": "A brief statement of the main points."
+    }
+  },
+  {
+    "id": "warmup-030",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "ChatGPT Workspaces and Modes",
+    "explanation": "Places or modes in ChatGPT that support different kinds of work.",
+    "terms": [
+      "Canvas",
+      "Projects",
+      "Voice",
+      "Deep Research"
+    ],
+    "definitions": {
+      "Canvas": "A surface or workspace used for creating or editing.",
+      "Projects": "Organized collections of related work or materials.",
+      "Voice": "Sound produced by speaking or represented in speech.",
+      "Deep Research": "A careful investigation that looks across multiple sources."
+    }
+  },
+  {
+    "id": "warmup-031",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "Atlassian Workplace Tools",
+    "explanation": "Workplace tools or products connected to Atlassian-supported collaboration.",
+    "terms": [
+      "Rovo",
+      "Jira",
+      "Confluence",
+      "Compass"
+    ],
+    "definitions": {
+      "Rovo": "A name that suggests roaming, searching, or moving across information.",
+      "Jira": "A tool name commonly associated with tracking work items.",
+      "Confluence": "The joining or flowing together of things, especially streams or ideas.",
+      "Compass": "An instrument used to find direction."
+    }
+  },
+  {
+    "id": "warmup-032",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "Foundational AI Terms",
+    "explanation": "Basic terms that help explain how modern AI systems work.",
+    "terms": [
+      "Generative AI",
+      "Large Language Model",
+      "Machine Learning",
+      "Natural Language"
+    ],
+    "definitions": {
+      "Generative AI": "Technology that can create new content based on patterns it has learned.",
+      "Large Language Model": "A system trained on large amounts of text to understand and produce language.",
+      "Machine Learning": "A field where systems improve by finding patterns in data.",
+      "Natural Language": "Language used by people in ordinary speaking or writing."
+    }
+  },
+  {
+    "id": "warmup-033",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "Common Workplace Drafts",
+    "explanation": "Types of workplace writing someone might prepare before sending or sharing.",
+    "terms": [
+      "Memo",
+      "Proposal",
+      "Announcement",
+      "Recap"
+    ],
+    "definitions": {
+      "Memo": "A short written message used for communication within an organization.",
+      "Proposal": "A plan or suggestion offered for consideration.",
+      "Announcement": "A public or formal statement about something.",
+      "Recap": "A brief review of what happened or was discussed."
+    }
+  },
+  {
+    "id": "warmup-034",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "Human-Like AI Actions",
+    "explanation": "Common abilities that AI tools may imitate or support.",
+    "terms": [
+      "Listen",
+      "See",
+      "Speak",
+      "Reason"
+    ],
+    "definitions": {
+      "Listen": "To pay attention to sound or spoken words.",
+      "See": "To perceive something with the eyes.",
+      "Speak": "To express thoughts or information using words.",
+      "Reason": "To think through something logically."
+    }
+  },
+  {
+    "id": "warmup-035",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "Make It Sound ___",
+    "explanation": "Common style requests people use when revising AI-generated writing.",
+    "terms": [
+      "Formal",
+      "Friendly",
+      "Concise",
+      "Plain"
+    ],
+    "definitions": {
+      "Formal": "Following established rules, conventions, or professional standards.",
+      "Friendly": "Kind, pleasant, and easy to approach.",
+      "Concise": "Giving information clearly in a few words.",
+      "Plain": "Simple, clear, and not decorated or complicated."
+    }
+  },
+  {
+    "id": "warmup-036",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "Privacy Protection Moves",
+    "explanation": "Simple ways to reduce sensitive details before sharing information.",
+    "terms": [
+      "Redact",
+      "Mask",
+      "Anonymize",
+      "Omit"
+    ],
+    "definitions": {
+      "Redact": "To remove or hide text before sharing a document.",
+      "Mask": "To cover or disguise information so it is not fully visible.",
+      "Anonymize": "To remove details that identify a specific person.",
+      "Omit": "To leave something out."
+    }
+  },
+  {
+    "id": "warmup-037",
+    "difficultyKey": "warm-up",
+    "difficultyLabel": "✨ Warm-Up",
+    "name": "Output Problem Words",
+    "explanation": "Simple ways to describe an answer that may need improvement.",
+    "terms": [
+      "Stale",
+      "Incomplete",
+      "Unclear",
+      "Unsupported"
+    ],
+    "definitions": {
+      "Stale": "No longer fresh, current, or useful.",
+      "Incomplete": "Not having all necessary parts.",
+      "Unclear": "Not easy to understand.",
+      "Unsupported": "Not backed up by evidence, help, or confirmation."
+    }
+  },
+  {
+    "id": "brainbender-001",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Ways to Check AI Accuracy",
+    "explanation": "Methods that help validate whether an AI output is reliable.",
+    "terms": [
+      "Human Review",
+      "Grounding",
+      "Benchmarking",
+      "Red Teaming"
+    ],
+    "definitions": {
+      "Human Review": "Person checks the output",
+      "Grounding": "Ties answers to sources",
+      "Benchmarking": "Tests against standards",
+      "Red Teaming": "Tries to break it safely"
+    }
+  },
+  {
+    "id": "brainbender-002",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "AI System Design Choices",
+    "explanation": "Techniques used to shape how an AI system retrieves, reasons, or acts.",
+    "terms": [
+      "Fine-Tuning",
+      "RAG",
+      "Embeddings",
+      "Agents"
+    ],
+    "definitions": {
+      "Fine-Tuning": "Trains on specific examples",
+      "RAG": "Retrieves info before answering",
+      "Embeddings": "Turns meaning into numbers",
+      "Agents": "AI that can take steps"
+    }
+  },
+  {
+    "id": "brainbender-003",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Responsible AI Concerns",
+    "explanation": "Common governance concerns for safer AI use.",
+    "terms": [
+      "Bias",
+      "Privacy",
+      "Explainability",
+      "Transparency"
+    ],
+    "definitions": {
+      "Bias": "Unfair pattern in outputs",
+      "Privacy": "Protecting sensitive data",
+      "Explainability": "Why it gave that answer",
+      "Transparency": "Clear about AI use"
+    }
+  },
+  {
+    "id": "brainbender-004",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Dimensions of AI Use",
+    "explanation": "A practical lens for deciding how and when AI should be used.",
+    "terms": [
+      "Accuracy",
+      "Risk",
+      "Effort",
+      "Judgment"
+    ],
+    "definitions": {
+      "Accuracy": "Is it correct?",
+      "Risk": "What could go wrong?",
+      "Effort": "How much work it saves",
+      "Judgment": "Where humans decide"
+    }
+  },
+  {
+    "id": "brainbender-005",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Model Evaluation Metrics",
+    "explanation": "Measures often used to judge AI model performance.",
+    "terms": [
+      "Precision",
+      "Recall",
+      "F1 Score",
+      "Accuracy"
+    ],
+    "definitions": {
+      "Precision": "How many selected were right",
+      "Recall": "How many right items were found",
+      "F1 Score": "Balance of precision and recall",
+      "Accuracy": "Overall correct rate"
+    }
+  },
+  {
+    "id": "brainbender-006",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Retrieval Pipeline Steps",
+    "explanation": "Common steps in a retrieval-augmented AI workflow.",
+    "terms": [
+      "Chunking",
+      "Indexing",
+      "Retrieval",
+      "Generation"
+    ],
+    "definitions": {
+      "Chunking": "Splitting content into pieces",
+      "Indexing": "Organizing content for search",
+      "Retrieval": "Finding relevant pieces",
+      "Generation": "Writing the final answer"
+    }
+  },
+  {
+    "id": "brainbender-007",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Model Behavior Settings",
+    "explanation": "Configuration choices that influence generated output.",
+    "terms": [
+      "Temperature",
+      "Top-P",
+      "Max Tokens",
+      "System Prompt"
+    ],
+    "definitions": {
+      "Temperature": "Controls randomness",
+      "Top-P": "Limits token sampling pool",
+      "Max Tokens": "Caps response length",
+      "System Prompt": "Sets behavior rules"
+    }
+  },
+  {
+    "id": "brainbender-008",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Human-in-the-Loop Patterns",
+    "explanation": "Ways humans stay involved in AI-assisted workflows.",
+    "terms": [
+      "Approval Gate",
+      "Escalation",
+      "Correction Loop",
+      "Audit Review"
+    ],
+    "definitions": {
+      "Approval Gate": "Human signs off before action",
+      "Escalation": "Hand off risky cases",
+      "Correction Loop": "Human fixes model mistakes",
+      "Audit Review": "Check outputs after the fact"
+    }
+  },
+  {
+    "id": "brainbender-009",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Common Failure Modes",
+    "explanation": "Ways AI systems can produce weak or misleading results.",
+    "terms": [
+      "Hallucination",
+      "Drift",
+      "Overfitting",
+      "Prompt Injection"
+    ],
+    "definitions": {
+      "Hallucination": "Confident but false output",
+      "Drift": "Performance changes over time",
+      "Overfitting": "Learns too narrowly",
+      "Prompt Injection": "Input tries to override rules"
+    }
+  },
+  {
+    "id": "brainbender-010",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Data Preparation Steps",
+    "explanation": "Work often needed before data can support an AI system.",
+    "terms": [
+      "Labeling",
+      "Cleaning",
+      "Deduping",
+      "Normalization"
+    ],
+    "definitions": {
+      "Labeling": "Tagging examples",
+      "Cleaning": "Fixing messy data",
+      "Deduping": "Removing repeated records",
+      "Normalization": "Making formats consistent"
+    }
+  },
+  {
+    "id": "brainbender-011",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "AI Governance Artifacts",
+    "explanation": "Documents and records that support responsible AI oversight.",
+    "terms": [
+      "Model Card",
+      "Risk Register",
+      "Use Case Inventory",
+      "Audit Log"
+    ],
+    "definitions": {
+      "Model Card": "Summary of model details",
+      "Risk Register": "List of known concerns",
+      "Use Case Inventory": "Catalog of AI uses",
+      "Audit Log": "Record of actions taken"
+    }
+  },
+  {
+    "id": "brainbender-012",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Trustworthy Output Traits",
+    "explanation": "Qualities that make an AI answer more usable in real work.",
+    "terms": [
+      "Traceable",
+      "Current",
+      "Consistent",
+      "Calibrated"
+    ],
+    "definitions": {
+      "Traceable": "Can follow the evidence",
+      "Current": "Reflects the right time period",
+      "Consistent": "Does not contradict itself",
+      "Calibrated": "Matches confidence to evidence"
+    }
+  },
+  {
+    "id": "brainbender-013",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Data Types for AI",
+    "explanation": "Common forms of input data AI systems can process.",
+    "terms": [
+      "Text",
+      "Image",
+      "Audio",
+      "Tabular"
+    ],
+    "definitions": {
+      "Text": "Written language",
+      "Image": "Visual information",
+      "Audio": "Sound or speech",
+      "Tabular": "Rows and columns"
+    }
+  },
+  {
+    "id": "brainbender-014",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Learning Approaches",
+    "explanation": "Broad ways machine learning systems learn from data or feedback.",
+    "terms": [
+      "Supervised",
+      "Unsupervised",
+      "Reinforcement",
+      "Self-Supervised"
+    ],
+    "definitions": {
+      "Supervised": "Learns from labeled examples",
+      "Unsupervised": "Finds patterns without labels",
+      "Reinforcement": "Learns from rewards",
+      "Self-Supervised": "Creates its own training signal"
+    }
+  },
+  {
+    "id": "brainbender-015",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "AI Lifecycle Stages",
+    "explanation": "Major phases of building and maintaining an AI-enabled system.",
+    "terms": [
+      "Discovery",
+      "Development",
+      "Deployment",
+      "Monitoring"
+    ],
+    "definitions": {
+      "Discovery": "Define the problem",
+      "Development": "Build and test",
+      "Deployment": "Release for use",
+      "Monitoring": "Watch performance over time"
+    }
+  },
+  {
+    "id": "brainbender-016",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Ways to Reduce AI Risk",
+    "explanation": "Controls that can lower the chance or impact of AI mistakes.",
+    "terms": [
+      "Access Control",
+      "Content Filter",
+      "Rate Limit",
+      "Fallback"
+    ],
+    "definitions": {
+      "Access Control": "Limit who can use it",
+      "Content Filter": "Block unsafe outputs",
+      "Rate Limit": "Control usage volume",
+      "Fallback": "Use another path if it fails"
+    }
+  },
+  {
+    "id": "brainbender-017",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Prompt Attack Concepts",
+    "explanation": "Terms related to attempts to manipulate AI behavior through inputs.",
+    "terms": [
+      "Jailbreak",
+      "Injection",
+      "Exfiltration",
+      "Obfuscation"
+    ],
+    "definitions": {
+      "Jailbreak": "Tries to bypass rules",
+      "Injection": "Hides malicious instructions",
+      "Exfiltration": "Attempts to reveal secrets",
+      "Obfuscation": "Disguises intent"
+    }
+  },
+  {
+    "id": "brainbender-018",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Knowledge Management Concepts",
+    "explanation": "Ideas that matter when AI relies on company information.",
+    "terms": [
+      "Source of Truth",
+      "Metadata",
+      "Versioning",
+      "Permissions"
+    ],
+    "definitions": {
+      "Source of Truth": "Trusted reference place",
+      "Metadata": "Data about the content",
+      "Versioning": "Tracking changes over time",
+      "Permissions": "Who can access what"
+    }
+  },
+  {
+    "id": "brainbender-019",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "AI Decision Support Boundaries",
+    "explanation": "Roles AI can play without fully replacing human accountability.",
+    "terms": [
+      "Recommend",
+      "Flag",
+      "Rank",
+      "Explain"
+    ],
+    "definitions": {
+      "Recommend": "Suggest an option",
+      "Flag": "Call attention to something",
+      "Rank": "Order by priority",
+      "Explain": "Provide rationale"
+    }
+  },
+  {
+    "id": "brainbender-020",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Evaluation Dataset Splits",
+    "explanation": "Common data splits used when testing model performance.",
+    "terms": [
+      "Training Set",
+      "Validation Set",
+      "Test Set",
+      "Holdout Set"
+    ],
+    "definitions": {
+      "Training Set": "Data used to learn",
+      "Validation Set": "Data used to tune",
+      "Test Set": "Data used to evaluate",
+      "Holdout Set": "Reserved final check"
+    }
+  },
+  {
+    "id": "brainbender-021",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Prompt Framing Patterns",
+    "explanation": "Ways to shape a request so an AI response has clearer direction.",
+    "terms": [
+      "Persona",
+      "Criteria",
+      "Rubric",
+      "Edge Case"
+    ],
+    "definitions": {
+      "Persona": "A role or identity adopted for a particular purpose.",
+      "Criteria": "Standards used to judge, decide, or evaluate something.",
+      "Rubric": "A scoring guide that defines levels of quality or performance.",
+      "Edge Case": "A situation that occurs at an extreme or unusual boundary."
+    }
+  },
+  {
+    "id": "brainbender-022",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Custom GPT Add-Ons",
+    "explanation": "Features that can make a specialized chatbot more useful or interactive.",
+    "terms": [
+      "Conversation Starters",
+      "Capabilities",
+      "Actions",
+      "Connectors"
+    ],
+    "definitions": {
+      "Conversation Starters": "Suggested opening messages that help begin an interaction.",
+      "Capabilities": "Abilities or functions that something is able to perform.",
+      "Actions": "Operations that allow a system to do something beyond responding with text.",
+      "Connectors": "Links that allow separate systems or sources to work together."
+    }
+  },
+  {
+    "id": "brainbender-023",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Deep Research Habits",
+    "explanation": "Practices that help turn research into a more reliable answer.",
+    "terms": [
+      "Synthesis",
+      "Triangulation",
+      "Source Check",
+      "Counterexample"
+    ],
+    "definitions": {
+      "Synthesis": "The process of combining separate pieces into a coherent whole.",
+      "Triangulation": "The use of multiple points of evidence to check or support a conclusion.",
+      "Source Check": "An examination of where information came from.",
+      "Counterexample": "An example that disproves or challenges a general claim."
+    }
+  },
+  {
+    "id": "brainbender-024",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Response Audience Levels",
+    "explanation": "Ways to aim an explanation at a particular reader or situation.",
+    "terms": [
+      "Brief",
+      "Detailed",
+      "Executive",
+      "Technical"
+    ],
+    "definitions": {
+      "Brief": "Short in length or duration.",
+      "Detailed": "Including many facts, parts, or pieces of information.",
+      "Executive": "Relating to senior decision-making or management.",
+      "Technical": "Requiring specialized knowledge of a subject or process."
+    }
+  },
+  {
+    "id": "brainbender-025",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Data Cleanup Concepts",
+    "explanation": "Terms that help describe how information is structured before analysis.",
+    "terms": [
+      "Schema",
+      "Delimiter",
+      "Record",
+      "Field"
+    ],
+    "definitions": {
+      "Schema": "A defined structure that describes how data is organized.",
+      "Delimiter": "A character used to separate pieces of data.",
+      "Record": "A single complete entry in a set of data.",
+      "Field": "A specific place where one kind of information is stored."
+    }
+  },
+  {
+    "id": "brainbender-026",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Responsible Data Handling",
+    "explanation": "Ideas that help reduce privacy risk when using information with AI tools.",
+    "terms": [
+      "Consent",
+      "Retention",
+      "Minimization",
+      "Disclosure"
+    ],
+    "definitions": {
+      "Consent": "Permission for something to happen or be used.",
+      "Retention": "The act of keeping something for a period of time.",
+      "Minimization": "The practice of using only what is necessary.",
+      "Disclosure": "The act of making information known or available."
+    }
+  },
+  {
+    "id": "brainbender-027",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "AI Work Modes",
+    "explanation": "Working styles that match different kinds of AI-assisted tasks.",
+    "terms": [
+      "Draft Mode",
+      "Analysis Mode",
+      "Research Mode",
+      "Voice Mode"
+    ],
+    "definitions": {
+      "Draft Mode": "A working state focused on creating an early version.",
+      "Analysis Mode": "A working state focused on examining information carefully.",
+      "Research Mode": "A working state focused on finding and comparing information.",
+      "Voice Mode": "A working state based on spoken interaction."
+    }
+  },
+  {
+    "id": "brainbender-028",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Collaborative Editing Terms",
+    "explanation": "Terms that show up when people work with AI on drafts, documents, or revisions.",
+    "terms": [
+      "Canvas",
+      "Workspace",
+      "Version",
+      "Selection"
+    ],
+    "definitions": {
+      "Canvas": "A workspace used for creating, arranging, or editing content.",
+      "Workspace": "An area or environment where work is organized and completed.",
+      "Version": "A particular form of something that may change over time.",
+      "Selection": "A chosen part of a larger whole."
+    }
+  },
+  {
+    "id": "brainbender-029",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Reusable Prompt Pieces",
+    "explanation": "Parts of a repeatable request that can be swapped, filled in, or reused.",
+    "terms": [
+      "Variable",
+      "Parameter",
+      "Placeholder",
+      "Example Set"
+    ],
+    "definitions": {
+      "Variable": "A value or element that can change.",
+      "Parameter": "A limit, factor, or setting that helps define how something works.",
+      "Placeholder": "A temporary item used until the final one is supplied.",
+      "Example Set": "A collection of samples used to show a pattern."
+    }
+  },
+  {
+    "id": "brainbender-030",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Shot-Based Prompting",
+    "explanation": "Prompting patterns based on how many examples are provided before asking for an answer.",
+    "terms": [
+      "Zero-Shot",
+      "One-Shot",
+      "Few-Shot",
+      "Multi-Shot"
+    ],
+    "definitions": {
+      "Zero-Shot": "A task attempt made without providing examples first.",
+      "One-Shot": "A task attempt guided by a single example.",
+      "Few-Shot": "A task attempt guided by a small number of examples.",
+      "Multi-Shot": "A task attempt guided by several examples."
+    }
+  },
+  {
+    "id": "brainbender-031",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Pieces of a Language Model",
+    "explanation": "Basic components or concepts that help explain how language models process and generate text.",
+    "terms": [
+      "Token",
+      "Parameter",
+      "Weight",
+      "Vocabulary"
+    ],
+    "definitions": {
+      "Token": "A small unit of text that a language system can process.",
+      "Parameter": "A stored value that helps shape how a model behaves.",
+      "Weight": "A numerical value that affects the strength of a connection or pattern.",
+      "Vocabulary": "The set of words, pieces, or symbols a system can recognize."
+    }
+  },
+  {
+    "id": "brainbender-032",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Responsible AI Principles",
+    "explanation": "Ideas that support safer, more thoughtful use of AI systems.",
+    "terms": [
+      "Accountability",
+      "Oversight",
+      "Safety",
+      "Inclusion"
+    ],
+    "definitions": {
+      "Accountability": "Responsibility for decisions, actions, or outcomes.",
+      "Oversight": "The act of supervising or monitoring something.",
+      "Safety": "The condition of being protected from harm or risk.",
+      "Inclusion": "The practice of considering and involving different people or perspectives."
+    }
+  },
+  {
+    "id": "brainbender-033",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Human Roles in AI Workflows",
+    "explanation": "Roles people may play when reviewing, improving, or controlling AI-assisted work.",
+    "terms": [
+      "Annotator",
+      "Validator",
+      "Moderator",
+      "Owner"
+    ],
+    "definitions": {
+      "Annotator": "A person who adds labels, notes, or explanations to information.",
+      "Validator": "A person or process that checks whether something meets a standard.",
+      "Moderator": "A person who reviews content or behavior against rules.",
+      "Owner": "A person responsible for something’s use, quality, or outcome."
+    }
+  },
+  {
+    "id": "brainbender-034",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Prompt Debugging Moves",
+    "explanation": "Ways to improve a prompt when the first answer is not good enough.",
+    "terms": [
+      "Isolate",
+      "Specify",
+      "Reproduce",
+      "Revise"
+    ],
+    "definitions": {
+      "Isolate": "To separate one part from others so it can be examined.",
+      "Specify": "To state something clearly and in detail.",
+      "Reproduce": "To create the same result again.",
+      "Revise": "To change something in order to improve it."
+    }
+  },
+  {
+    "id": "brainbender-035",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "AI System Boundaries",
+    "explanation": "Controls or limits that shape what a system is allowed to do.",
+    "terms": [
+      "Guardrail",
+      "Threshold",
+      "Policy",
+      "Permission"
+    ],
+    "definitions": {
+      "Guardrail": "A protective limit meant to prevent unsafe or unwanted behavior.",
+      "Threshold": "The point at which a condition or change begins to apply.",
+      "Policy": "A rule or set of rules that guides decisions or actions.",
+      "Permission": "Authorization to access, use, or do something."
+    }
+  },
+  {
+    "id": "brainbender-036",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Chat Memory Concepts",
+    "explanation": "Terms related to how information may persist, appear, or be brought back in a chat experience.",
+    "terms": [
+      "Session",
+      "Profile",
+      "Preference Store",
+      "Context Window"
+    ],
+    "definitions": {
+      "Session": "A period of activity within a system or application.",
+      "Profile": "A set of information that represents a person or account.",
+      "Preference Store": "A saved place for choices or settings.",
+      "Context Window": "The amount of surrounding information a system can consider at once."
+    }
+  },
+  {
+    "id": "brainbender-037",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "Multimodal Source Materials",
+    "explanation": "Different kinds of source material someone might ask an AI tool to understand.",
+    "terms": [
+      "Screenshot",
+      "Transcript",
+      "Recording",
+      "Attachment"
+    ],
+    "definitions": {
+      "Screenshot": "An image that captures what appears on a screen.",
+      "Transcript": "A written record of spoken words.",
+      "Recording": "A captured version of sound, video, or activity.",
+      "Attachment": "A file or item added to a message, record, or conversation."
+    }
+  },
+  {
+    "id": "brainbender-038",
+    "difficultyKey": "brain-bender",
+    "difficultyLabel": "🧠 Brain-Bender",
+    "name": "___ Model",
+    "explanation": "Words that commonly appear before “model” in AI discussions.",
+    "terms": [
+      "Foundation",
+      "Frontier",
+      "Open-Source",
+      "Proprietary"
+    ],
+    "definitions": {
+      "Foundation": "Something that serves as a base for further work.",
+      "Frontier": "The most advanced edge of a field or area.",
+      "Open-Source": "Available for others to inspect, use, or modify.",
+      "Proprietary": "Owned or controlled by a particular company or person."
+    }
+  },
+  {
+    "id": "expert-001",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "LLM Architecture Concepts",
+    "explanation": "Technical ideas commonly associated with modern language models.",
+    "terms": [
+      "Transformer",
+      "Attention",
+      "Parameters",
+      "Tokenizer"
+    ],
+    "definitions": {
+      "Transformer": "Architecture behind many LLMs",
+      "Attention": "Weights relevant context",
+      "Parameters": "Learned model values",
+      "Tokenizer": "Splits text into tokens"
+    }
+  },
+  {
+    "id": "expert-002",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Alignment Techniques",
+    "explanation": "Methods used to make model behavior better match human preferences or rules.",
+    "terms": [
+      "RLHF",
+      "RLAIF",
+      "Constitutional AI",
+      "Preference Model"
+    ],
+    "definitions": {
+      "RLHF": "Learns from human preference feedback",
+      "RLAIF": "Uses AI-generated preference feedback",
+      "Constitutional AI": "Applies written principles",
+      "Preference Model": "Predicts preferred responses"
+    }
+  },
+  {
+    "id": "expert-003",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Advanced Retrieval Evaluation",
+    "explanation": "Metrics that evaluate whether retrieval found useful evidence.",
+    "terms": [
+      "MRR",
+      "nDCG",
+      "Hit Rate",
+      "Recall@K"
+    ],
+    "definitions": {
+      "MRR": "Rewards first relevant result",
+      "nDCG": "Ranks relevance quality",
+      "Hit Rate": "Checks if any relevant item appears",
+      "Recall@K": "Relevant items found in top K"
+    }
+  },
+  {
+    "id": "expert-004",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Vector Search Concepts",
+    "explanation": "Technical concepts behind similarity search with embeddings.",
+    "terms": [
+      "Cosine Similarity",
+      "Nearest Neighbor",
+      "ANN",
+      "Dimensionality"
+    ],
+    "definitions": {
+      "Cosine Similarity": "Compares vector direction",
+      "Nearest Neighbor": "Closest matching vector",
+      "ANN": "Approximate fast search",
+      "Dimensionality": "Number of vector features"
+    }
+  },
+  {
+    "id": "expert-005",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Model Compression Methods",
+    "explanation": "Techniques that make models smaller or cheaper to run.",
+    "terms": [
+      "Distillation",
+      "Quantization",
+      "Pruning",
+      "Sparsity"
+    ],
+    "definitions": {
+      "Distillation": "Smaller model learns from larger one",
+      "Quantization": "Uses lower-precision numbers",
+      "Pruning": "Removes less useful parts",
+      "Sparsity": "Keeps many values at zero"
+    }
+  },
+  {
+    "id": "expert-006",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Robustness Testing Methods",
+    "explanation": "Ways to test how a model behaves under pressure or variation.",
+    "terms": [
+      "Adversarial Testing",
+      "Stress Testing",
+      "Regression Testing",
+      "Canary Testing"
+    ],
+    "definitions": {
+      "Adversarial Testing": "Uses challenging inputs",
+      "Stress Testing": "Pushes system limits",
+      "Regression Testing": "Checks old behavior still works",
+      "Canary Testing": "Releases to a small group first"
+    }
+  },
+  {
+    "id": "expert-007",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Privacy-Preserving AI Methods",
+    "explanation": "Techniques that can reduce exposure of sensitive training or user data.",
+    "terms": [
+      "Differential Privacy",
+      "Federated Learning",
+      "Data Minimization",
+      "Anonymization"
+    ],
+    "definitions": {
+      "Differential Privacy": "Adds statistical noise",
+      "Federated Learning": "Trains without centralizing data",
+      "Data Minimization": "Uses only necessary data",
+      "Anonymization": "Removes identifying details"
+    }
+  },
+  {
+    "id": "expert-008",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Agent Architecture Pieces",
+    "explanation": "Building blocks often used in tool-using AI agents.",
+    "terms": [
+      "Planner",
+      "Tool Use",
+      "Memory",
+      "Executor"
+    ],
+    "definitions": {
+      "Planner": "Breaks goal into steps",
+      "Tool Use": "Calls external functions",
+      "Memory": "Stores useful context",
+      "Executor": "Carries out actions"
+    }
+  },
+  {
+    "id": "expert-009",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "MLOps Monitoring Signals",
+    "explanation": "Signals teams watch after an AI model is deployed.",
+    "terms": [
+      "Data Drift",
+      "Concept Drift",
+      "Latency",
+      "Throughput"
+    ],
+    "definitions": {
+      "Data Drift": "Inputs change over time",
+      "Concept Drift": "Relationships change over time",
+      "Latency": "Response time",
+      "Throughput": "Requests handled per period"
+    }
+  },
+  {
+    "id": "expert-010",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Security Threats for AI Systems",
+    "explanation": "Threat categories specific to or amplified by AI systems.",
+    "terms": [
+      "Model Theft",
+      "Data Poisoning",
+      "Membership Inference",
+      "Prompt Injection"
+    ],
+    "definitions": {
+      "Model Theft": "Stealing model behavior",
+      "Data Poisoning": "Corrupting training data",
+      "Membership Inference": "Guessing if data was used",
+      "Prompt Injection": "Manipulating instructions"
+    }
+  },
+  {
+    "id": "expert-011",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Calibration Concepts",
+    "explanation": "Ideas related to whether confidence matches actual correctness.",
+    "terms": [
+      "Confidence Score",
+      "Reliability Curve",
+      "Brier Score",
+      "Thresholding"
+    ],
+    "definitions": {
+      "Confidence Score": "Model's certainty estimate",
+      "Reliability Curve": "Plots confidence vs. accuracy",
+      "Brier Score": "Measures probabilistic accuracy",
+      "Thresholding": "Sets cutoff for action"
+    }
+  },
+  {
+    "id": "expert-012",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Evaluation Pitfalls",
+    "explanation": "Ways AI evaluation can look better than it really is.",
+    "terms": [
+      "Data Leakage",
+      "Selection Bias",
+      "Label Noise",
+      "Benchmark Saturation"
+    ],
+    "definitions": {
+      "Data Leakage": "Test info appears in training",
+      "Selection Bias": "Examples are not representative",
+      "Label Noise": "Ground truth contains errors",
+      "Benchmark Saturation": "Test no longer separates quality"
+    }
+  },
+  {
+    "id": "expert-013",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Generation Decoding Methods",
+    "explanation": "Techniques that influence how models choose the next token.",
+    "terms": [
+      "Greedy Decoding",
+      "Beam Search",
+      "Top-K Sampling",
+      "Nucleus Sampling"
+    ],
+    "definitions": {
+      "Greedy Decoding": "Always picks top token",
+      "Beam Search": "Keeps several candidate paths",
+      "Top-K Sampling": "Samples from top choices",
+      "Nucleus Sampling": "Samples from probability mass"
+    }
+  },
+  {
+    "id": "expert-014",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "RAG Failure Points",
+    "explanation": "Ways a retrieval-augmented system can fail even when the model works.",
+    "terms": [
+      "Bad Chunking",
+      "Stale Index",
+      "Low Recall",
+      "Context Stuffing"
+    ],
+    "definitions": {
+      "Bad Chunking": "Pieces split poorly",
+      "Stale Index": "Search misses new content",
+      "Low Recall": "Relevant evidence not retrieved",
+      "Context Stuffing": "Too much evidence included"
+    }
+  },
+  {
+    "id": "expert-015",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Responsible AI Governance Roles",
+    "explanation": "Functions that may participate in AI oversight for higher-risk uses.",
+    "terms": [
+      "Model Owner",
+      "Risk Reviewer",
+      "Legal Partner",
+      "Domain Expert"
+    ],
+    "definitions": {
+      "Model Owner": "Accountable for system",
+      "Risk Reviewer": "Assesses exposure",
+      "Legal Partner": "Checks obligations",
+      "Domain Expert": "Validates subject matter"
+    }
+  },
+  {
+    "id": "expert-016",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Explainability Methods",
+    "explanation": "Techniques used to interpret or explain model behavior.",
+    "terms": [
+      "SHAP",
+      "LIME",
+      "Feature Importance",
+      "Counterfactual"
+    ],
+    "definitions": {
+      "SHAP": "Attributes feature impact",
+      "LIME": "Explains local predictions",
+      "Feature Importance": "Ranks influential inputs",
+      "Counterfactual": "Shows what would change outcome"
+    }
+  },
+  {
+    "id": "expert-017",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Training Data Risks",
+    "explanation": "Risks tied to the information used to build or tune a model.",
+    "terms": [
+      "Copyright Risk",
+      "PII Exposure",
+      "Skewed Sample",
+      "Toxic Content"
+    ],
+    "definitions": {
+      "Copyright Risk": "Protected content concerns",
+      "PII Exposure": "Personal info included",
+      "Skewed Sample": "Unbalanced examples",
+      "Toxic Content": "Harmful text in data"
+    }
+  },
+  {
+    "id": "expert-018",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "LLM Memory Types",
+    "explanation": "Different ways an AI system may retain or use information over time.",
+    "terms": [
+      "Session Memory",
+      "Long-Term Memory",
+      "Episodic Memory",
+      "Semantic Memory"
+    ],
+    "definitions": {
+      "Session Memory": "Context within one chat",
+      "Long-Term Memory": "Saved information across chats",
+      "Episodic Memory": "Past interaction records",
+      "Semantic Memory": "Facts or knowledge stored"
+    }
+  },
+  {
+    "id": "expert-019",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Optimization Objectives",
+    "explanation": "Things AI systems may be optimized to improve or reduce.",
+    "terms": [
+      "Loss",
+      "Reward",
+      "Utility",
+      "Cost Function"
+    ],
+    "definitions": {
+      "Loss": "Error signal to minimize",
+      "Reward": "Signal to maximize",
+      "Utility": "Overall value target",
+      "Cost Function": "Penalty being optimized"
+    }
+  },
+  {
+    "id": "expert-020",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Multimodal AI Concepts",
+    "explanation": "Ideas that matter when AI works across more than text.",
+    "terms": [
+      "Vision Encoder",
+      "Speech-to-Text",
+      "Image Captioning",
+      "Cross-Modal Retrieval"
+    ],
+    "definitions": {
+      "Vision Encoder": "Processes images",
+      "Speech-to-Text": "Turns audio into words",
+      "Image Captioning": "Describes visual content",
+      "Cross-Modal Retrieval": "Searches across media types"
+    }
+  },
+  {
+    "id": "expert-021",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Chain-of-___ Concepts",
+    "explanation": "AI-adjacent terms that commonly follow “chain of” in prompting, verification, summarization, or data review.",
+    "terms": [
+      "Thought",
+      "Verification",
+      "Density",
+      "Custody"
+    ],
+    "definitions": {
+      "Thought": "A mental process involving ideas, reasoning, or reflection.",
+      "Verification": "The process of checking whether something is true, accurate, or valid.",
+      "Density": "The amount of information, matter, or content within a given space.",
+      "Custody": "The care, control, or responsibility for something being preserved or handled."
+    }
+  },
+  {
+    "id": "expert-022",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "___ Injection Variants",
+    "explanation": "Types or patterns of injection-style attacks that can affect AI systems and connected tools.",
+    "terms": [
+      "Direct",
+      "Indirect",
+      "Stored",
+      "Multimodal"
+    ],
+    "definitions": {
+      "Direct": "Straightforward, immediate, or without an intermediary.",
+      "Indirect": "Happening through another source, step, or intermediary.",
+      "Stored": "Kept or saved for later use.",
+      "Multimodal": "Involving more than one type of input, such as text, image, audio, or video."
+    }
+  },
+  {
+    "id": "expert-023",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "___ Tuning",
+    "explanation": "Terms that can appear before “tuning” in discussions of adapting models or prompts.",
+    "terms": [
+      "Fine",
+      "Instruction",
+      "Hyperparameter",
+      "Adapter"
+    ],
+    "definitions": {
+      "Fine": "Delicate, precise, or involving small distinctions.",
+      "Instruction": "A direction or order that tells someone or something what to do.",
+      "Hyperparameter": "A setting chosen before training that influences how a system learns.",
+      "Adapter": "A device, part, or method that allows one thing to work with another."
+    }
+  },
+  {
+    "id": "expert-024",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "RAG Pipeline Verbs",
+    "explanation": "Actions that often happen when retrieved information is prepared, found, and ordered for an AI answer.",
+    "terms": [
+      "Embed",
+      "Index",
+      "Retrieve",
+      "Rerank"
+    ],
+    "definitions": {
+      "Embed": "To place something firmly within a surrounding structure or context.",
+      "Index": "To organize information so it can be found more easily.",
+      "Retrieve": "To get something back or bring it from storage.",
+      "Rerank": "To arrange items again in a new order of priority or relevance."
+    }
+  },
+  {
+    "id": "expert-025",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Model Control Settings",
+    "explanation": "Settings that can influence how long, varied, or repetitive a generated answer may be.",
+    "terms": [
+      "Top-p",
+      "Output Limit",
+      "Presence Penalty",
+      "Frequency Penalty"
+    ],
+    "definitions": {
+      "Top-p": "A sampling setting that limits choices to a probability-based pool.",
+      "Output Limit": "A restriction on how much content may be produced.",
+      "Presence Penalty": "A setting that discourages repeating topics that have already appeared.",
+      "Frequency Penalty": "A setting that discourages repeating words or patterns too often."
+    }
+  },
+  {
+    "id": "expert-026",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Safety Response Outcomes",
+    "explanation": "Ways an AI system may respond when a request is risky, restricted, or only partly acceptable.",
+    "terms": [
+      "Refusal",
+      "Deflection",
+      "Safe Completion",
+      "Partial Compliance"
+    ],
+    "definitions": {
+      "Refusal": "An answer that declines to do something.",
+      "Deflection": "The act of redirecting attention or movement away from something.",
+      "Safe Completion": "A response that provides allowed help while avoiding unsafe content.",
+      "Partial Compliance": "Fulfilling only the acceptable parts of a request."
+    }
+  },
+  {
+    "id": "expert-027",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Text Preprocessing Steps",
+    "explanation": "Steps that can prepare raw language data before it is searched, analyzed, or modeled.",
+    "terms": [
+      "Lowercasing",
+      "Stopword Removal",
+      "Stemming",
+      "Lemmatization"
+    ],
+    "definitions": {
+      "Lowercasing": "The process of converting letters to their lowercase form.",
+      "Stopword Removal": "The process of removing very common words that may add little search value.",
+      "Stemming": "The process of reducing words to a shorter root-like form.",
+      "Lemmatization": "The process of reducing words to their dictionary base form."
+    }
+  },
+  {
+    "id": "expert-028",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Training Feedback Sources",
+    "explanation": "Forms of feedback that can help shape, correct, or improve AI behavior.",
+    "terms": [
+      "Demonstration",
+      "Critique",
+      "Correction",
+      "Reward Signal"
+    ],
+    "definitions": {
+      "Demonstration": "An example that shows how something should be done.",
+      "Critique": "A careful judgment or analysis of something’s strengths and weaknesses.",
+      "Correction": "A change made to fix something that is wrong.",
+      "Reward Signal": "Information that indicates whether an action or result is desirable."
+    }
+  },
+  {
+    "id": "expert-029",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Data Provenance Checks",
+    "explanation": "Ways to understand where information came from and whether it can be responsibly used.",
+    "terms": [
+      "Lineage",
+      "License",
+      "Origin",
+      "Traceability"
+    ],
+    "definitions": {
+      "Lineage": "The history or sequence of origin and development for something.",
+      "License": "Official permission to use, own, or do something under stated conditions.",
+      "Origin": "The point or place where something begins or comes from.",
+      "Traceability": "The ability to follow the history, use, or location of something."
+    }
+  },
+  {
+    "id": "expert-030",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Answer Verification Tactics",
+    "explanation": "Methods for checking whether an AI-generated answer is supported and reliable.",
+    "terms": [
+      "Backtracking",
+      "Cross-Check",
+      "Citation Chase",
+      "Claim Extraction"
+    ],
+    "definitions": {
+      "Backtracking": "The act of retracing steps to find an earlier point or source.",
+      "Cross-Check": "A comparison against another source or method to confirm accuracy.",
+      "Citation Chase": "The practice of following references back to their supporting sources.",
+      "Claim Extraction": "The process of identifying specific statements that can be checked."
+    }
+  },
+  {
+    "id": "expert-031",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Agent Failure Patterns",
+    "explanation": "Ways an AI agent or automated workflow can get stuck, fail, or stop being useful.",
+    "terms": [
+      "Looping",
+      "Tool Error",
+      "Timeout",
+      "Dead End"
+    ],
+    "definitions": {
+      "Looping": "Repeating the same steps or behavior again and again.",
+      "Tool Error": "A failure caused by a tool not working as expected.",
+      "Timeout": "A stop caused by something taking too long.",
+      "Dead End": "A point where no useful progress can continue."
+    }
+  },
+  {
+    "id": "expert-032",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Evaluation Set Types",
+    "explanation": "Types of test sets or collections used to judge performance more carefully.",
+    "terms": [
+      "Holdout",
+      "Gold Set",
+      "Shadow Set",
+      "Eval Set"
+    ],
+    "definitions": {
+      "Holdout": "A reserved portion kept separate for later checking or comparison.",
+      "Gold Set": "A trusted reference collection used as a standard for comparison.",
+      "Shadow Set": "A hidden or separate set used to test behavior without affecting the main process.",
+      "Eval Set": "A collection used to measure how well something performs."
+    }
+  },
+  {
+    "id": "expert-033",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "___ Prompt Types",
+    "explanation": "Prompt types that shape how a model should interpret, resist, or respond to a request.",
+    "terms": [
+      "Negative",
+      "Meta",
+      "Hidden",
+      "Adversarial"
+    ],
+    "definitions": {
+      "Negative": "Expressing denial, refusal, absence, or opposition.",
+      "Meta": "Referring to itself or to the structure around it.",
+      "Hidden": "Kept out of sight or not immediately visible.",
+      "Adversarial": "Involving opposition, challenge, or an attempt to exploit weakness."
+    }
+  },
+  {
+    "id": "expert-034",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Context Window Management",
+    "explanation": "Ways to reduce, reshape, or manage information before giving it to a model.",
+    "terms": [
+      "Compression",
+      "Compaction",
+      "Batching",
+      "Truncation"
+    ],
+    "definitions": {
+      "Compression": "The process of making something smaller or more compact.",
+      "Compaction": "The act of pressing or condensing material into a smaller space.",
+      "Batching": "The process of grouping items together for handling or processing.",
+      "Truncation": "The process of cutting something short."
+    }
+  },
+  {
+    "id": "expert-035",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Advanced Learning Approaches",
+    "explanation": "Training or improvement approaches that describe how systems may learn from data, signals, or interaction.",
+    "terms": [
+      "Active",
+      "Transfer",
+      "Contrastive",
+      "Online"
+    ],
+    "definitions": {
+      "Active": "Involving direct participation or deliberate action.",
+      "Transfer": "The act of moving something from one place, use, or situation to another.",
+      "Contrastive": "Based on comparing differences between things.",
+      "Online": "Connected to or operating through a network or ongoing system."
+    }
+  },
+  {
+    "id": "expert-036",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Generation Quality Dimensions",
+    "explanation": "Qualities that help judge whether an AI-generated answer is useful, readable, and trustworthy.",
+    "terms": [
+      "Faithfulness",
+      "Coherence",
+      "Fluency",
+      "Robustness"
+    ],
+    "definitions": {
+      "Faithfulness": "The quality of staying true to the original source or meaning.",
+      "Coherence": "The quality of being logical, consistent, and easy to follow.",
+      "Fluency": "The ability to express language smoothly and naturally.",
+      "Robustness": "The ability to remain effective under varied or difficult conditions."
+    }
+  },
+  {
+    "id": "expert-037",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Data Access Labels",
+    "explanation": "Labels that can describe how widely information should be shared or protected.",
+    "terms": [
+      "Public",
+      "Internal",
+      "Sensitive",
+      "Restricted"
+    ],
+    "definitions": {
+      "Public": "Open or available to people generally.",
+      "Internal": "Existing or used within an organization or system.",
+      "Sensitive": "Requiring careful handling because harm could result from exposure or misuse.",
+      "Restricted": "Limited to certain people, uses, or conditions."
+    }
+  },
+  {
+    "id": "expert-038",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Agentic Workflow Roles",
+    "explanation": "Roles that may appear in AI-assisted workflows that decide, gather, combine, or judge information.",
+    "terms": [
+      "Router",
+      "Retriever",
+      "Synthesizer",
+      "Evaluator"
+    ],
+    "definitions": {
+      "Router": "A person or system that directs something along a path.",
+      "Retriever": "A person or system that gets something back from storage or another location.",
+      "Synthesizer": "A person or system that combines parts into a unified whole.",
+      "Evaluator": "A person or system that judges value, quality, or performance."
+    }
+  },
+  {
+    "id": "expert-039",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Retrieval Failure Qualities",
+    "explanation": "Ways retrieved information can be less useful than it first appears.",
+    "terms": [
+      "Staleness",
+      "Ambiguity",
+      "Irrelevance",
+      "Duplication"
+    ],
+    "definitions": {
+      "Staleness": "The condition of no longer being fresh, current, or useful.",
+      "Ambiguity": "The quality of having more than one possible meaning.",
+      "Irrelevance": "The quality of not being connected to the matter at hand.",
+      "Duplication": "The presence of an unnecessary copy or repeated item."
+    }
+  },
+  {
+    "id": "expert-040",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "De-Identification Techniques",
+    "explanation": "Ways to reduce the chance that information can be tied back to a specific person or case.",
+    "terms": [
+      "Generalize",
+      "Suppress",
+      "Pseudonymize",
+      "Perturb"
+    ],
+    "definitions": {
+      "Generalize": "To make something less specific and more broadly applicable.",
+      "Suppress": "To hold back, hide, or prevent something from being shown.",
+      "Pseudonymize": "To replace identifying details with substitute names or values.",
+      "Perturb": "To alter something slightly or disturb its usual state."
+    }
+  },
+  {
+    "id": "expert-041",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Evaluation Comparison Setups",
+    "explanation": "Ways to structure comparisons when judging answers, systems, or outputs.",
+    "terms": [
+      "Pairwise",
+      "Blind",
+      "A/B",
+      "Regression"
+    ],
+    "definitions": {
+      "Pairwise": "Involving two items considered together.",
+      "Blind": "Done without seeing or knowing certain information that could influence judgment.",
+      "A/B": "Involving a comparison between two different versions.",
+      "Regression": "A return to an earlier or less advanced state."
+    }
+  },
+  {
+    "id": "expert-042",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Tool Call Stages",
+    "explanation": "Steps that can occur when a system prepares, checks, performs, and reports an external action.",
+    "terms": [
+      "Parse",
+      "Authorize",
+      "Execute",
+      "Return"
+    ],
+    "definitions": {
+      "Parse": "To break information into parts so its structure can be understood.",
+      "Authorize": "To give official permission for something to happen.",
+      "Execute": "To carry out a command, plan, or action.",
+      "Return": "To send, give, or bring something back."
+    }
+  },
+  {
+    "id": "expert-043",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "___ Retrieval",
+    "explanation": "Types of retrieval used to find information for search, assistants, or AI-generated answers.",
+    "terms": [
+      "Sparse",
+      "Dense",
+      "Hybrid",
+      "Semantic"
+    ],
+    "definitions": {
+      "Sparse": "Thinly distributed or present in small amounts.",
+      "Dense": "Closely packed or containing many parts in a small space.",
+      "Hybrid": "Combining two or more different types or methods.",
+      "Semantic": "Related to meaning in language or symbols."
+    }
+  },
+  {
+    "id": "expert-044",
+    "difficultyKey": "expert",
+    "difficultyLabel": "🔥 Expert",
+    "name": "Model Card Sections",
+    "explanation": "Sections or topics that help document what a model is for, how it was built, and how well it performs.",
+    "terms": [
+      "Intended Use",
+      "Limitations",
+      "Training Data",
+      "Evaluation Results"
+    ],
+    "definitions": {
+      "Intended Use": "The purpose for which something is designed or expected to be used.",
+      "Limitations": "Restrictions, weaknesses, or boundaries on what something can do.",
+      "Training Data": "Information used to teach or develop a system.",
+      "Evaluation Results": "Outcomes from a process used to judge quality or performance."
+    }
+  },
+  {
+    "id": "Work-001",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Meeting Types",
+    "explanation": "Common meeting formats used in professional settings.",
+    "terms": [
+      "Standup",
+      "Kickoff",
+      "Retrospective",
+      "Workshop"
+    ],
+    "definitions": {
+      "Standup": "A short recurring meeting for quick status updates.",
+      "Kickoff": "A meeting that starts a project, initiative, or workstream.",
+      "Retrospective": "A meeting to reflect on what worked and what should improve.",
+      "Workshop": "A collaborative session used to solve, plan, or create something."
+    }
+  },
+  {
+    "id": "Work-002",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Cybersecurity Basics",
+    "explanation": "Core terms related to protecting systems, data, and user access.",
+    "terms": [
+      "Encryption",
+      "Phishing",
+      "Firewall",
+      "Authentication"
+    ],
+    "definitions": {
+      "Encryption": "Encoding information so only authorized users can read it.",
+      "Phishing": "A fraudulent attempt to trick someone into sharing sensitive information.",
+      "Firewall": "A security system that monitors and controls network traffic.",
+      "Authentication": "The process of verifying a user’s identity."
+    }
+  },
+  {
+    "id": "Work-003",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Analytics Methods",
+    "explanation": "Common approaches used to analyze data, performance, and outcomes.",
+    "terms": [
+      "Segmentation",
+      "Benchmarking",
+      "Forecasting",
+      "Attribution"
+    ],
+    "definitions": {
+      "Segmentation": "Dividing data into meaningful groups.",
+      "Benchmarking": "Comparing performance against a standard or peer group.",
+      "Forecasting": "Estimating future outcomes based on past data.",
+      "Attribution": "Identifying which factors contributed to a result."
+    }
+  },
+  {
+    "id": "Work-004",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Review Crew",
+    "explanation": "Professional verbs that all involve checking, examining, or evaluating something.",
+    "terms": [
+      "Validate",
+      "Inspect",
+      "Assess",
+      "Audit"
+    ],
+    "definitions": {
+      "Validate": "To confirm that something is correct or meets requirements.",
+      "Inspect": "To examine something carefully.",
+      "Assess": "To evaluate quality, risk, or performance.",
+      "Audit": "To formally review records, processes, or controls."
+    }
+  },
+  {
+    "id": "Work-005",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Alignment Club",
+    "explanation": "Terms about getting teams, expectations, timing, or standards to match.",
+    "terms": [
+      "Consensus",
+      "Calibration",
+      "Synchronization",
+      "Standardization"
+    ],
+    "definitions": {
+      "Consensus": "General agreement among a group.",
+      "Calibration": "Adjusting expectations or measurements to a shared standard.",
+      "Synchronization": "Coordinating timing or activity across systems or teams.",
+      "Standardization": "Making processes or outputs consistent."
+    }
+  },
+  {
+    "id": "Work-006",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Data’s Plus-Ones",
+    "explanation": "Each card can form a common professional term when placed after the word data.",
+    "terms": [
+      "Lake",
+      "Set",
+      "Point",
+      "Warehouse"
+    ],
+    "definitions": {
+      "Lake": "A storage repository for large amounts of raw data.",
+      "Set": "A collection of related data points or records.",
+      "Point": "A single unit or observation within a dataset.",
+      "Warehouse": "A central system used to store structured business data."
+    }
+  },
+  {
+    "id": "Work-007",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Review Warm-Ups",
+    "explanation": "Each card commonly appears before the word review in workplace language.",
+    "terms": [
+      "Peer",
+      "Code",
+      "Performance",
+      "Quarterly"
+    ],
+    "definitions": {
+      "Peer": "A review performed by someone at a similar level or role.",
+      "Code": "A technical review of software changes.",
+      "Performance": "An evaluation of an employee’s work or results.",
+      "Quarterly": "A review that happens once every quarter."
+    }
+  },
+  {
+    "id": "Work-008",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Rush-Hour Office",
+    "explanation": "Each word is used professionally and also relates to roads, driving, or traffic.",
+    "terms": [
+      "Merge",
+      "Route",
+      "Signal",
+      "Lane"
+    ],
+    "definitions": {
+      "Merge": "To combine code, teams, data, or lanes.",
+      "Route": "A path for traffic, requests, approvals, or messages.",
+      "Signal": "An indicator used in communication, analytics, or traffic.",
+      "Lane": "A defined workstream, ownership area, or road path."
+    }
+  },
+  {
+    "id": "Work-009",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Open Items",
+    "explanation": "Each card can be described as open in a workplace context.",
+    "terms": [
+      "Ticket",
+      "Position",
+      "Issue",
+      "Question"
+    ],
+    "definitions": {
+      "Ticket": "A request or issue that has not yet been resolved.",
+      "Position": "A job opening that is available to fill.",
+      "Issue": "A problem that is still unresolved.",
+      "Question": "A topic that has not yet been answered."
+    }
+  },
+  {
+    "id": "Work-010",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Change Department",
+    "explanation": "Each card forms a common professional phrase when placed after the word change.",
+    "terms": [
+      "Request",
+      "Log",
+      "Management",
+      "Control"
+    ],
+    "definitions": {
+      "Request": "A formal ask to modify something.",
+      "Log": "A record of updates or modifications.",
+      "Management": "The practice of planning and guiding organizational or system changes.",
+      "Control": "A process for managing and approving changes."
+    }
+  },
+  {
+    "id": "Work-011",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Plan Ahead",
+    "explanation": "Each card commonly appears before the word plan in professional settings.",
+    "terms": [
+      "Action",
+      "Project",
+      "Contingency",
+      "Strategic"
+    ],
+    "definitions": {
+      "Action": "A plan that lists specific steps to complete.",
+      "Project": "A plan outlining work, timing, and deliverables.",
+      "Contingency": "A backup plan for possible risks or disruptions.",
+      "Strategic": "A high-level plan tied to long-term goals."
+    }
+  },
+  {
+    "id": "Work-012",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Status Symbols",
+    "explanation": "Each card forms a familiar workplace phrase when placed after the word status.",
+    "terms": [
+      "Update",
+      "Report",
+      "Check",
+      "Meeting"
+    ],
+    "definitions": {
+      "Update": "A summary of current progress or changes.",
+      "Report": "A document or message describing current progress.",
+      "Check": "A quick confirmation of current state or progress.",
+      "Meeting": "A meeting focused on progress, blockers, or next steps."
+    }
+  },
+  {
+    "id": "Work-013",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Office Sports Desk",
+    "explanation": "Each word is used in business or technical settings and also appears in sports.",
+    "terms": [
+      "Goal",
+      "Handoff",
+      "Sprint",
+      "Playbook"
+    ],
+    "definitions": {
+      "Goal": "A desired outcome or target.",
+      "Handoff": "A transfer of work, information, or responsibility.",
+      "Sprint": "A short, focused period of work in agile teams.",
+      "Playbook": "A documented set of standard steps or strategies."
+    }
+  },
+  {
+    "id": "Work-014",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Corporate Climate",
+    "explanation": "Each word has a professional meaning and also relates to weather or forecasting.",
+    "terms": [
+      "Forecast",
+      "Cloud",
+      "Storm",
+      "Outlook"
+    ],
+    "definitions": {
+      "Forecast": "An estimate of future performance, demand, or results.",
+      "Cloud": "Online infrastructure or services hosted remotely.",
+      "Storm": "A surge of urgent activity or problems.",
+      "Outlook": "A view or expectation about future conditions."
+    }
+  },
+  {
+    "id": "Work-015",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Closet Cases",
+    "explanation": "Each word has a professional meaning and can also refer to clothing or fabric.",
+    "terms": [
+      "Collar",
+      "Suite",
+      "Thread",
+      "Shift"
+    ],
+    "definitions": {
+      "Collar": "A classification term, as in white-collar or blue-collar work.",
+      "Suite": "A group of related tools or products, and also a homophone of suit.",
+      "Thread": "A conversation chain or sequence of messages.",
+      "Shift": "A time period for work."
+    }
+  },
+  {
+    "id": "Work-016",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "The “-ing” Crowd",
+    "explanation": "Every card ends in “-ing” and is familiar in workplace conversations.",
+    "terms": [
+      "Onboarding",
+      "Scheduling",
+      "Training",
+      "Hiring"
+    ],
+    "definitions": {
+      "Onboarding": "Helping someone get started in a new role, system, or process.",
+      "Scheduling": "Arranging times for meetings, tasks, or events.",
+      "Training": "Teaching skills, processes, or tools.",
+      "Hiring": "Bringing a new person into an organization or role."
+    }
+  },
+  {
+    "id": "Work-017",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Keyboard Crew",
+    "explanation": "Each card is also the name of a keyboard key.",
+    "terms": [
+      "Control",
+      "Shift",
+      "Command",
+      "Option"
+    ],
+    "definitions": {
+      "Control": "Authority or direction over a process, system, or decision.",
+      "Shift": "A change in direction, timing, priority, or focus.",
+      "Command": "An instruction, directive, or order.",
+      "Option": "A choice or alternative available to someone."
+    }
+  },
+  {
+    "id": "Work-018",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Game Night at the Office",
+    "explanation": "Each card is the name of a board or card game and also works as a workplace word.",
+    "terms": [
+      "Sorry",
+      "Risk",
+      "Clue",
+      "Sequence"
+    ],
+    "definitions": {
+      "Sorry": "An apology or expression of regret.",
+      "Risk": "A potential problem or uncertainty that could affect outcomes.",
+      "Clue": "A hint or piece of information that helps solve something.",
+      "Sequence": "An ordered set of steps, events, or items."
+    }
+  },
+  {
+    "id": "Work-019",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Silent but Productive",
+    "explanation": "Each card contains at least one silent letter.",
+    "terms": [
+      "Queue",
+      "Receipt",
+      "Column",
+      "Debt"
+    ],
+    "definitions": {
+      "Queue": "A line of items waiting to be handled or processed.",
+      "Receipt": "Proof of a purchase, payment, or transaction.",
+      "Column": "A vertical section in a table or spreadsheet.",
+      "Debt": "Money that is owed to a person or organization."
+    }
+  },
+  {
+    "id": "Work-020",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Office Drama Club",
+    "explanation": "Each card is used at work and also belongs on a stage.",
+    "terms": [
+      "Role",
+      "Cue",
+      "Stage",
+      "Script"
+    ],
+    "definitions": {
+      "Role": "A function, responsibility, or part someone plays.",
+      "Cue": "A signal or prompt to begin an action.",
+      "Stage": "A phase, step, or point in a process.",
+      "Script": "A written set of words, steps, or instructions."
+    }
+  },
+  {
+    "id": "Work-021",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Add “-er,” Get a Job",
+    "explanation": "Adding “-er” turns each card into a familiar job title or role.",
+    "terms": [
+      "Train",
+      "Code",
+      "Manage",
+      "Design"
+    ],
+    "definitions": {
+      "Train": "To teach someone a skill, process, or tool.",
+      "Code": "To write instructions that software can run.",
+      "Manage": "To oversee, coordinate, or guide work.",
+      "Design": "To create the plan, structure, or look of something."
+    }
+  },
+  {
+    "id": "Work-022",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Roman Office Empire",
+    "explanation": "Each card hides Roman numerals inside the word.",
+    "terms": [
+      "Civil",
+      "Mix",
+      "Deliver",
+      "Pivot"
+    ],
+    "definitions": {
+      "Civil": "Related to citizens, society, or public life.",
+      "Mix": "To combine two or more things together.",
+      "Deliver": "To bring, send, or provide something to the right place or person.",
+      "Pivot": "To change direction or strategy when needed."
+    }
+  },
+  {
+    "id": "Work-023",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Acronyms in Disguise",
+    "explanation": "Each card started as an acronym but is commonly spoken like a regular word.",
+    "terms": [
+      "Radar",
+      "Laser",
+      "Scuba",
+      "Captcha"
+    ],
+    "definitions": {
+      "Radar": "A system used to detect objects and measure their position or movement.",
+      "Laser": "A focused beam of light used in tools, medicine, or scanning.",
+      "Scuba": "Equipment used for breathing while swimming underwater.",
+      "Captcha": "A web test used to check whether a user is human."
+    }
+  },
+  {
+    "id": "Work-024",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "The IT Cameo",
+    "explanation": "Each card includes the letters “IT” together.",
+    "terms": [
+      "Audit",
+      "Ticket",
+      "Priority",
+      "Position"
+    ],
+    "definitions": {
+      "Audit": "A formal review of records, processes, or controls.",
+      "Ticket": "A tracked request, task, or issue.",
+      "Priority": "The level of importance assigned to work.",
+      "Position": "A role, stance, or placement."
+    }
+  },
+  {
+    "id": "Work-025",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "The “-tion” Station",
+    "explanation": "Each card ends in “-tion” and is common in professional or technical settings.",
+    "terms": [
+      "Migration",
+      "Validation",
+      "Integration",
+      "Automation"
+    ],
+    "definitions": {
+      "Migration": "Moving data, systems, or processes from one place to another.",
+      "Validation": "Confirming that something is accurate or meets requirements.",
+      "Integration": "Connecting systems, tools, or processes so they work together.",
+      "Automation": "Using technology to perform tasks with less manual effort."
+    }
+  },
+  {
+    "id": "Work-026",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "AI Spy",
+    "explanation": "Each card hides the letters “AI” together.",
+    "terms": [
+      "Training",
+      "Claim",
+      "Fairness",
+      "Detail"
+    ],
+    "definitions": {
+      "Training": "Teaching skills, processes, or tools.",
+      "Claim": "A request for payment, coverage, or reimbursement.",
+      "Fairness": "Making outcomes equitable.",
+      "Detail": "A specific piece of information."
+    }
+  },
+  {
+    "id": "Work-027",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Snackable Tech",
+    "explanation": "Each card is both a tech term or brand and something food-related.",
+    "terms": [
+      "Cookie",
+      "Spam",
+      "Chip",
+      "Apple"
+    ],
+    "definitions": {
+      "Cookie": "A small data file stored by a browser.",
+      "Spam": "Unwanted or unsolicited digital messages.",
+      "Chip": "A small electronic component used in devices.",
+      "Apple": "A major technology company known for consumer devices."
+    }
+  },
+  {
+    "id": "Work-028",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Inbox Moves",
+    "explanation": "Each card is a common action available in email.",
+    "terms": [
+      "Send",
+      "Reply",
+      "Forward",
+      "Delete"
+    ],
+    "definitions": {
+      "Send": "Move a message out to someone else.",
+      "Reply": "Answer back.",
+      "Forward": "Pass something along.",
+      "Delete": "Remove something from view."
+    }
+  },
+  {
+    "id": "Work-029",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Desk Drawer Staples",
+    "explanation": "Each card is a common office supply.",
+    "terms": [
+      "Stapler",
+      "Tape",
+      "Folder",
+      "Marker"
+    ],
+    "definitions": {
+      "Stapler": "Fastens pages together.",
+      "Tape": "Sticks one thing to another.",
+      "Folder": "Keeps papers grouped.",
+      "Marker": "Writes boldly on a surface."
+    }
+  },
+  {
+    "id": "Work-030",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Iconic Behavior",
+    "explanation": "Each card is commonly represented by an app or interface icon.",
+    "terms": [
+      "Bell",
+      "Gear",
+      "Search",
+      "Home"
+    ],
+    "definitions": {
+      "Bell": "Signals an alert.",
+      "Gear": "Opens controls or settings.",
+      "Search": "Looks for something.",
+      "Home": "Takes you back to the main place."
+    }
+  },
+  {
+    "id": "Work-031",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Fine Lines",
+    "explanation": "Each card is a familiar word that ends with or contains LINE as a clear chunk.",
+    "terms": [
+      "Deadline",
+      "Headline",
+      "Baseline",
+      "Punchline"
+    ],
+    "definitions": {
+      "Deadline": "The final cutoff.",
+      "Headline": "The main title of a story.",
+      "Baseline": "A starting point for comparison.",
+      "Punchline": "The payoff of a joke."
+    }
+  },
+  {
+    "id": "Work-032",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Handle With Care",
+    "explanation": "Each card is something that can have a handle, physically or digitally.",
+    "terms": [
+      "Door",
+      "Mug",
+      "Suitcase",
+      "Username"
+    ],
+    "definitions": {
+      "Door": "You open or close it.",
+      "Mug": "Holds a hot drink.",
+      "Suitcase": "Carries travel items.",
+      "Username": "Identifies someone online."
+    }
+  },
+  {
+    "id": "Work-033",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Digital Small Fries",
+    "explanation": "Each card is a small unit, element, or building block in technology.",
+    "terms": [
+      "Chip",
+      "Bit",
+      "Pixel",
+      "Byte"
+    ],
+    "definitions": {
+      "Chip": "A tiny electronic component.",
+      "Bit": "A basic unit of digital information.",
+      "Pixel": "A tiny dot in a digital image.",
+      "Byte": "A small unit of computer data."
+    }
+  },
+  {
+    "id": "Work-034",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Roots in the System",
+    "explanation": "Each card is a nature word that also appears in technical or data contexts.",
+    "terms": [
+      "Branch",
+      "Root",
+      "Leaf",
+      "Stem"
+    ],
+    "definitions": {
+      "Branch": "An offshoot from a main path.",
+      "Root": "The base or source.",
+      "Leaf": "An endpoint on a larger structure.",
+      "Stem": "The main support or origin."
+    }
+  },
+  {
+    "id": "Work-035",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Post Moves",
+    "explanation": "Each card is a common social media action.",
+    "terms": [
+      "Like",
+      "Share",
+      "Follow",
+      "Block"
+    ],
+    "definitions": {
+      "Like": "Show quick approval.",
+      "Share": "Pass something along.",
+      "Follow": "Subscribe to updates.",
+      "Block": "Prevent contact or access."
+    }
+  },
+  {
+    "id": "Work-036",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Creature Features",
+    "explanation": "Each card is an animal word with a tech or computer meaning.",
+    "terms": [
+      "Mouse",
+      "Bug",
+      "Spider",
+      "Python"
+    ],
+    "definitions": {
+      "Mouse": "A clicking desk companion.",
+      "Bug": "An unwanted glitch.",
+      "Spider": "A crawler on the web.",
+      "Python": "A popular programming language."
+    }
+  },
+  {
+    "id": "Work-037",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Point Taken",
+    "explanation": "Each card is a common computer mouse action.",
+    "terms": [
+      "Click",
+      "Drag",
+      "Hover",
+      "Select"
+    ],
+    "definitions": {
+      "Click": "Press and release.",
+      "Drag": "Move while holding.",
+      "Hover": "Pause over an item.",
+      "Select": "Choose from options."
+    }
+  },
+  {
+    "id": "Work-038",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Case Closed",
+    "explanation": "Each card is the last name or common name of a fictional detective.",
+    "terms": [
+      "Holmes",
+      "Poirot",
+      "Marple",
+      "Monk"
+    ],
+    "definitions": {
+      "Holmes": "A famous Baker Street brain.",
+      "Poirot": "A Belgian solver with little gray cells.",
+      "Marple": "A village mystery expert.",
+      "Monk": "A meticulous TV sleuth."
+    }
+  },
+  {
+    "id": "Work-039",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Thread Count",
+    "explanation": "Each card can have or be part of a thread in a different sense.",
+    "terms": [
+      "Needle",
+      "Comment",
+      "Screw",
+      "Conversation"
+    ],
+    "definitions": {
+      "Needle": "Used to sew.",
+      "Comment": "Can start a chain of replies.",
+      "Screw": "Has a spiral ridge.",
+      "Conversation": "An exchange that can continue over time."
+    }
+  },
+  {
+    "id": "Work-040",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Cooking Words With Coding Meanings",
+    "explanation": "Each word has a food-related meaning and a programming or technical meaning.",
+    "terms": [
+      "Fork",
+      "Hash",
+      "Slice",
+      "Stack"
+    ],
+    "definitions": {
+      "Fork": "A utensil with prongs or a copied branch of a software project.",
+      "Hash": "Chopped food or a value produced from data by an algorithm.",
+      "Slice": "A thin piece cut from something or a selected portion of data.",
+      "Stack": "A pile of objects or an ordered structure for storing items."
+    }
+  },
+  {
+    "id": "Work-041",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Typography Measures and Spacing Terms",
+    "explanation": "Each word is used in typography or text layout.",
+    "terms": [
+      "Pica",
+      "Em",
+      "En",
+      "Tracking"
+    ],
+    "definitions": {
+      "Pica": "A typographic unit of measurement.",
+      "Em": "A unit of width based on the size of type.",
+      "En": "A unit of width equal to about half an em.",
+      "Tracking": "The adjustment of spacing across a range of letters."
+    }
+  },
+  {
+    "id": "Work-042",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Web of Meanings",
+    "explanation": "Each card connects to the word web in a different way.",
+    "terms": [
+      "Website",
+      "Spider",
+      "Silk",
+      "Search"
+    ],
+    "definitions": {
+      "Website": "A place online.",
+      "Spider": "An eight-legged crawler.",
+      "Silk": "A fine fiber used in weaving.",
+      "Search": "Look something up."
+    }
+  },
+  {
+    "id": "Work-043",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Browsers With Other Meanings",
+    "explanation": "Each word is also the name of a web browser.",
+    "terms": [
+      "Chrome",
+      "Safari",
+      "Edge",
+      "Opera"
+    ],
+    "definitions": {
+      "Chrome": "A shiny metallic coating or finish.",
+      "Safari": "A journey to observe or hunt animals, especially in Africa.",
+      "Edge": "The outside limit, border, or sharp side of something.",
+      "Opera": "A dramatic musical performance with singing and orchestra."
+    }
+  },
+  {
+    "id": "Work-044",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Trailing Signs",
+    "explanation": "Each card is something that can have a tail.",
+    "terms": [
+      "Comet",
+      "Coin",
+      "Dog",
+      "Email"
+    ],
+    "definitions": {
+      "Comet": "A bright object crossing the sky.",
+      "Coin": "Can land one of two ways.",
+      "Dog": "Often wags when happy.",
+      "Email": "May end with a signature."
+    }
+  },
+  {
+    "id": "Work-045",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Status Update",
+    "explanation": "Each card is a common digital availability status.",
+    "terms": [
+      "Online",
+      "Away",
+      "Busy",
+      "Offline"
+    ],
+    "definitions": {
+      "Online": "Connected now.",
+      "Away": "Not at keyboard.",
+      "Busy": "Occupied.",
+      "Offline": "Disconnected."
+    }
+  },
+  {
+    "id": "Work-046",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "URL Pieces",
+    "explanation": "Each word names a part of a web address.",
+    "terms": [
+      "Protocol",
+      "Domain",
+      "Path",
+      "Fragment"
+    ],
+    "definitions": {
+      "Protocol": "A formal system of rules or procedures.",
+      "Domain": "An area of knowledge, activity, territory, or control.",
+      "Path": "A route or course followed from one place to another.",
+      "Fragment": "A small broken-off piece of something larger."
+    }
+  },
+  {
+    "id": "Work-047",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Apple Names Before They Were Apple Names",
+    "explanation": "Each word has been used as the name of an Apple product, project, or platform.",
+    "terms": [
+      "Macintosh",
+      "Newton",
+      "Lisa",
+      "Vision"
+    ],
+    "definitions": {
+      "Macintosh": "A type of apple with red and green skin.",
+      "Newton": "A unit of force named after a scientist.",
+      "Lisa": "A common female given name.",
+      "Vision": "The ability to see or imagine what could happen."
+    }
+  },
+  {
+    "id": "Work-048",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Release Labels",
+    "explanation": "Each word can describe a stage or label used before or around a product release.",
+    "terms": [
+      "Alpha",
+      "Beta",
+      "Canary",
+      "Stable"
+    ],
+    "definitions": {
+      "Alpha": "The first letter of the Greek alphabet.",
+      "Beta": "The second letter of the Greek alphabet.",
+      "Canary": "A small yellow bird once used to warn miners of danger.",
+      "Stable": "Firm, steady, or unlikely to change suddenly."
+    }
+  },
+  {
+    "id": "Work-049",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "___ware",
+    "explanation": "Each word can combine with “ware” to form a technology-related word.",
+    "terms": [
+      "Soft",
+      "Hard",
+      "Firm",
+      "Vapor"
+    ],
+    "definitions": {
+      "Soft": "Easy to press, bend, or shape.",
+      "Hard": "Firm, solid, or difficult to bend.",
+      "Firm": "Steady, solid, or not easily moved.",
+      "Vapor": "A substance in gas form, especially one that is usually liquid or solid."
+    }
+  },
+  {
+    "id": "Work-050",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "___Script",
+    "explanation": "Each word can combine with “script” to form a programming or text-related term.",
+    "terms": [
+      "Java",
+      "Type",
+      "Post",
+      "Sub"
+    ],
+    "definitions": {
+      "Java": "An island in Indonesia and a word associated with coffee.",
+      "Type": "A category, kind, or printed character.",
+      "Post": "To place, publish, or send something.",
+      "Sub": "A shortened form for something below, secondary, or substitute."
+    }
+  },
+  {
+    "id": "Work-051",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Programming Languages That Are Common Words",
+    "explanation": "Each word is also the name of a programming language.",
+    "terms": [
+      "Ruby",
+      "Rust",
+      "Swift",
+      "Go"
+    ],
+    "definitions": {
+      "Ruby": "A red precious stone.",
+      "Rust": "A reddish-brown coating that forms on iron or steel.",
+      "Swift": "Fast or quick in movement.",
+      "Go": "To move or travel from one place to another."
+    }
+  },
+  {
+    "id": "Work-052",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Email Folders",
+    "explanation": "Each word can name a place where messages are sorted or stored.",
+    "terms": [
+      "Inbox",
+      "Drafts",
+      "Sent",
+      "Trash"
+    ],
+    "definitions": {
+      "Inbox": "A place where newly received messages arrive.",
+      "Drafts": "Unfinished messages or versions not yet finalized.",
+      "Sent": "Messages that have already been delivered or dispatched.",
+      "Trash": "A place for items marked to be discarded."
+    }
+  },
+  {
+    "id": "Work-053",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Space Words With Everyday Uses",
+    "explanation": "Each word has an astronomy meaning and a broader everyday meaning.",
+    "terms": [
+      "Orbit",
+      "Satellite",
+      "Gravity",
+      "Eclipse"
+    ],
+    "definitions": {
+      "Orbit": "The curved path of one object around another.",
+      "Satellite": "An object that revolves around a larger object or supports something from outside.",
+      "Gravity": "A force that attracts objects or the seriousness of a situation.",
+      "Eclipse": "An event where one body blocks another or a loss of prominence."
+    }
+  },
+  {
+    "id": "Work-054",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Data ___",
+    "explanation": "Each word can follow “data” to form a common phrase.",
+    "terms": [
+      "Mining",
+      "Science",
+      "Entry",
+      "Center"
+    ],
+    "definitions": {
+      "Mining": "The process of extracting something valuable from a larger source.",
+      "Science": "A field of study based on observation, testing, and evidence.",
+      "Entry": "An item written, recorded, or submitted into a system.",
+      "Center": "The middle point or main place of activity."
+    }
+  },
+  {
+    "id": "Work-055",
+    "difficultyKey": "work-filler",
+    "difficultyLabel": "Work Filler",
+    "name": "Computing Words Borrowed From Elsewhere",
+    "explanation": "Each word has a common nontechnical meaning and a specific computing meaning.",
+    "terms": [
+      "Port",
+      "Cache",
+      "Kernel",
+      "Patch"
+    ],
+    "definitions": {
+      "Port": "A harbor or a connection point for devices or networks.",
+      "Cache": "A hidden store of supplies or stored data kept for faster access.",
+      "Kernel": "The central part of a seed or the core of an operating system.",
+      "Patch": "A piece used to cover a hole or an update used to fix software."
+    }
+  },
+  {
+    "id": "Silly-001",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Silent First Letters",
+    "explanation": "Each word begins with a letter that is not pronounced.",
+    "terms": [
+      "Gnome",
+      "Knight",
+      "Wrist",
+      "Honest"
+    ],
+    "definitions": {
+      "Gnome": "A small mythical creature often shown as a garden statue.",
+      "Knight": "A mounted warrior from the medieval period.",
+      "Wrist": "The joint connecting the hand and forearm.",
+      "Honest": "Truthful and free from deception."
+    }
+  },
+  {
+    "id": "Silly-002",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Palindromes",
+    "explanation": "Each word reads the same forward and backward.",
+    "terms": [
+      "Level",
+      "Civic",
+      "Kayak",
+      "Rotator"
+    ],
+    "definitions": {
+      "Level": "Flat, even, or at the same height.",
+      "Civic": "Relating to a city, town, or citizenship.",
+      "Kayak": "A small narrow boat moved with a double-bladed paddle.",
+      "Rotator": "Something that turns around a central point."
+    }
+  },
+  {
+    "id": "Silly-003",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "___ Board",
+    "explanation": "Each word can come before “board” to form a common phrase.",
+    "terms": [
+      "White",
+      "Cutting",
+      "Surf",
+      "Score"
+    ],
+    "definitions": {
+      "White": "The color of snow or milk.",
+      "Cutting": "The act of slicing or separating something with a sharp edge.",
+      "Surf": "Waves breaking near the shore.",
+      "Score": "A number showing points, results, or performance."
+    }
+  },
+  {
+    "id": "Silly-004",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Double Letters",
+    "explanation": "Each word contains a repeated letter pair.",
+    "terms": [
+      "Coffee",
+      "Balloon",
+      "Address",
+      "Committee"
+    ],
+    "definitions": {
+      "Coffee": "A brewed drink made from roasted beans.",
+      "Balloon": "A flexible bag that expands when filled with air or gas.",
+      "Address": "The place where someone lives or receives mail.",
+      "Committee": "A group of people chosen to consider or manage something."
+    }
+  },
+  {
+    "id": "Silly-006",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "___cast",
+    "explanation": "Each word can combine with “cast” to form another word.",
+    "terms": [
+      "Broad",
+      "Pod",
+      "Fore",
+      "Weather"
+    ],
+    "definitions": {
+      "Broad": "Wide in extent, range, or meaning.",
+      "Pod": "A small group, container, or seed case.",
+      "Fore": "Located at or toward the front.",
+      "Weather": "The state of the atmosphere at a particular time and place."
+    }
+  },
+  {
+    "id": "Silly-007",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "___ Bug",
+    "explanation": "Each word can come before “bug” to name an insect, pest, or issue.",
+    "terms": [
+      "Lady",
+      "Bed",
+      "Fire",
+      "Stink"
+    ],
+    "definitions": {
+      "Lady": "A polite term for a woman.",
+      "Bed": "A piece of furniture used for sleeping.",
+      "Fire": "Heat, light, and flame produced by burning.",
+      "Stink": "A strong unpleasant smell."
+    }
+  },
+  {
+    "id": "Silly-008",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Keyboard Symbol Names",
+    "explanation": "Names of symbols commonly found on a keyboard.",
+    "terms": [
+      "Tilde",
+      "Ampersand",
+      "Asterisk",
+      "Caret"
+    ],
+    "definitions": {
+      "Tilde": "A mark shaped like a small wave.",
+      "Ampersand": "A symbol meaning “and.”",
+      "Asterisk": "A star-shaped symbol used for notes, emphasis, or multiplication.",
+      "Caret": "A mark shaped like an upward angle."
+    }
+  },
+  {
+    "id": "Silly-009",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Common Font Names",
+    "explanation": "Each word is also the name of a commonly recognized typeface.",
+    "terms": [
+      "Georgia",
+      "Courier",
+      "Impact",
+      "Times"
+    ],
+    "definitions": {
+      "Georgia": "A state in the southeastern United States.",
+      "Courier": "A person or service that delivers messages or packages.",
+      "Impact": "A strong effect or collision.",
+      "Times": "Instances, occasions, or periods."
+    }
+  },
+  {
+    "id": "Silly-010",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "___ Key",
+    "explanation": "Each word can come before “key” to form a familiar phrase.",
+    "terms": [
+      "House",
+      "Car",
+      "Piano",
+      "Answer"
+    ],
+    "definitions": {
+      "House": "A building where people live.",
+      "Car": "A road vehicle with four wheels.",
+      "Piano": "A musical instrument with keys and strings.",
+      "Answer": "A response to a question."
+    }
+  },
+  {
+    "id": "Silly-011",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "___ Line",
+    "explanation": "Each word can come before “line” to form a familiar phrase.",
+    "terms": [
+      "Punch",
+      "Finish",
+      "Bottom",
+      "Subject"
+    ],
+    "definitions": {
+      "Punch": "A hit made with a closed hand.",
+      "Finish": "The end or final part of something.",
+      "Bottom": "The lowest part of something.",
+      "Subject": "The topic being discussed or studied."
+    }
+  },
+  {
+    "id": "Silly-012",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Words With Hidden Numbers",
+    "explanation": "Each word contains the letters of a number in order.",
+    "terms": [
+      "Stone",
+      "Freight",
+      "Twinkle",
+      "Height"
+    ],
+    "definitions": {
+      "Stone": "A hard natural material found in the ground.",
+      "Freight": "Goods transported by truck, train, ship, or plane.",
+      "Twinkle": "To shine with a flickering or sparkling light.",
+      "Height": "The measurement of how tall something is."
+    }
+  },
+  {
+    "id": "Silly-013",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Silent B Words",
+    "explanation": "Each word contains a “b” that is not pronounced.",
+    "terms": [
+      "Comb",
+      "Doubt",
+      "Lamb",
+      "Thumb"
+    ],
+    "definitions": {
+      "Comb": "A tool with teeth used to arrange hair.",
+      "Doubt": "A feeling of uncertainty or lack of conviction.",
+      "Lamb": "A young sheep.",
+      "Thumb": "The short thick digit on the side of the hand."
+    }
+  },
+  {
+    "id": "Silly-014",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Letter Soundalikes",
+    "explanation": "Each word sounds like a single letter of the alphabet.",
+    "terms": [
+      "Bee",
+      "Jay",
+      "Tea",
+      "Eye"
+    ],
+    "definitions": {
+      "Bee": "A flying insect known for making honey.",
+      "Jay": "A bird often known for its loud calls and colorful feathers.",
+      "Tea": "A drink made by steeping leaves in hot water.",
+      "Eye": "The organ used for seeing."
+    }
+  },
+  {
+    "id": "Silly-015",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "___ Jam",
+    "explanation": "Each word can come before “jam” to form a familiar phrase.",
+    "terms": [
+      "Traffic",
+      "Paper",
+      "Space",
+      "Pearl"
+    ],
+    "definitions": {
+      "Traffic": "Vehicles moving along roads or through an area.",
+      "Paper": "A thin material used for writing, printing, or wrapping.",
+      "Space": "The area or distance around, between, or beyond things.",
+      "Pearl": "A smooth round object formed inside some shellfish."
+    }
+  },
+  {
+    "id": "Silly-016",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "___ Star",
+    "explanation": "Each word can come before “star” to form a familiar phrase.",
+    "terms": [
+      "North",
+      "Movie",
+      "Shooting",
+      "Pop"
+    ],
+    "definitions": {
+      "North": "The direction toward the top of most maps.",
+      "Movie": "A story shown through moving images.",
+      "Shooting": "The act of firing something or moving quickly across the sky.",
+      "Pop": "A sharp short sound or a style of popular music."
+    }
+  },
+  {
+    "id": "Silly-017",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "___ Fish",
+    "explanation": "Each word can come before “fish” to name a creature.",
+    "terms": [
+      "Gold",
+      "Sword",
+      "Jelly",
+      "Star"
+    ],
+    "definitions": {
+      "Gold": "A yellow precious metal.",
+      "Sword": "A weapon with a long blade.",
+      "Jelly": "A soft sweet food that holds its shape.",
+      "Star": "A bright object seen in the night sky."
+    }
+  },
+  {
+    "id": "Silly-018",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Major Arcana Cards",
+    "explanation": "Each word is the name of a card in the tarot’s Major Arcana.",
+    "terms": [
+      "Fool",
+      "Magician",
+      "Lovers",
+      "Hermit"
+    ],
+    "definitions": {
+      "Fool": "A person who acts unwisely or lacks good judgment.",
+      "Magician": "A person who performs tricks or illusions.",
+      "Lovers": "People who are romantically connected.",
+      "Hermit": "A person who lives alone or apart from society."
+    }
+  },
+  {
+    "id": "Silly-019",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "___ Bank",
+    "explanation": "Each word can come before “bank” to form a familiar phrase.",
+    "terms": [
+      "River",
+      "Blood",
+      "Word",
+      "Power"
+    ],
+    "definitions": {
+      "River": "A natural stream of water flowing toward a larger body of water.",
+      "Blood": "The red fluid that circulates through the body.",
+      "Word": "A unit of language with meaning.",
+      "Power": "The ability or capacity to do something."
+    }
+  },
+  {
+    "id": "Silly-020",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Playing Card Terms",
+    "explanation": "Each word can name something found in or associated with a deck of cards.",
+    "terms": [
+      "Ace",
+      "Joker",
+      "Spade",
+      "Club"
+    ],
+    "definitions": {
+      "Ace": "A playing card that can often have the highest or lowest value.",
+      "Joker": "A playing card often used as a wild card.",
+      "Spade": "A black suit symbol shaped like a pointed leaf.",
+      "Club": "A black suit symbol shaped like a three-leaf clover."
+    }
+  },
+  {
+    "id": "Silly-021",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Release Labels",
+    "explanation": "Each word can describe a stage or label used before or around a product release.",
+    "terms": [
+      "Alpha",
+      "Beta",
+      "Canary",
+      "Stable"
+    ],
+    "definitions": {
+      "Alpha": "The first letter of the Greek alphabet.",
+      "Beta": "The second letter of the Greek alphabet.",
+      "Canary": "A small yellow bird once used to warn miners of danger.",
+      "Stable": "Firm, steady, or unlikely to change suddenly."
+    }
+  },
+  {
+    "id": "Silly-022",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "___ware",
+    "explanation": "Each word can combine with “ware” to form a technology-related word.",
+    "terms": [
+      "Soft",
+      "Hard",
+      "Firm",
+      "Vapor"
+    ],
+    "definitions": {
+      "Soft": "Easy to press, bend, or shape.",
+      "Hard": "Firm, solid, or difficult to bend.",
+      "Firm": "Steady, solid, or not easily moved.",
+      "Vapor": "A substance in gas form, especially one that is usually liquid or solid."
+    }
+  },
+  {
+    "id": "Silly-023",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Cloud Types",
+    "explanation": "Each word names a type of cloud.",
+    "terms": [
+      "Cirrus",
+      "Cumulus",
+      "Stratus",
+      "Nimbus"
+    ],
+    "definitions": {
+      "Cirrus": "A thin wispy cloud usually found high in the sky.",
+      "Cumulus": "A puffy cloud with a rounded top and flatter base.",
+      "Stratus": "A low cloud that often forms a gray layer.",
+      "Nimbus": "A cloud or halo associated with rain or radiance."
+    }
+  },
+  {
+    "id": "Silly-024",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "File Menu Verbs",
+    "explanation": "Each word is a common action in a file menu.",
+    "terms": [
+      "New",
+      "Open",
+      "Save",
+      "Print"
+    ],
+    "definitions": {
+      "New": "Not existing before or recently made.",
+      "Open": "Not closed, covered, or blocked.",
+      "Save": "To keep something from being lost, wasted, or harmed.",
+      "Print": "To produce text or images on paper."
+    }
+  },
+  {
+    "id": "Silly-025",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "___light",
+    "explanation": "Each word can come before “light” to form a familiar word.",
+    "terms": [
+      "Flash",
+      "Spot",
+      "Gas",
+      "Moon"
+    ],
+    "definitions": {
+      "Flash": "A sudden brief burst of light or movement.",
+      "Spot": "A small mark, place, or particular location.",
+      "Gas": "A substance that expands freely to fill available space.",
+      "Moon": "The natural satellite that orbits Earth."
+    }
+  },
+  {
+    "id": "Silly-026",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "___storm",
+    "explanation": "Each word can come before “storm” to form a familiar word.",
+    "terms": [
+      "Thunder",
+      "Snow",
+      "Sand",
+      "Hail"
+    ],
+    "definitions": {
+      "Thunder": "The loud sound that follows lightning.",
+      "Snow": "Frozen precipitation made of ice crystals.",
+      "Sand": "Tiny loose grains of rock or mineral.",
+      "Hail": "Pellets of ice that fall from clouds."
+    }
+  },
+  {
+    "id": "Silly-027",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Bracket Shapes",
+    "explanation": "Each word can describe a type or shape of bracket.",
+    "terms": [
+      "Round",
+      "Square",
+      "Curly",
+      "Angle"
+    ],
+    "definitions": {
+      "Round": "Shaped like a circle or curve.",
+      "Square": "Having four equal sides and four right angles.",
+      "Curly": "Formed in curls, coils, or twisting shapes.",
+      "Angle": "The space between two lines or surfaces that meet."
+    }
+  },
+  {
+    "id": "Silly-028",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "___ Pack",
+    "explanation": "Each word can come before “pack” to form a familiar word or phrase.",
+    "terms": [
+      "Back",
+      "Six",
+      "Jet",
+      "Snack"
+    ],
+    "definitions": {
+      "Back": "The rear part or opposite side of something.",
+      "Six": "The number after five and before seven.",
+      "Jet": "A fast aircraft or a stream of liquid or gas.",
+      "Snack": "A small amount of food eaten between meals."
+    }
+  },
+  {
+    "id": "Silly-029",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Silent G Words",
+    "explanation": "Each word contains a “g” that is not pronounced.",
+    "terms": [
+      "Gnat",
+      "Gnaw",
+      "Sign",
+      "Reign"
+    ],
+    "definitions": {
+      "Gnat": "A tiny flying insect.",
+      "Gnaw": "To bite or chew something repeatedly.",
+      "Sign": "A mark, gesture, or object that communicates meaning.",
+      "Reign": "The period during which a ruler holds power."
+    }
+  },
+  {
+    "id": "Silly-030",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Words That Change When Capitalized",
+    "explanation": "Each word can become a proper noun with a different common meaning when capitalized.",
+    "terms": [
+      "Polish",
+      "Turkey",
+      "Mobile",
+      "Reading"
+    ],
+    "definitions": {
+      "Polish": "To make something smooth, shiny, or more refined.",
+      "Turkey": "A large bird often associated with holiday meals.",
+      "Mobile": "Able to move or be moved easily.",
+      "Reading": "The act of looking at and understanding written words."
+    }
+  },
+  {
+    "id": "Silly-031",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Math Words With Everyday Meanings",
+    "explanation": "Each word is both a math term and a common non-math word.",
+    "terms": [
+      "Mean",
+      "Mode",
+      "Range",
+      "Root"
+    ],
+    "definitions": {
+      "Mean": "Unkind or intended to hurt someone.",
+      "Mode": "A way or manner in which something happens or is done.",
+      "Range": "The distance or area between limits.",
+      "Root": "The part of a plant that usually grows underground."
+    }
+  },
+  {
+    "id": "Silly-032",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Keyboard Keys Hiding in Plain Sight",
+    "explanation": "Each word contains the name of a keyboard key inside it.",
+    "terms": [
+      "Escape",
+      "Tabloid",
+      "Entertain",
+      "Delete"
+    ],
+    "definitions": {
+      "Escape": "To get away from danger, confinement, or an unwanted situation.",
+      "Tabloid": "A newspaper or publication with a compact format or sensational style.",
+      "Entertain": "To amuse, interest, or host someone.",
+      "Delete": "To remove or erase something."
+    }
+  },
+  {
+    "id": "Silly-033",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Words With Three Consecutive Vowels",
+    "explanation": "Each word contains three vowel letters in a row.",
+    "terms": [
+      "Beauty",
+      "Queueing",
+      "Obsequious",
+      "Maneuver"
+    ],
+    "definitions": {
+      "Beauty": "The quality of being pleasing to the senses or mind.",
+      "Queueing": "The act of waiting in or forming a line.",
+      "Obsequious": "Excessively eager to please or obey.",
+      "Maneuver": "To move skillfully or carefully."
+    }
+  },
+  {
+    "id": "Silly-034",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Words That Become New Words When Reversed",
+    "explanation": "Each word forms another valid word when spelled backward.",
+    "terms": [
+      "Stressed",
+      "Drawer",
+      "Reward",
+      "Deliver"
+    ],
+    "definitions": {
+      "Stressed": "Feeling mental or emotional strain.",
+      "Drawer": "A sliding storage compartment in a piece of furniture.",
+      "Reward": "Something given in return for good work or behavior.",
+      "Deliver": "To bring or transport something to a person or place."
+    }
+  },
+  {
+    "id": "Silly-035",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Words With Hidden Months",
+    "explanation": "Each word contains a three-letter month abbreviation in order.",
+    "terms": [
+      "Decade",
+      "Apron",
+      "Maybe",
+      "Octopus"
+    ],
+    "definitions": {
+      "Decade": "A period of ten years.",
+      "Apron": "A garment worn over clothing to protect it.",
+      "Maybe": "Used to show that something is possible but not certain.",
+      "Octopus": "A sea animal with eight arms."
+    }
+  },
+  {
+    "id": "Silly-036",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Words With Silent Internal Letters",
+    "explanation": "Each word contains a letter inside the word that is usually not pronounced.",
+    "terms": [
+      "Island",
+      "Castle",
+      "Wednesday",
+      "Receipt"
+    ],
+    "definitions": {
+      "Island": "A piece of land surrounded by water.",
+      "Castle": "A large fortified building, especially from the past.",
+      "Wednesday": "The day of the week between Tuesday and Thursday.",
+      "Receipt": "A written or electronic record showing that something was received or paid for."
+    }
+  },
+  {
+    "id": "Silly-037",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Words That Are Also Music Symbols",
+    "explanation": "Each word is also used as a symbol or marking in written music.",
+    "terms": [
+      "Flat",
+      "Sharp",
+      "Rest",
+      "Accent"
+    ],
+    "definitions": {
+      "Flat": "Level, smooth, or without raised areas.",
+      "Sharp": "Having a thin edge or point that can cut or pierce.",
+      "Rest": "A period of relaxation or inactivity.",
+      "Accent": "A distinctive emphasis, pronunciation, or manner of speaking."
+    }
+  },
+  {
+    "id": "Silly-038",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "One-Letter Chemical Symbols",
+    "explanation": "Each word is also the full name of an element represented by a single-letter symbol.",
+    "terms": [
+      "Carbon",
+      "Hydrogen",
+      "Oxygen",
+      "Nitrogen"
+    ],
+    "definitions": {
+      "Carbon": "A chemical element found in all known life.",
+      "Hydrogen": "A very light chemical element that can combine with oxygen to form water.",
+      "Oxygen": "A chemical element needed by many living things to breathe.",
+      "Nitrogen": "A chemical element that makes up most of Earth’s atmosphere."
+    }
+  },
+  {
+    "id": "Silly-039",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Heteronyms",
+    "explanation": "Each word can be pronounced two ways with different meanings.",
+    "terms": [
+      "Lead",
+      "Wind",
+      "Tear",
+      "Bow"
+    ],
+    "definitions": {
+      "Lead": "To guide someone.",
+      "Wind": "The act of turning something.",
+      "Tear": "A drop from the eye.",
+      "Bow": "A bend at the waist."
+    }
+  },
+  {
+    "id": "Silly-040",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Silent Final Letters",
+    "explanation": "Each word ends with a letter that is usually not pronounced.",
+    "terms": [
+      "Autumn",
+      "Hymn",
+      "Condemn",
+      "Solemn"
+    ],
+    "definitions": {
+      "Autumn": "The season between summer and winter.",
+      "Hymn": "A religious song or poem of praise.",
+      "Condemn": "To express strong disapproval or impose a penalty.",
+      "Solemn": "Serious, formal, or deeply sincere."
+    }
+  },
+  {
+    "id": "Silly-041",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Tree Names That Are Also Names",
+    "explanation": "Each word can name a tree and also be used as a person’s name.",
+    "terms": [
+      "Willow",
+      "Hazel",
+      "Olive",
+      "Ash"
+    ],
+    "definitions": {
+      "Willow": "A tree with long flexible branches and narrow leaves.",
+      "Hazel": "A shrub or tree that produces nuts.",
+      "Olive": "A small fruit used for food and oil.",
+      "Ash": "A powdery residue left after burning."
+    }
+  },
+  {
+    "id": "Silly-042",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Foods That Are Also Colors",
+    "explanation": "Each word can refer to something edible and to a color.",
+    "terms": [
+      "Salmon",
+      "Peach",
+      "Plum",
+      "Mustard"
+    ],
+    "definitions": {
+      "Salmon": "A fish often known for pinkish-orange flesh.",
+      "Peach": "A soft juicy fruit with fuzzy skin.",
+      "Plum": "A sweet purple or reddish fruit with a pit.",
+      "Mustard": "A yellow or brown condiment made from seeds."
+    }
+  },
+  {
+    "id": "Silly-043",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Magazine Titles That Are Common Words",
+    "explanation": "Each word is also the title of a well-known magazine.",
+    "terms": [
+      "Time",
+      "People",
+      "Fortune",
+      "Wired"
+    ],
+    "definitions": {
+      "Time": "The measured progress of events from past to future.",
+      "People": "Human beings considered individually or as a group.",
+      "Fortune": "Chance, luck, or great wealth.",
+      "Wired": "Equipped with wires or feeling tense and energetic."
+    }
+  },
+  {
+    "id": "Silly-044",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Car Models That Are Common Words",
+    "explanation": "Each word is also the name of a vehicle model.",
+    "terms": [
+      "Accord",
+      "Civic",
+      "Pilot",
+      "Ranger"
+    ],
+    "definitions": {
+      "Accord": "Agreement or harmony between people or groups.",
+      "Civic": "Relating to a city, town, or citizenship.",
+      "Pilot": "A person who operates an aircraft or guides something.",
+      "Ranger": "A person who patrols or protects a park, forest, or area."
+    }
+  },
+  {
+    "id": "Silly-045",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Poker Moves",
+    "explanation": "Each word can describe an action taken during a poker hand.",
+    "terms": [
+      "Call",
+      "Raise",
+      "Fold",
+      "Bluff"
+    ],
+    "definitions": {
+      "Call": "To name or summon someone.",
+      "Raise": "To lift something higher.",
+      "Fold": "To bend something over on itself.",
+      "Bluff": "To deceive someone by pretending to be more confident than you are."
+    }
+  },
+  {
+    "id": "Silly-046",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Kitchen Words in Computing",
+    "explanation": "Each word has a kitchen meaning and a computing or internet-related meaning.",
+    "terms": [
+      "Cookie",
+      "Menu",
+      "Server",
+      "Cloud"
+    ],
+    "definitions": {
+      "Cookie": "A small file or piece of data stored by a website in a browser.",
+      "Menu": "A list of food or drink choices.",
+      "Server": "A computer or system that provides data, resources, or services to other devices.",
+      "Cloud": "A visible mass of tiny water droplets in the sky."
+    }
+  },
+  {
+    "id": "Silly-047",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Units With Everyday Meanings",
+    "explanation": "Each word is both a unit of measurement and a common everyday word.",
+    "terms": [
+      "Yard",
+      "Pound",
+      "Foot",
+      "Second"
+    ],
+    "definitions": {
+      "Yard": "An outdoor area beside a building.",
+      "Pound": "To strike something repeatedly with force.",
+      "Foot": "The lower part of the leg.",
+      "Second": "The item after the first."
+    }
+  },
+  {
+    "id": "Silly-048",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Foods That Are Also Terms of Endearment",
+    "explanation": "Each word can be food-related and also used affectionately for a person.",
+    "terms": [
+      "Honey",
+      "Sugar",
+      "Sweetie",
+      "Pumpkin"
+    ],
+    "definitions": {
+      "Honey": "An affectionate name for someone loved or cared for.",
+      "Sugar": "A sweet crystalline substance used in food and drinks.",
+      "Sweetie": "A term of affection for a kind, lovable, or cherished person.",
+      "Pumpkin": "A large orange squash often associated with Halloween."
+    }
+  },
+  {
+    "id": "Silly-049",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Kitchen Words in Computing",
+    "explanation": "Each word has a kitchen meaning and a computing or internet-related meaning.",
+    "terms": [
+      "Cookie",
+      "Menu",
+      "Server",
+      "Cloud"
+    ],
+    "definitions": {
+      "Cookie": "A small file or piece of data stored by a website in a browser.",
+      "Menu": "A list of commands or options shown in a software interface.",
+      "Server": "A computer or system that provides data, resources, or services to other devices.",
+      "Cloud": "Online computing or storage resources accessed over the internet."
+    }
+  },
+  {
+    "id": "Silly-050",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Culinary Measurements That Also Mean Something Else",
+    "explanation": "Each word can describe an amount in cooking and also has another common meaning.",
+    "terms": [
+      "Dash",
+      "Pinch",
+      "Splash",
+      "Drop"
+    ],
+    "definitions": {
+      "Dash": "To run or move quickly.",
+      "Pinch": "To squeeze something between fingers or other opposing surfaces.",
+      "Splash": "A 1984 romantic comedy starring Daryl Hannah as a mermaid.",
+      "Drop": "To let something fall from a higher place."
+    }
+  },
+  {
+    "id": "Silly-051",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Foods That Are Also Terms of Endearment",
+    "explanation": "Each word can be food-related and also used affectionately for a person.",
+    "terms": [
+      "Honey",
+      "Sugar",
+      "Sweetie",
+      "Pumpkin"
+    ],
+    "definitions": {
+      "Honey": "An affectionate name for someone loved or cared for.",
+      "Sugar": "An affectionate form of address used for someone sweet or dear.",
+      "Sweetie": "A term of affection for a kind, lovable, or cherished person.",
+      "Pumpkin": "An affectionate nickname often used for a child or loved one."
+    }
+  },
+  {
+    "id": "Silly-052",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Companies With Ordinary-Word Names",
+    "explanation": "Each word is also the name of a major company or brand.",
+    "terms": [
+      "Jaguar",
+      "Amazon",
+      "Shell",
+      "Target"
+    ],
+    "definitions": {
+      "Jaguar": "A large wild cat found in the Americas.",
+      "Amazon": "A large river in South America or a woman warrior from mythology.",
+      "Shell": "A hard outer covering that protects something.",
+      "Target": "An object or goal that someone aims at."
+    }
+  },
+  {
+    "id": "Silly-053",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "They Need Sand First",
+    "explanation": "Add “sand” before each word to make a summer/beach-related term.",
+    "terms": [
+      "Castle",
+      "Dollar",
+      "Paper",
+      "Storm"
+    ],
+    "definitions": {
+      "Castle": "A fortified building, often found in fairy tales.",
+      "Dollar": "A unit of money.",
+      "Paper": "A thin material used for writing or printing.",
+      "Storm": "A period of severe weather."
+    }
+  },
+  {
+    "id": "Silly-054",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Sea Makes Them Stranger",
+    "explanation": "Add “sea” before each word to make an ocean creature or ocean-related thing.",
+    "terms": [
+      "Horse",
+      "Lion",
+      "Cucumber",
+      "Dragon"
+    ],
+    "definitions": {
+      "Horse": "A four-legged animal often ridden by people.",
+      "Lion": "A large wild cat known for its mane.",
+      "Cucumber": "A long green vegetable often used in salads.",
+      "Dragon": "A mythical creature often shown breathing fire."
+    }
+  },
+  {
+    "id": "Silly-055",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Sun Has Entered the Chat",
+    "explanation": "Add “sun” before each word to make a warm-weather or light-related term.",
+    "terms": [
+      "Screen",
+      "Block",
+      "Dial",
+      "Flower"
+    ],
+    "definitions": {
+      "Screen": "A surface that displays images or blocks something.",
+      "Block": "A solid piece of material or a section of a city.",
+      "Dial": "A face or control used to adjust something.",
+      "Flower": "The colorful part of a plant."
+    }
+  },
+  {
+    "id": "Silly-056",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "The Board Meeting Is Outside",
+    "explanation": "Each word can come before “board.”",
+    "terms": [
+      "Surf",
+      "Paddle",
+      "Boogie",
+      "Diving"
+    ],
+    "definitions": {
+      "Surf": "To ride waves or browse online.",
+      "Paddle": "A tool used to move through water.",
+      "Boogie": "A lively kind of dancing.",
+      "Diving": "Jumping or plunging into water."
+    }
+  },
+  {
+    "id": "Silly-057",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Not the Kind You Find in Sand",
+    "explanation": "Each word can come before “shell.”",
+    "terms": [
+      "Egg",
+      "Nut",
+      "Power",
+      "Taco"
+    ],
+    "definitions": {
+      "Egg": "A food with a hard outer covering.",
+      "Nut": "A seed or snack with a hard outer covering.",
+      "Power": "Energy, strength, or authority.",
+      "Taco": "A folded food often filled with meat, beans, or vegetables."
+    }
+  },
+  {
+    "id": "Silly-058",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Beach Words in Disguise",
+    "explanation": "Each card sounds like a beach or ocean word.",
+    "terms": [
+      "Sure",
+      "Sees",
+      "Tied",
+      "Boy"
+    ],
+    "definitions": {
+      "Sure": "Meaning certain or confident.",
+      "Sees": "Looks at or notices something.",
+      "Tied": "Fastened with a knot.",
+      "Boy": "A young male child."
+    }
+  },
+  {
+    "id": "Silly-059",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Add Ice and Chill",
+    "explanation": "Each word can come after “ice.”",
+    "terms": [
+      "Cream",
+      "Cube",
+      "Breaker",
+      "Berg"
+    ],
+    "definitions": {
+      "Cream": "A rich dairy product or dessert base.",
+      "Cube": "A small solid block shape.",
+      "Breaker": "Something that interrupts, separates, or stops a pattern.",
+      "Berg": "A large floating mass of ice."
+    }
+  },
+  {
+    "id": "Silly-060",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Life Comes Before the Swim",
+    "explanation": "Add “life” before each word to make a water-safety or summer-adjacent term.",
+    "terms": [
+      "Guard",
+      "Jacket",
+      "Boat",
+      "Saver"
+    ],
+    "definitions": {
+      "Guard": "A person who protects or watches over something.",
+      "Jacket": "A piece of outer clothing.",
+      "Boat": "A small vessel used on water.",
+      "Saver": "A person or thing that rescues or preserves something."
+    }
+  },
+  {
+    "id": "Silly-061",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Everything Is Wavy",
+    "explanation": "Each word can come before “wave.”",
+    "terms": [
+      "Heat",
+      "Brain",
+      "Sound",
+      "Tidal"
+    ],
+    "definitions": {
+      "Heat": "High temperature.",
+      "Brain": "The organ used for thinking.",
+      "Sound": "Something that can be heard.",
+      "Tidal": "Related to the rise and fall of the ocean."
+    }
+  },
+  {
+    "id": "Silly-062",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Water Cooler’s Beach Cousins",
+    "explanation": "Add “water” before each word to make a common term.",
+    "terms": [
+      "Fall",
+      "Mark",
+      "Cooler",
+      "Front"
+    ],
+    "definitions": {
+      "Fall": "A drop from a higher place.",
+      "Mark": "A sign, symbol, or score.",
+      "Cooler": "A container that keeps things cold.",
+      "Front": "The forward-facing side of something."
+    }
+  },
+  {
+    "id": "Silly-063",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Beach Goes First",
+    "explanation": "Add “beach” before each word to make a common phrase.",
+    "terms": [
+      "Read",
+      "Ball",
+      "Head",
+      "Umbrella"
+    ],
+    "definitions": {
+      "Read": "To look at and understand written words.",
+      "Ball": "A round object used in games.",
+      "Head": "The top part of the body.",
+      "Umbrella": "A cover used for rain or shade."
+    }
+  },
+  {
+    "id": "Silly-064",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Shore Has Range",
+    "explanation": "Each word pairs with “shore” to form a common word or phrase.",
+    "terms": [
+      "Line",
+      "Up",
+      "Leave",
+      "Bird"
+    ],
+    "definitions": {
+      "Line": "A long narrow mark or row.",
+      "Up": "Toward a higher place or position.",
+      "Leave": "Permission to be away from work or duty.",
+      "Bird": "An animal with feathers and wings."
+    }
+  },
+  {
+    "id": "Silly-065",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Pool Party, But Make It Weird",
+    "explanation": "Each word can come after “pool.”",
+    "terms": [
+      "Cue",
+      "Hall",
+      "House",
+      "Table"
+    ],
+    "definitions": {
+      "Cue": "A signal or prompt for action.",
+      "Hall": "A large room or passageway.",
+      "House": "A building where people live.",
+      "Table": "A piece of furniture with a flat top."
+    }
+  },
+  {
+    "id": "Silly-066",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Ray, But Make It Confusing",
+    "explanation": "Each word pairs with “ray.”",
+    "terms": [
+      "Manta",
+      "Sting",
+      "X",
+      "Blu"
+    ],
+    "definitions": {
+      "Manta": "A large flat sea creature.",
+      "Sting": "A sharp pain or a small wound.",
+      "X": "A letter often used to mark the unknown.",
+      "Blu": "A stylized spelling often associated with a media format."
+    }
+  },
+  {
+    "id": "Silly-067",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Ocean Animals With Day Jobs",
+    "explanation": "Each word can come before an ocean animal name.",
+    "terms": [
+      "Nurse",
+      "Pilot",
+      "Surgeon",
+      "Cleaner"
+    ],
+    "definitions": {
+      "Nurse": "A healthcare worker.",
+      "Pilot": "A person who operates an aircraft.",
+      "Surgeon": "A doctor who performs operations.",
+      "Cleaner": "A person or thing that removes dirt."
+    }
+  },
+  {
+    "id": "Silly-068",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Tide Vocabulary Nobody Asked For",
+    "explanation": "Each word can come before “tide.”",
+    "terms": [
+      "High",
+      "Low",
+      "Spring",
+      "Neap"
+    ],
+    "definitions": {
+      "High": "Above average or elevated.",
+      "Low": "Below average or not high.",
+      "Spring": "A season or a coiled object.",
+      "Neap": "A lesser-known word related to a smaller tide."
+    }
+  },
+  {
+    "id": "Silly-069",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Flip Before You Flop",
+    "explanation": "Each word can come after “flip.”",
+    "terms": [
+      "Flop",
+      "Chart",
+      "Phone",
+      "Side"
+    ],
+    "definitions": {
+      "Flop": "A failure or a sudden drop.",
+      "Chart": "A visual display of information.",
+      "Phone": "A device used for calls and messages.",
+      "Side": "One surface or part of something."
+    }
+  },
+  {
+    "id": "Silly-070",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Sounds Like a Workflow, Acts Like Water",
+    "explanation": "Each word relates to water movement and also shows up in work/process language.",
+    "terms": [
+      "Current",
+      "Stream",
+      "Channel",
+      "Flow"
+    ],
+    "definitions": {
+      "Current": "Happening now or a flow of water.",
+      "Stream": "A continuous flow or online broadcast.",
+      "Channel": "A route for communication or water.",
+      "Flow": "Smooth movement or progress."
+    }
+  },
+  {
+    "id": "Silly-071",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Summer Goes First",
+    "explanation": "Add “summer” before each word to make a seasonal phrase.",
+    "terms": [
+      "School",
+      "Camp",
+      "Solstice",
+      "Friday"
+    ],
+    "definitions": {
+      "School": "A place for learning.",
+      "Camp": "A temporary place to stay or a program for activities.",
+      "Solstice": "The time when the sun is at its highest or lowest point.",
+      "Friday": "The weekday before Saturday."
+    }
+  },
+  {
+    "id": "Silly-072",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Palm Reading, But Tropical",
+    "explanation": "Add “palm” before each word to make a common phrase or term.",
+    "terms": [
+      "Oil",
+      "Tree",
+      "Reader",
+      "Sunday"
+    ],
+    "definitions": {
+      "Oil": "A slippery liquid used in cooking or machines.",
+      "Tree": "A tall plant with a trunk.",
+      "Reader": "A person or tool that reads.",
+      "Sunday": "A day of the week."
+    }
+  },
+  {
+    "id": "Silly-073",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Beach, With One Letter Off",
+    "explanation": "Each word rhymes with “beach.”",
+    "terms": [
+      "Peach",
+      "Leech",
+      "Teach",
+      "Bleach"
+    ],
+    "definitions": {
+      "Peach": "A soft fruit with fuzzy skin.",
+      "Leech": "A small creature known for attaching to other animals.",
+      "Teach": "To help someone learn something.",
+      "Bleach": "A product used to whiten or disinfect."
+    }
+  },
+  {
+    "id": "Silly-074",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Shore, But Make It Office",
+    "explanation": "Each word rhymes with “shore.”",
+    "terms": [
+      "Core",
+      "More",
+      "Floor",
+      "Score"
+    ],
+    "definitions": {
+      "Core": "The central or most important part of something.",
+      "More": "An additional amount.",
+      "Floor": "The lower surface of a room.",
+      "Score": "A number of points earned in a game."
+    }
+  },
+  {
+    "id": "Silly-075",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Dock Talk",
+    "explanation": "Each word rhymes with “dock.”",
+    "terms": [
+      "Clock",
+      "Flock",
+      "Knock",
+      "Stock"
+    ],
+    "definitions": {
+      "Clock": "A device used to tell time.",
+      "Flock": "A group of birds or animals.",
+      "Knock": "To tap on a door or surface.",
+      "Stock": "A supply of goods or materials."
+    }
+  },
+  {
+    "id": "Silly-076",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Pier Pressure",
+    "explanation": "Each word ends with a “peer/pier” sound.",
+    "terms": [
+      "Career",
+      "Volunteer",
+      "Pioneer",
+      "Engineer"
+    ],
+    "definitions": {
+      "Career": "A person’s long-term professional path.",
+      "Volunteer": "Someone who offers to help without being required.",
+      "Pioneer": "A person who helps develop something new.",
+      "Engineer": "A person who designs or builds systems."
+    }
+  },
+  {
+    "id": "Silly-077",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Sand Got Everywhere",
+    "explanation": "Each word starts with “sand.”",
+    "terms": [
+      "Sandbox",
+      "Sandbar",
+      "Sandlot",
+      "Sandman"
+    ],
+    "definitions": {
+      "Sandbox": "A small area for playing or testing ideas.",
+      "Sandbar": "A raised area of sand in shallow water.",
+      "Sandlot": "An informal field used for games.",
+      "Sandman": "A mythical figure associated with sleep."
+    }
+  },
+  {
+    "id": "Silly-078",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Surf’s Hiding in Plain Sight",
+    "explanation": "Each word starts with “surf.”",
+    "terms": [
+      "Surface",
+      "Surfactant",
+      "Surfacing",
+      "Surfside"
+    ],
+    "definitions": {
+      "Surface": "The outside or top layer of something.",
+      "Surfactant": "A substance that helps reduce surface tension.",
+      "Surfacing": "Coming into view or becoming known.",
+      "Surfside": "An area located beside the surf."
+    }
+  },
+  {
+    "id": "Silly-079",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Sun Without the Sunscreen",
+    "explanation": "Each word starts with “sun.”",
+    "terms": [
+      "Sunder",
+      "Sunken",
+      "Sundry",
+      "Sundae"
+    ],
+    "definitions": {
+      "Sunder": "To split or separate apart.",
+      "Sunken": "Located below the usual level.",
+      "Sundry": "Various or miscellaneous.",
+      "Sundae": "A dessert often made with ice cream and toppings."
+    }
+  },
+  {
+    "id": "Silly-080",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Board Meeting, Literally",
+    "explanation": "Each word ends with “board.”",
+    "terms": [
+      "Clipboard",
+      "Keyboard",
+      "Dashboard",
+      "Storyboard"
+    ],
+    "definitions": {
+      "Clipboard": "A board used to hold papers in place.",
+      "Keyboard": "A set of keys used for typing.",
+      "Dashboard": "A display area with key information or controls.",
+      "Storyboard": "A sequence of images used to plan a story."
+    }
+  },
+  {
+    "id": "Silly-081",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Pool Party, No Swimsuit Required",
+    "explanation": "Each word or phrase ends with “pool.”",
+    "terms": [
+      "Carpool",
+      "Whirlpool",
+      "Cesspool",
+      "Gene Pool"
+    ],
+    "definitions": {
+      "Carpool": "A shared ride arrangement.",
+      "Whirlpool": "A spinning movement of water.",
+      "Cesspool": "A place where waste collects.",
+      "Gene Pool": "The complete set of genes in a population."
+    }
+  },
+  {
+    "id": "Silly-082",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Not Beachwear",
+    "explanation": "Each word ends with “ware.”",
+    "terms": [
+      "Software",
+      "Hardware",
+      "Firmware",
+      "Shareware"
+    ],
+    "definitions": {
+      "Software": "Programs used by a computer.",
+      "Hardware": "The physical parts of a device.",
+      "Firmware": "Built-in software that helps hardware run.",
+      "Shareware": "Software that can be tried before purchase."
+    }
+  },
+  {
+    "id": "Silly-083",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Vacation Is the Decoy",
+    "explanation": "Each word ends with “cation.”",
+    "terms": [
+      "Vacation",
+      "Allocation",
+      "Notification",
+      "Certification"
+    ],
+    "definitions": {
+      "Vacation": "Time away from regular work or school.",
+      "Allocation": "The act of assigning resources.",
+      "Notification": "A message or alert.",
+      "Certification": "Official proof of meeting a standard."
+    }
+  },
+  {
+    "id": "Silly-084",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "They End Like Summer",
+    "explanation": "Each word ends with a “mer” sound.",
+    "terms": [
+      "Drummer",
+      "Plumber",
+      "Programmer",
+      "Customer"
+    ],
+    "definitions": {
+      "Drummer": "A person who plays drums.",
+      "Plumber": "A person who works with pipes.",
+      "Programmer": "A person who writes code.",
+      "Customer": "A person who buys goods or services."
+    }
+  },
+  {
+    "id": "Silly-085",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Marooned at the Beginning",
+    "explanation": "Each word starts with “mar.”",
+    "terms": [
+      "Market",
+      "Margin",
+      "Marble",
+      "Marigold"
+    ],
+    "definitions": {
+      "Market": "A place or system for buying and selling.",
+      "Margin": "The space around the edge of something.",
+      "Marble": "A smooth stone or a small glass ball.",
+      "Marigold": "A bright flowering plant."
+    }
+  },
+  {
+    "id": "Silly-086",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Bay Watch, But Corporate-Safe",
+    "explanation": "Each word starts with “bay.”",
+    "terms": [
+      "Bayou",
+      "Bayberry",
+      "Bayside",
+      "Bay Leaf"
+    ],
+    "definitions": {
+      "Bayou": "A slow-moving body of water.",
+      "Bayberry": "A shrub that can produce waxy berries.",
+      "Bayside": "Located beside a bay.",
+      "Bay Leaf": "An herb often used in cooking."
+    }
+  },
+  {
+    "id": "Silly-087",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Coast Is Clear-ish",
+    "explanation": "Each word starts with “coast.”",
+    "terms": [
+      "Coaster",
+      "Coastline",
+      "Coasting",
+      "Coastguard"
+    ],
+    "definitions": {
+      "Coaster": "A small mat placed under a drink.",
+      "Coastline": "The land along the edge of a sea or ocean.",
+      "Coasting": "Moving with little effort.",
+      "Coastguard": "A group responsible for safety near shorelines."
+    }
+  },
+  {
+    "id": "Silly-088",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Ray Without the Sunburn",
+    "explanation": "Each word ends with a “ray” sound.",
+    "terms": [
+      "Array",
+      "Foray",
+      "Moray",
+      "Hooray"
+    ],
+    "definitions": {
+      "Array": "An ordered display or arrangement.",
+      "Foray": "A brief attempt at something new.",
+      "Moray": "A type of eel.",
+      "Hooray": "An expression of excitement or approval."
+    }
+  },
+  {
+    "id": "Silly-089",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Tan, But Sneakier",
+    "explanation": "Each word starts with “tan.”",
+    "terms": [
+      "Tangerine",
+      "Tangent",
+      "Tandem",
+      "Tangle"
+    ],
+    "definitions": {
+      "Tangerine": "A small orange citrus fruit.",
+      "Tangent": "A line of thought that goes off-topic.",
+      "Tandem": "Working or moving together.",
+      "Tangle": "A twisted or messy knot."
+    }
+  },
+  {
+    "id": "Silly-090",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Side Effects May Include Summer",
+    "explanation": "Each word ends with “side.”",
+    "terms": [
+      "Fireside",
+      "Bedside",
+      "Curbside",
+      "Poolside"
+    ],
+    "definitions": {
+      "Fireside": "An area beside a fire.",
+      "Bedside": "The area next to a bed.",
+      "Curbside": "The edge of a street near the curb.",
+      "Poolside": "The area beside a pool."
+    }
+  },
+  {
+    "id": "Silly-091",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Light Work",
+    "explanation": "Each word ends with “light.”",
+    "terms": [
+      "Highlight",
+      "Twilight",
+      "Daylight",
+      "Skylight"
+    ],
+    "definitions": {
+      "Highlight": "The most important or noticeable part.",
+      "Twilight": "The soft light after sunset or before sunrise.",
+      "Daylight": "Natural light from the sun.",
+      "Skylight": "A window in a roof or ceiling."
+    }
+  },
+  {
+    "id": "Silly-092",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Sole Mates",
+    "explanation": "Each word sounds like “sole” or “sol.”",
+    "terms": [
+      "Sole",
+      "Soul",
+      "Sol",
+      "Seoul"
+    ],
+    "definitions": {
+      "Sole": "The bottom of a foot or shoe.",
+      "Soul": "A person’s inner spirit or essence.",
+      "Sol": "A musical note or a word for the sun.",
+      "Seoul": "The capital city of South Korea."
+    }
+  },
+  {
+    "id": "Silly-093",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Sea, But Spellcheck Panicked",
+    "explanation": "Each word starts with a “see” sound.",
+    "terms": [
+      "Cedar",
+      "Cereal",
+      "Celsius",
+      "Ceiling"
+    ],
+    "definitions": {
+      "Cedar": "A type of tree known for fragrant wood.",
+      "Cereal": "A breakfast food made from grains.",
+      "Celsius": "A temperature scale.",
+      "Ceiling": "The upper inside surface of a room."
+    }
+  },
+  {
+    "id": "Silly-094",
+    "difficultyKey": "silly-filler",
+    "difficultyLabel": "Silly Filler",
+    "name": "Breeze Adjacent",
+    "explanation": "Each word ends with an “ease” sound.",
+    "terms": [
+      "Please",
+      "Freeze",
+      "Squeeze",
+      "Cheese"
+    ],
+    "definitions": {
+      "Please": "A polite word used when making a request.",
+      "Freeze": "To become solid from cold.",
+      "Squeeze": "To press firmly from the sides.",
+      "Cheese": "A food made from milk."
+    }
+  }
+]
